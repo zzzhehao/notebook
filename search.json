@@ -1,0 +1,649 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Zhehao’s Note",
+    "section": "",
+    "text": "Welcome\nWelcome to my public notebook, where I write down things I view important alongside my journey of pursuing the mystery of biology. Most of the notes are synced with the notes in my personal notebook vault (Obsidian), so you can view this site as the public part of my tool und knowledge kit.\nI hold a MSc Biology degree and my research focus is deep-sea crustacean, especially isopods. I did mainly taxonomy and biogeography during my master thesis, and now I am trying to get into ecology. I code a lot, and I like using the computer skills to keep my research bench tidy. I don’t view myself as programming-guru or a hacker. It’s just a nice and important skill to have in the 21st century.\nCurrently there’s just a few notes, because the rest are only written in the way that I can understand (bad example), and I am gradually retouching them. It just takes a bit more time.\nHopefully you could find something helpful here. If you want to correct, or add anything, please feel free to reach out.\n\n\nSee also\nI also got a personal website, where I post stand-alone posts.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/01 Prior Concepts.html",
+    "href": "note/evolution/MSc EvoSys Course/01 Prior Concepts.html",
+    "title": "1  MSc EvoSys Prior Concepts",
+    "section": "",
+    "text": "These concepts should be understood as a prerequisite for other topics.\n\nPhylogeny, Taxonomy, Biological species concept, Speciation, Diversification\nGenotype, Phenotype, Traits\nSanger sequencing, Next-Generation Sequencing\nPhylogenetic tree, Root, Node, Terminal, Branch, Clade, Ingroup, Outgroup\nMonophyly, Paraphyly, Polyphyly\nVariant / Invariant / Informative / Uninformative site (invariant site \\(\\in\\) uninformative but invariant site \\(\\ne\\) uninformative site)",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>MSc EvoSys Prior Concepts</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/02 Phylogeny Fundamentals.html",
+    "href": "note/evolution/MSc EvoSys Course/02 Phylogeny Fundamentals.html",
+    "title": "2  Phylogeny Fundamentals",
+    "section": "",
+    "text": "2.1 Character States\n… these are the state of a character, based on the objective observations and data.",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Phylogeny Fundamentals</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/02 Phylogeny Fundamentals.html#character-states",
+    "href": "note/evolution/MSc EvoSys Course/02 Phylogeny Fundamentals.html#character-states",
+    "title": "2  Phylogeny Fundamentals",
+    "section": "",
+    "text": "Apomorphy = a derived trait, shared by two or more taxa from a common ancestor is synapomorphy, unique to a given taxa is autapomorphy\nSynapomorphy = character present in an ancestral species and shared exclusively by its evolutionary descendants\nAutapomorphy = apomorphy unique to a given taxa or group, not parsimony informative\nSymplesiomorphy / Plesiomorphy = ancestral state shared by all the membre of a clade, which can not distinguish the clade from other clades\n\n\n\nSymplesiomorphy is synapomorphy at a less inclusive level, which is not useful for phylogenetic classification (Patterson, 1982; de Pinna, 1991; Schuh and Brower, 2009).\n\nAssis, 2013",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Phylogeny Fundamentals</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/02 Phylogeny Fundamentals.html#convergent-evolution",
+    "href": "note/evolution/MSc EvoSys Course/02 Phylogeny Fundamentals.html#convergent-evolution",
+    "title": "2  Phylogeny Fundamentals",
+    "section": "2.2 Convergent Evolution",
+    "text": "2.2 Convergent Evolution\nConvergent evolution = independent evolution of similar features, creates analogous\n\nMorphologcial convergence &gt; e.g., similar body form of succulent plant (Euphorbia and Astrophytum)\nHomology, Homoplasy: is a hypothesis, which describe how a character has evolved.\n\n\nAs aptly remarked by Müller (2003, p. 54:\n[…] its [element] absence, may serve as a shared, derived (taxonomical) character – a synapomorphy. Moreover, a taxonomical character is not necessarily the same as a morphological character. All homologues are synapomorphics, but not vice-versa. Absence of an anatomical element, for instance, can be a taxonomical synapomorphy but not a homology, because homologues are positive anatomical parts. Hence synapomorphy and homology should not be considered as synonymous.\n\nAssis, 2013\n\n\n\nOrthology: originated from speciation\nParalogy: originated from gene duplication\nXenology: originated from horizontal gene transfer",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Phylogeny Fundamentals</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/02 Phylogeny Fundamentals.html#paraphyly-vs.-polyphyly",
+    "href": "note/evolution/MSc EvoSys Course/02 Phylogeny Fundamentals.html#paraphyly-vs.-polyphyly",
+    "title": "2  Phylogeny Fundamentals",
+    "section": "2.3 Paraphyly vs. Polyphyly",
+    "text": "2.3 Paraphyly vs. Polyphyly\n\nHowever, paraphyletic and polyphyletic groups are not realistically acceptable (Hennig, 1965, 1966), even though these groups are defined by symplesiomorphies and homoplasies, respectively. Ironically, there exists a clear distinction between character evolution and group classification.\n\nAssis, 2013\n\n\n\nSymplesiomorphy entails paraphyly, so that some, not all, descendant species inherited a particular (plesiomorphic) condition from a common ancestor of them. Homoplasy entails polyphyly—i.e. independent origin (non-homology) of a similar condition in two or more groups—but it is synapomorphy at a more restricted phylogenetic level (compare Hall, 2007; Scotland, 2011; Nixon and Carpenter, 2012).\n\nAssis, 2013",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Phylogeny Fundamentals</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.html",
+    "href": "note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.html",
+    "title": "3  Phylogenetic Analysis",
+    "section": "",
+    "text": "3.1 Character types (in Data Science)",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Phylogenetic Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.html#character-types-in-data-science",
+    "href": "note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.html#character-types-in-data-science",
+    "title": "3  Phylogenetic Analysis",
+    "section": "",
+    "text": "Quantitative: measurements, continuous or discrete (can be made from continuous by binning)\nQualitative: binary or multistate, counts are special case called meristic",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Phylogenetic Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.html#sequence-alignment",
+    "href": "note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.html#sequence-alignment",
+    "title": "3  Phylogenetic Analysis",
+    "section": "3.2 Sequence Alignment",
+    "text": "3.2 Sequence Alignment\nPairwise sequence alignment - Maximal unique match - Dot-matrix methods - Dynamic programming\nMultiple sequence alignment - Dynamic programming - Progressive methods - Iterative methods - Motif finding\n\n3.2.1 Partitions\n\nMultilocus data sets, different genes / gene regions have evolved differently\nIndependent application of substitution model allows better fit, but increased model parameters and calculation intensity\nRequire predefinition e.g. in NEXUS format\n\n\n\n3.2.2 Mixture models\n\nAccounts for heterogeneity site-by-site, thus better for application when partitions still have heterogeneity\nCommonly uses site-frequency profiles\nProtein functionality information can further limit which amino acids are possible at a given site\n\n\nStandard protein substitution models use a single amino acid replacement rate matrix that summarizes the biological, chemical and physical properties of amino acids. However, site evolution is highly heterogeneous and depends on many factors: genetic code; solvent exposure; secondary and tertiary structure; protein function; etc. These impact the substitution pattern and, in most cases, a single replacement matrix is not enough to represent all the complexity of the evolutionary processes.\n\nLe et al., 2008",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Phylogenetic Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.html#phylogenetic-tree-reconstruction-algorithms",
+    "href": "note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.html#phylogenetic-tree-reconstruction-algorithms",
+    "title": "3  Phylogenetic Analysis",
+    "section": "3.3 Phylogenetic Tree Reconstruction: Algorithms",
+    "text": "3.3 Phylogenetic Tree Reconstruction: Algorithms\n\n\n\n\n\n\n\n\nTree Building Method  Data Type\nDistances\nNucleotides Sites (discrete)\n\n\n\n\nClustering Algorithm\nNeighbor-JoiningUPGMA\n\n\n\nOptimality Criterion\nMinimum Evolution\nParsimonyMaximum Likelihood*Bayesian Analys*\n\n\n\n*: Probabilistic method\n\n3.3.1 Clustering Algorithm\nTrees are constructed by adding taxa to a more similar region of the existing tree, until all taxa are added.\n\nEasy and fast computing\nDepends on the order in which we add the taxa\nImpossible to evaluate competing hypothesis\n\n\n\n3.3.2 Optimizing Algorithm\nAssign each possible tree a “score” and choose the best tree we can propose\n\n\n3.3.3 Distance methods\nProduce single tree, fast, BUT …\n\nDeterministic, does not account for uncertainty\nLoose information (by translating into genetic distances)\nGenetic distances usually inappropriately approximate real divergence (lack of molecular clock)\nSensitive to genetic saturation and LBA\n\n\n\n3.3.4 Character-based methods\n\nUses information more efficiently, accounts for every change in the alignment.\nUses objective criterion among possible trees.\nIdeal: rank all possible trees and choose the best; but practice: heuristic searching algorithms\nHeuristic search\n\nStepwise addition\n\nconnects one taxon at a time, only the optimal tree at each step will be saved\n\nBranch swapping\n\nNearest-neighbor interchange (NNI): Trees divided into four subtrees which are interchanged\nSubtree-pruning-regrafting (SPR): All subtrees pruned from tree, regrafted at all reattachment points\nTree bisection-reconnection (TBR): Tree is cut along a branch to form two subtrees and all possible reconnections are evaluated\n\nOptimize tree score (Parsimony, Likelihood, Posterior probabilitiy) till maximum",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Phylogenetic Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.html#maximum-parsimony",
+    "href": "note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.html#maximum-parsimony",
+    "title": "3  Phylogenetic Analysis",
+    "section": "3.4 Maximum Parsimony",
+    "text": "3.4 Maximum Parsimony\nParsimony: Optimal phylogenetic tree minimizes the total number of character state changes in the tree. - Principles: as-is, closest, simple, random - Ordered characters never goes backwards - Autapomorphies are unique to one taxon, so not informative for parsimony\nIncongruent ⇒ Consensus tree\nTree measurement: Consistency Index (CI) = minimum required steps / actual steps - the higher the CI the better the parsimony\n\n3.4.1 Search Methods\nExhaustive search\n\nEvaluate all possible trees\nComputational cost makes it unsuitable for more than 10 or 11 taxa\n\nBranch-and-bound algorithm\n\nFinds all shortest trees (brute force), unsuitable for more than 16 taxa.",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Phylogenetic Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.html#maximum-likelihood",
+    "href": "note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.html#maximum-likelihood",
+    "title": "3  Phylogenetic Analysis",
+    "section": "3.5 Maximum Likelihood",
+    "text": "3.5 Maximum Likelihood\n\nLikelihood: “probability” of a model (distribution) given a data\nProbability: “probability” of a data given a model (distribution)\nTest for best-fitting substitution models, calculate likelihood for each model, choose model with smallest BIC or AIC(AICc) score\n\nAkaike information criterion (AIC), BIC (Bayesian information criterion) is a method evaluating how well a model fits the data\n\n\n\nAll models suck at their job. AIC tells you how much they suck.\n\n\nPros: strong statistical foundations, model assumptions are explicit (testable), statistical framework for hypothesis testing, less sensitive to homoplasy than distance methods\nCons: poor performance with morphological data, frequentist method\n\n\n3.5.1 Branch support\n\n3.5.1.1 Bremer (Decay) Index\n\nindicates how much longer would a tree be if it did not have certain node under consideration\nthe higher the index the better the node is supported\n\n\n\n3.5.1.2 Non-parametric bootstrapping\nResampling technique with replacement\n\nNode value gives the frequency of a given clade’s appearance in the pseudoreplicates\n&gt; 75% is considered high support\nMore conservative than posterior probabilities, but still inflated in phylogenomics\n\nFaster alternatives\n\nUFBoot (Ultrafast bootstrap), high support &gt; 95%\naLRT, aBayes, SH-aLRT &gt; 85% considered as high support\n\n\n\n3.5.1.3 Jackknifing\nSame as bootstrapp, but without replacement",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Phylogenetic Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.html#bayesian-inference",
+    "href": "note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.html#bayesian-inference",
+    "title": "3  Phylogenetic Analysis",
+    "section": "3.6 Bayesian Inference",
+    "text": "3.6 Bayesian Inference\nSee 04 Bayesian Inference",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Phylogenetic Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.html#consensus-tree",
+    "href": "note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.html#consensus-tree",
+    "title": "3  Phylogenetic Analysis",
+    "section": "3.7 Consensus Tree",
+    "text": "3.7 Consensus Tree\n\n3.7.1 Strict rule\n\nretains only the groups appearing in all input trees, conflicts become polytomies\n\n\n\n3.7.2 Majority rule\n\nretains groups supported by the majority of input, can include groups not supported by parsimony\n\n\n\n3.7.3 Semi-strict\n\nretains groups that do not conflict, conflicts become polytomies",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Phylogenetic Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.html#phylogenetic-errors",
+    "href": "note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.html#phylogenetic-errors",
+    "title": "3  Phylogenetic Analysis",
+    "section": "3.8 Phylogenetic Errors",
+    "text": "3.8 Phylogenetic Errors\n\n3.8.1 Genetic saturation (kind of “homoplasy”)\n\n\nWhen sequences in a multiple alignment have undergone so many multiple substitutions that apparent distances largely underestimate the real genetic distances, the alignment is said to be saturated. Phylogenetic inference works best with datasets that are only slightly saturated. Owing to their reduced state space (four possible bases), nucleotide sequences saturate more rapidly than protein sequences (20 possible amino acids).\n\nPhilippe et al., 2011\n\n\n\n\n3.8.2 Long branch attraction (LBA)\nA form of systematic error, whereby distantly related lineages are incorrectly inferred to be closely related\n\nGenetic saturation will result in long branch attraction",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Phylogenetic Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/04 Bayesian Inference.html",
+    "href": "note/evolution/MSc EvoSys Course/04 Bayesian Inference.html",
+    "title": "4  Bayesian Inference",
+    "section": "",
+    "text": "4.1 Bayesian Mathematics\nJoint probability &gt; \\(Pr(B, D)\\)\nConditional probability &gt; \\(Pr(B |D)\\)\nMarginal probability &gt; \\(Pr(D)=Pr(B,D)+Pr(W,D)\\)",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Bayesian Inference</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/04 Bayesian Inference.html#bayesian-mathematics",
+    "href": "note/evolution/MSc EvoSys Course/04 Bayesian Inference.html#bayesian-mathematics",
+    "title": "4  Bayesian Inference",
+    "section": "",
+    "text": "4.1.1 Bayes’ theorem\n\\[ Pr(B|D)=\\frac{Pr(D|B)Pr(B)}{Pr(D)} \\]\nIn statistics:\n\\[ Pr(\\theta|D)=\\frac{Pr(D|\\theta)Pr(\\theta)}{\\Sigma_{\\theta }Pr(D|\\theta)Pr(\\theta)} \\]\n\\(Pr(\\theta)\\): Prior probability of hypothesis \\(\\theta\\)\n\\(Pr(D|\\theta)\\): Likelihood of hypothesis \\(\\theta\\) (Probability that the data is true given hypothesis \\(\\theta\\))\n\\(\\Sigma_{\\theta }Pr(D|\\theta)Pr(\\theta)\\): Marginal probability of the data (marginalizing over hypothesis)\n\\(Pr(\\theta|D)\\): Posterior probability of the hypothesis \\(\\theta\\)\nFor continuous data:\n\\[ p(\\theta|D)=\\frac{p(D|\\theta)p(\\theta)}{\\int p(D|\\theta)p(\\theta)d \\theta} \\]\n\\(p(\\theta)\\): Prior probability density\n\\(p(D|\\theta)\\): Likelihood\n\\({\\int p(D|\\theta)p(\\theta)d \\theta}\\): Marginal probability of the data (marginalizing over hypothesis)\n\\(p(\\theta|D)\\): Posterior probability density\n\nProbabilities are attached to intervals, not individual values\n\narea of an interval underneath the probability density function is the probability, i.e. integrating a density yields a probability\n\nDensity curves are all variation of a gamma probability distribution, prior with different variance and means shapes different curve, the higher the variance, the less informative it is",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Bayesian Inference</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/04 Bayesian Inference.html#markov-chain-monte-carlo-mcmc",
+    "href": "note/evolution/MSc EvoSys Course/04 Bayesian Inference.html#markov-chain-monte-carlo-mcmc",
+    "title": "4  Bayesian Inference",
+    "section": "4.2 Markov Chain Monte Carlo (MCMC)",
+    "text": "4.2 Markov Chain Monte Carlo (MCMC)\n\nExact marginal probability of data become extremely impractical to calculating while analyzing multiparametric data\ne.g., a 2-parameter analysis (the integrals are folded!):\n\\[ p(\\theta , \\phi|D)=\\frac{p(D|\\theta, \\phi)p(\\theta)p(\\phi)}{\\int_\\theta \\int_\\phi p(D|\\theta, \\phi)p(\\theta)p(\\phi)d \\theta d\\phi} \\]\nan approximation of the posterior probability, i.e. a histogram\n\n\n4.2.1 Metropolis algorithm (MCMC robot)\n\ncalculating score ratio (R = Proposed / Current), if a uniform(0,1) random deviate &gt; R, reject propose\n\nUphills are always be accepted\nSlight downhills are usually accepted, drastic “off the cliff” are almost never accepted\n\nif proposal distributions are …\n\ntoo narrow, steps are small (”baby steps”), big waves in trace plot\ntoo wide, steps are huge, proposes are often declined, robot stuck in one place\nappropriate, white noise in trace plot can be observed, indicates “good mixing”\n\n\n\n\n4.2.2 Metropolis-coupled MCMC (MCMCMC)\nhelps robot explore tree topology to prevent stucking in local maxima\n\nCold chain is normal chain and follows the Metropolis algorithm\nHeated chain **has modified posterior probability which is flattened out, allow them taking more “risky” steps and explore the topology as scouts\nSwaps between cold and heated chain allows cold chain to reach the global maxima\n\n\n\n4.2.3 Hasting ratio\nrebalace propose bias caused by assymetric distribution",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Bayesian Inference</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/04 Bayesian Inference.html#bayesian-phylogenetic-inference",
+    "href": "note/evolution/MSc EvoSys Course/04 Bayesian Inference.html#bayesian-phylogenetic-inference",
+    "title": "4  Bayesian Inference",
+    "section": "4.3 Bayesian phylogenetic inference",
+    "text": "4.3 Bayesian phylogenetic inference\n\n4.3.1 MCMC analysis steps\n\nChoose starting states\nUpdate one or more parameters\n\nChoose parameter(s)\nPropose new state(s)\nCalculate ratio R\nDraw u from Uniform(0,1)\nif u &lt; R, accept; otherwise, reject\n\nSave tree and parameters\ngo back to step 2, loop till defined sample amount has been saved\nSummarize and sample the posteriors\n\n\n\n4.3.2 MCMC Convergence\n\nPosterior probability is approximated ⇒ a collection of trees from posterior distribution\nBurnin: initial states with low posterior probability need to be discarded\nConvergence: multiple runs need to reach similar results, assesed a posteriori\n\nDiagnostics (Program: TRACER)\n\nESS (Effective sample size) &gt; 200\nTraces (e.g. lnL (log-Likelihood) across iterations) should have reached stationarity for enough generations\n\n\n\n4.3.3 Prior distributions\n\nPrior probabilities are assigned to all parameters, usually the distribution of the parameter a prioir is unknown ⇒ uninformative (flat) priors (Uniform) are used\nGamma(a,b) distributions are appropriate for parameters range from 0 to infinity (e.g., branch lengths)\n\nLognormal(\\(\\mu\\),\\(\\sigma\\)) distribution\n\nBeta(a,b) distribution are appropriate for proportions which lie in [0,1]\nDirichlet(a,b,c,d) distribution, ideal for nucleotide relative frequencies\n\n\n\n4.3.4 Posterior probabilities\nSupport values, indicating the confidency on the topology\n\nThe accuracy of Bayesian clade support has recently been called into question in a number of studies (dis cussed in more detail below). In our opinion, this repre sents the most troubling property of the Bayesian method. While the issue is unresolved and complex, nearly all comparisons of resampling support (i.e., jack knife and bootstrap) and Bayesian clade support indicate that Bayesian support is generally higher. Some of these studies interpret this as underestimation of support by resampling methods. In other words, this is equivalent to an increased probability of assigning low support to correct nodes, a type-II error (Wilcox & al., 2002; Alfaro & al., 2003). Others interpret the trend as inflation of Bayesian support values, or an increased probability of Bayesian methods to support incorrect nodes, a type I error (Suzuki & al., 2002; Cummings & al., 2003; Douady & al., 2003; Erixon & al., 2003; Simmons & al., 2004).\n\n\nRandle et al., 2005\n\n\n0.95 considered as highly supported",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Bayesian Inference</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/04 Bayesian Inference.html#references",
+    "href": "note/evolution/MSc EvoSys Course/04 Bayesian Inference.html#references",
+    "title": "4  Bayesian Inference",
+    "section": "4.4 References",
+    "text": "4.4 References\nRandle, C.P., Mort, M.E. and Crawford, D.J. (2005) ‘Bayesian Inference of Phylogenetics Revisited: Developments and Concerns’, Taxon, 54(1), pp. 9–15.\nPhyloseminar #78: Paul Lewis (UConn) Primer part 3a\nPhyloseminar #79: Paul Lewis (UConn) Primer part 3b",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Bayesian Inference</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/05 Mutation, Substitution, Sequence Evolution.html",
+    "href": "note/evolution/MSc EvoSys Course/05 Mutation, Substitution, Sequence Evolution.html",
+    "title": "5  Molecular Evolution",
+    "section": "",
+    "text": "5.1 Mutation\nSuppressor mutation: a second mutation which alleviates or reverts the phenotypic effects of an already existing mutation - Intragenic suppression: suppressor mutation occured in the same gene as the original mutation. - Crick, et al. used this to establish the fundamental nature of the genetic code. - Intergenic suppresion (extragenic): the second mutation is not on the same gene as the original mutation. - Useful for identifying new genetic sites which affect a biological process of interest - Provides evidence between functionally interacting molecules and intersecting biological pathways",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Molecular Evolution</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/05 Mutation, Substitution, Sequence Evolution.html#mutation",
+    "href": "note/evolution/MSc EvoSys Course/05 Mutation, Substitution, Sequence Evolution.html#mutation",
+    "title": "5  Molecular Evolution",
+    "section": "",
+    "text": "Genome mutation\nChromosome mutation\nIndel = Insertion and/or Deletion\nInversion\nTransition\nTransversion",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Molecular Evolution</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/05 Mutation, Substitution, Sequence Evolution.html#nucleotide-substitutions",
+    "href": "note/evolution/MSc EvoSys Course/05 Mutation, Substitution, Sequence Evolution.html#nucleotide-substitutions",
+    "title": "5  Molecular Evolution",
+    "section": "5.2 Nucleotide substitutions",
+    "text": "5.2 Nucleotide substitutions\n\nsynonymous (silent): no amino acid change\nmissense: amino acid changes to some else except stop codon\nnonsense: amino acid changes to stop codon\n\nAll substitution on the second codon site and 96% of the substitutions on the first site are non-synonymous, while 70% of the substitutions on the third site are synonymous",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Molecular Evolution</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/05 Mutation, Substitution, Sequence Evolution.html#evolutionary-dynamics",
+    "href": "note/evolution/MSc EvoSys Course/05 Mutation, Substitution, Sequence Evolution.html#evolutionary-dynamics",
+    "title": "5  Molecular Evolution",
+    "section": "5.3 Evolutionary dynamics",
+    "text": "5.3 Evolutionary dynamics\nTransitions occurs more frequently than transversions, but many transitions can be “overwritten” by one transversion.\nMutation rate of non-synonymous substitution is usually lower than the rate of synonymous substitution\n\n5.3.1 Models of nucleotide substitution\n\neg. JC69 (one parameter, assuming equal sequence frequencies), K80, HKY85, GTR (most complex w/ 7 parameters) etc.\nThe likelihood of a certain nucleotide in a given vertex is not based on the assumption that nucleotides appear equally, but on the frequency observed in the vertex itself (eg. different GC account in genomes from different species)\n\n\n\n5.3.2 Models of amino acid substitution\n\nJTT: based on a larger protein database\nWAG: avoids need to use closely-related sequence pairs by obtaining ML estimate of Q matrix\nLG: add rate heterogeneity to ML estimation of Q matrix\nI: Invariable sites model\nG: Discrete Gamma model\nTest for best-fitting substitution models, calculate likelihood for each model, choose model with smallest BIC or AIC(AICc) score",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Molecular Evolution</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/06 Phylogenetic Marker.html",
+    "href": "note/evolution/MSc EvoSys Course/06 Phylogenetic Marker.html",
+    "title": "6  Phylogenetic Marker",
+    "section": "",
+    "text": "6.1 Nuclear Single-Copy-Marker\nFine, but …",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Phylogenetic Marker</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/06 Phylogenetic Marker.html#nuclear-single-copy-marker",
+    "href": "note/evolution/MSc EvoSys Course/06 Phylogenetic Marker.html#nuclear-single-copy-marker",
+    "title": "6  Phylogenetic Marker",
+    "section": "",
+    "text": "Small amount is not easy to amplify\nProblem of introns\ndiploid inheritance: cloning might be necessary\nrecombination",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Phylogenetic Marker</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/06 Phylogenetic Marker.html#ribosomal-dna",
+    "href": "note/evolution/MSc EvoSys Course/06 Phylogenetic Marker.html#ribosomal-dna",
+    "title": "6  Phylogenetic Marker",
+    "section": "6.2 Ribosomal DNA",
+    "text": "6.2 Ribosomal DNA\n\nabundant\nhighly conserved, universal primer is possible\nalighment is much more difficult since no reading frame is applied\n18S is more conserved than 28S",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Phylogenetic Marker</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/06 Phylogenetic Marker.html#mitochondrial-dna",
+    "href": "note/evolution/MSc EvoSys Course/06 Phylogenetic Marker.html#mitochondrial-dna",
+    "title": "6  Phylogenetic Marker",
+    "section": "6.3 Mitochondrial DNA",
+    "text": "6.3 Mitochondrial DNA\nRing DNA\n\n15-20 kb, 22 tRNAs, 2 rRNAs, 13 proteins, control region\nabundant (5-10 DNA in one Mitochondrium, ca. 1000 Mitochondria/cell\nalmost homoplastic (maternal inheritance as bottle neck)\nno intron\nrapid lineage sorting\nno recombination\nno pseudogene (but possible in nuclear mitochondrial DNA segment)\nno repare system, thus higher substitution rate",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Phylogenetic Marker</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/06 Phylogenetic Marker.html#dna-barcoding-dna-fingerprinting-profiling",
+    "href": "note/evolution/MSc EvoSys Course/06 Phylogenetic Marker.html#dna-barcoding-dna-fingerprinting-profiling",
+    "title": "6  Phylogenetic Marker",
+    "section": "6.4 DNA Barcoding, DNA Fingerprinting (profiling)",
+    "text": "6.4 DNA Barcoding, DNA Fingerprinting (profiling)\nDNA Marker, e.g., COI, etc.\n\n6.4.1 Microsatellite\n\n10-100 repeats of a 1-6 bp DNA fragment\n\n\n\n6.4.2 AFLP (Amplified fragment length polymorphism)\n\nselective amplification of a subset of digested DNA fragment to generate and compare unique fingerprints for genome of interest\ndo not require prior information regarding the targeted genome\nfor assessing intragenetic, population-level phylogenies and biogeographic patterns\n\n\n\n6.4.3 RAD (Restriction site associated DNA sequencing), ddRAD\n\nSNPs: single nucleotide polymorphisms\nCodominant Marker",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Phylogenetic Marker</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/07 Coalescent Theory.html",
+    "href": "note/evolution/MSc EvoSys Course/07 Coalescent Theory.html",
+    "title": "7  Coalescent Theory",
+    "section": "",
+    "text": "7.1 Multispecies coalescent process\nRepresents the application of coalescent theory to the case of multiple species, results in cases where the relationships among species for an individual gene (the gene tree) can differ from the broader history of the species (the species tree).\nIncongruence between gene tree and taxa tree can be caused by …",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Coalescent Theory</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/07 Coalescent Theory.html#multispecies-coalescent-process",
+    "href": "note/evolution/MSc EvoSys Course/07 Coalescent Theory.html#multispecies-coalescent-process",
+    "title": "7  Coalescent Theory",
+    "section": "",
+    "text": "7.1.1 Incomplete lineage sorting process (ILS)\nLineage sorting process: lost of the genetic lineage by random process\n\nleads polyphyletic lineage into para- and eventuell monophyletic lineage (reciprocal Monophyly)\nSpeciation has nothing to do with genetic distances, genetic tree only reflect the phylogeny of one gene\nafter 4 Ne (effective population size) most species will be reciprocal monophyletic\n\n\n\n7.1.2 Rapidly successive speciation (short branches)\nCan lead to lasting differences in gene and taxa trees\n\n\n\n7.1.3 Hybridization\n\nHybridization, the crossbreeding between individuals of different species, and introgression, the transfer of genes between species mediated primarily by back crossing, have been the focus of evolutionary studies over many decades (see Anderson, 1949; Arnold, 1992; Rieseberg and Carney, 1998).\n\nTwyford and Ennos, 2012\n\n\n\nGene duplication and loss\nRecombination\nHorizontal gene transfer",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Coalescent Theory</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/07 Coalescent Theory.html#concatenation",
+    "href": "note/evolution/MSc EvoSys Course/07 Coalescent Theory.html#concatenation",
+    "title": "7  Coalescent Theory",
+    "section": "7.2 Concatenation",
+    "text": "7.2 Concatenation\nConcatenation method concatenates multiple gene sequences of each species and treats them as one alignment to generate a phylogenetic tree ⇒ Supermatrix\nNonparametric methods by summarizing the gene trees:\n\n3.2.1. Nonparametric methods\nNonparametric methods include the consensus (Margush and McMorris, 1981; Degnan et al., 2008; Ewing et al., 2008), reconciliation (Page and Charleston, 1997; Slowinski et al., 1997; Page, 1998; Avise, 2000; Page, 2000; V’Yugin et al., 2002; Bonizzoni et al., 2003; Gorbunov and Lyubetsky, 2005; Berglund-Sonnhammer et al., 2006), and supertree (Wilkinson et al., 2005; Cotton and Wilkinson, 2007; Steel and Rodrigo, 2008) methods. Consensus methods use various techniques to construct a single summary tree from the estimated gene trees that is then taken to be the estimated phylogeny of the species. Consensus methods are nonparametric in the sense that they do not assume a specific underlying distribution for the gene trees. The reconciliation method summarizes gene trees by a single tree (or several trees with the same score) that minimizes the number of coalescence, horizontal, and gene duplication/gene loss events required to reconcile gene trees and the query tree (Berglund-Sonnhammer et al., 2006). The supertree method is a family of approaches that merge (or summarize) multiple gene trees into a single tree called the ’’supertree” (Bininda-Emonds and Bryant, 1998; Bininda-Emonds and Sanderson, 2001; Day et al., 2008).\n\nLiu et al., 2009",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Coalescent Theory</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/08 Phylogenomics.html",
+    "href": "note/evolution/MSc EvoSys Course/08 Phylogenomics.html",
+    "title": "8  Phylogenomics",
+    "section": "",
+    "text": "Principally phylogenomics = phylogenetics + more data (e.g. whole genome), BUT …\n\neffort in assembling datasets decreases data quality, use of automatic tools is inevitable\nphylogenomics are more prone to model misspecification, systematic error can amplify and increases along with alignment length\nhidden paralogy, HGT, ILS, hybridization might be buffered in large datasets or negatively affect tree inference\nmore data increasing precision (reduction of stochastic errors) but not necessarily the accuracy",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Phylogenomics</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/09 Phylogenetic Comparative Methods (PCM).html",
+    "href": "note/evolution/MSc EvoSys Course/09 Phylogenetic Comparative Methods (PCM).html",
+    "title": "9  Phylogenetic Comparative Methods (PCM)",
+    "section": "",
+    "text": "9.1 Models for Character Evolution\nUsed to infer evolutionary process and history through comparing species character data in a phylogenetic context. Many standard statistical methods assume that data are independent, BUT, phylogenetic tree terminals cannot be treated as independent data.\nTherefore Phylogenetic Independent Contrasts (PIC): a statistical transformation that creates independent data points from trees, can be used to test for evolutionary correlations between characters.",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Phylogenetic Comparative Methods (PCM)</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/09 Phylogenetic Comparative Methods (PCM).html#models-for-character-evolution",
+    "href": "note/evolution/MSc EvoSys Course/09 Phylogenetic Comparative Methods (PCM).html#models-for-character-evolution",
+    "title": "9  Phylogenetic Comparative Methods (PCM)",
+    "section": "",
+    "text": "9.1.1 Continuous traits\n\n9.1.1.1 Brownian Motion\n“Evolution proceeds with random changes.”\n\nA “random walk” model of evolution of continuous characters, describes motion that results from a large number of weak, independent forces\nGenetic drift, random change, weak selection (especially given timeframe) \\[ \\sigma ^2=\\frac{\\Sigma S_i}{n-1} \\]\n\\(\\sigma ^2\\) is related to standarized contrasts from PIC, affects the range of the motion.\n\n\n\n9.1.1.2 Brownian Motion with a Trend (Trend)\nBM with a directional trend.\n\n\n9.1.1.3 Ornstein-Uhlenbeck Process\n“Evolution bounded around median value - equilibrium”\n\n\n9.1.1.4 Early Burst (EB)\n“Rate of evolution decreases through time.”\n\n\n9.1.1.5 Late Burst (LB)\n“Rate of evolution increases through time.”\n\n\n\n9.1.2 Discrete traits\n\n9.1.2.1 MK model\n\nMost widely used.\nUses “Q” matrix of instantaneous transition rates between states:\n\nEqual rates (ER)\nSymmetric rates (SYM) - forward and reverse are equal\nAll rates different (ARD)",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Phylogenetic Comparative Methods (PCM)</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/09 Phylogenetic Comparative Methods (PCM).html#a-note-on-working-with-continuous-characters",
+    "href": "note/evolution/MSc EvoSys Course/09 Phylogenetic Comparative Methods (PCM).html#a-note-on-working-with-continuous-characters",
+    "title": "9  Phylogenetic Comparative Methods (PCM)",
+    "section": "9.2 A note on working with continuous characters",
+    "text": "9.2 A note on working with continuous characters\n\n9.2.1 Log transformation\nWhen working with continuous characters, we should always consider log-transforming our data before conducting analysis.\n\nLog-transformation result in a ratio scale between data points\nIn biology, percentage change rather than absolute change is often what matters\nLog-transformation often result in distribution closer to normal",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Phylogenetic Comparative Methods (PCM)</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/10 Molecular Clocks.html",
+    "href": "note/evolution/MSc EvoSys Course/10 Molecular Clocks.html",
+    "title": "10  Molecular Clocks",
+    "section": "",
+    "text": "10.1 Diversification Rate\nMethods based on the hypothesis that DNA evolves at a constant rate over time …\nCalibration of the age can be based on …\nNode calibration can be implemented by setting Bayesian priors on the ages of nodes.",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Molecular Clocks</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/10 Molecular Clocks.html#diversification-rate",
+    "href": "note/evolution/MSc EvoSys Course/10 Molecular Clocks.html#diversification-rate",
+    "title": "10  Molecular Clocks",
+    "section": "",
+    "text": "Speciation rate (\\(\\lambda\\)) - the rate at which new species form\nExtinction rate (\\(\\mu\\)) - the rate at which species disappear\nNet diversification - speciation - extinction\nLineage turnover - extinction / speciation",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Molecular Clocks</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/10 Molecular Clocks.html#clock-model",
+    "href": "note/evolution/MSc EvoSys Course/10 Molecular Clocks.html#clock-model",
+    "title": "10  Molecular Clocks",
+    "section": "10.2 Clock Model",
+    "text": "10.2 Clock Model\n\n10.2.1 Pure-birth model\nAssumes no extinction, diversification rate increases\n\n\n10.2.2 Birth-death model\nAssumes …\n\nSpeciation and extinction occur at random\neach lineage has an equal and constant rate of speciation and extinction\neven phylogenies with only extant species leave cluse about extinction, which is more likely to have occurred in older lineages, leading to “pull of the present”",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Molecular Clocks</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/MSc EvoSys Course/99 Concept Checklist.html",
+    "href": "note/evolution/MSc EvoSys Course/99 Concept Checklist.html",
+    "title": "11  Concept Checklist",
+    "section": "",
+    "text": "Akaike Information Criterion\nBinary / Multistate\nBifurcation\nBremer Decay Index\nBrownian Motion\nCharacter Transformation\nCharacters and Character states\nCoalescene\nConsensus trees\nContinuous / Discrete\nDiversification rate\nDNA fingerprinting\nEvoluationary / statistical correlation\nGenetic distance\nGenotype / Phenotype\nHomology, Homoplasy\nHybridization\nInformative / Uninformative sites\nIndel\nLinnean classification\nMacroevolution\nMarkov chain Monte Carlo (MCMC)\nModels of character evolution\nModels of sequence alignment\nModels of sequence evolution\nMolecular clock\nMolecular data partitions\nMonophyly, Polyphyly, Paraphyly\nMorphological convergence\nMultiple sequence alignment (MSA)\nNext-generation sequencing\nOrthology, Paralogy\nPlesiomorphy, Symplesiomorphy\nPopulation genetics\nPhylogenetic Independent Contrast\nPhylogenetics / Phylogenomics\nPolytomy\nQuantitative / Qualitative\nRestriction sites\nSanger sequencing\nSaturation\nSpecies delimination\nSpeciation rate / Extinction rate\nSubstitution\nSupertree / Supermatrix\nTree congruence / incongruence\nTree length\nTree score\nTree space\nTree-thinking\nVariant / Invariant sites",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Concept Checklist</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/Evolution Models.html",
+    "href": "note/evolution/Evolution Models.html",
+    "title": "12  Evolution Models",
+    "section": "",
+    "text": "12.1 What defines an evolution model, i.e. what does an evolution model define?\nDifferent models (for nucleotides or amino acids) differentiate from a few properties:\nOnline Manual of IQ-TREE has a list of models that can be tested and brief descriptions. PartitionFinder 2 has a csv table for all supported models and their properties.",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Evolution Models</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/Evolution Models.html#what-defines-an-evolution-model-i.e.-what-does-an-evolution-model-define",
+    "href": "note/evolution/Evolution Models.html#what-defines-an-evolution-model-i.e.-what-does-an-evolution-model-define",
+    "title": "12  Evolution Models",
+    "section": "",
+    "text": "Frequencies (base) of states: either fixed a priori (equal base frequency, or base frequency set to custom prior e.g. model) or estimated (empirical: counting proportions in the data, or using ML).\nRelative rates of (all possible) substitution: there are only 6 in DNA but nearly 189 in AA.\n\nSome models fix several rates to be equal, with the rest estimated by the data (free parameters)\nSome models (GTR, SYM and friends) have all 6 parameters free, so one of them will be (arbitrarily) set to 1 and the rest will be estimated. Setting one of them to be 1 serves as an “anchor point” for the ratio while not affecting the scaling, which is the only thing that matters.\n\nDistribution of rates across sites allows different assumptions of how sites at different locations evolve at different speed.\n\nMost simple but usually not accurate assumption is that all sites evolve at equal speed (e.g. plain substitution model).\nSome sites never change = invariant sites, then we estimate one free parameter for the proportion of the invariant sites (e.g. HKY+I).\nSites evolving speed distribute according to certain distribution, commonly modeled by gamma distribution (because it can have many shapes), here also one free parameter for the shape of the distribution (e.g. HKY+G).\nCombination of invariant site and gamma distribution, e.g. HKY+I+G\nCustomized “free rate” models, where one specifies the rate for certain number of rate categories, e.g. LG4X with four categories and four sets of AA frequencies (yes this is an AA model). Probably many prior information required but the results are reported to be better than other models. See reference.",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Evolution Models</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/Evolution Models.html#time-reversible-model",
+    "href": "note/evolution/Evolution Models.html#time-reversible-model",
+    "title": "12  Evolution Models",
+    "section": "12.2 Time-reversible model",
+    "text": "12.2 Time-reversible model\nI come across this term when researching the paragraph above.\nA time-reversible model is defined as a Markov model where probability of substitution from state \\(a\\) to \\(b\\) is the same, regardless of direction, when weighted by equilibrium frequencies (base frequencies). Which essentially means mathematically, stochastically observed, state \\(a\\) becoming \\(b\\) has the same probability as state \\(b\\) becoming \\(a\\), means they are not differentiable, and thus it’s unable to infer whether \\(a\\) or \\(b\\) is ancestral, hence time-reversible model.\n\n[!help]- Markov model Markov model is a probability (stochastic) model that possess Markov property, which is a memoryless property of a stochastic process. That means the pseudo-random changing process with Markov property depends only on the current state. This model allows predictive modeling and probabilistic forecasting within practical computation complexity. Mutation of a character, nucleotide or an amino acid follows Markov model as the mutation does not get affected by the previous state of the site.\n\nThis character is directly link to the inference of an unrooted tree, as without additional prior information (e.g. outgroup constrain, molecular clock), the analysis won’t be able to test for ancetral state and therefore the root of the tree can not be found. In case of a non-reversible model, the root will then be automatically found. (See example).",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Evolution Models</span>"
+    ]
+  },
+  {
+    "objectID": "note/evolution/czech2017 - corret rerooting method.html",
+    "href": "note/evolution/czech2017 - corret rerooting method.html",
+    "title": "Zhehao's Note",
+    "section": "",
+    "text": "Newick format has become the standard format of phylogenetics communication between tools, however the branch support can be misintepretated. What people usually display as “node support” is actually called and is indeed a branch support, including aLRT, bootstrap, bayesian posterior probablility. Without being aware of this, an incorrect, shifted branch support could be displayed.\nThis review paper pointed out this problem and examined different tools that is can reroot and plot phylogenetic trees, and suggest that the tools should give options to the user to explicitly specifying how to display the branch support stored in the Newick data.\nIn ape it would be ape::root(edgelable=T). In Figtree it seems to display the correct branch support as inner-node node label, but it creates an imaginary “root” node with probability of 1 and does not reflect real topology - in case the the top-level trifucation ends up as a polytomy. Which can actually be a problem of the analysis itself.\nThis is an example in the middle of my phylogenetic analysis of ACTCP project. Ilyarachna is used as outgroup and the unrooted tree originally calculated by MrBayes is as follows:\n\n\n\nConcatenated analysis, MrBayes, unrooted\n\n\nWhich is re-rooted with tree.rt &lt;- ape::root(tree, \"Ilyarachna_antarctica\", resolve.root = T, edgelabel = F), it retains the trifucation node from which Ilyarachna comes out and the polytomy status of Acanthocope sp. nov. and Acanthocope. sp. MB H2 (from Osborn (2009)). MrBayes seems to use the attribute in the “correct” way that the support can be mapped correctly.\n\nOn the other hand, if we set edgelabel to TRUE, it will then “transfer” the polytomy topology of the top-level node to the new root and shift the support label. Note that here the support label of the ancestor node of Acanthocope sp. nov. and Acanthocope sp. was actually a level away in the original tree. Note that the Acanthocope sp. nov. and Acanthocope sp. now also have a bifucation ancestor node which does not exist in original tree.\n This is also the case using FigTree, thus caution must be made using FigTree.\n\n\n\n\n\nOsborn, Karen J. 2009. “Relationships Within the Munnopsidae (Crustacea, Isopoda, Asellota) Based on Three Genes.” Zoologica Scripta 38 (6): 617–35. https://doi.org/10.1111/j.1463-6409.2009.00394.x.",
+    "crumbs": [
+      "Evolution, Phylogeny",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>czech2017 - corret rerooting method.html</span>"
+    ]
+  },
+  {
+    "objectID": "note/ecology/Ecological Niche.html",
+    "href": "note/ecology/Ecological Niche.html",
+    "title": "14  Ecological Niche",
+    "section": "",
+    "text": "14.0.1 Definition\n“The total of the adaptations of an organismic unit.”\nEcological niche is a term for the position of a species within an ecosystem, describing both the range of conditions necessary for persistence of the species, and its ecological role in the ecosystem.",
+    "crumbs": [
+      "Ecology",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Ecological Niche</span>"
+    ]
+  },
+  {
+    "objectID": "note/ecology/Ecological Niche.html#niche-overlap",
+    "href": "note/ecology/Ecological Niche.html#niche-overlap",
+    "title": "14  Ecological Niche",
+    "section": "14.1 Niche overlap",
+    "text": "14.1 Niche overlap\n\n14.1.1 Types of overlap\n\nCoextensive, included, reciprocal overlap, asymmetric overlap\nNon-overlapping: abutting, disjunct\n\n\n\n14.1.2 Jacobs (1974) - Electivity index\nElectivity indices measure the utilization of food types in relation to their abundance or availability in the environment (lechowicz1982?).\n\\[\nD = \\frac{r-p}{r+p-2rp}\n\\]\n\n\\(R\\): proportion of item used; \\(P\\): proportion of item available.\nModified from forage ratio and Ivlev’s index (1961), Fig. 12 in Jacobs (1974).\nJacob’s index is independent of the relative abundance of food types in the environment.\nAlso purposing \\(log Q\\) index, both should be tested when a relation is studies between food selection and variables such as the relative abundance of food, light conditions, etc.\nRanges from -1 to 1, where 0 as separator of positive or negative selection.\n\n\n\n14.1.3 Pianka (1973) - Pianka’s niche overlap index\nModification of one presented in MacArthur & Levins (1967).\n\\[\nO_{kj} = \\frac{\\sum p_{ij}p_{ik}}{\\sqrt{\\sum p^2_{ij}\\sum p^2_{ik}}}\n\\]\nThis formula is symmetric, i.e. \\(O_{jk} = O_{kj}\\)\n\n\\(P\\): proportion of item \\(i\\) used in relation to the total of items used by species \\(j/k\\).\n\n\n\n14.1.4 Winemiller and Pianka (1990) - Randomization algorithm\nWinemiller and Pianka (1990) explained:\n\n[!mini] Standard statistical tests cannot be applied to comparisons involving three or more species because dietary overlaps are not independent.\n\nThe idea is to:\n\n[!note] … generate different replicates of a randomized real system (i.e. pseudo-community, the null model) that can be constructed for comparison with an observed prototype. If say, 95 or 99 of 100 randomized pseudo-communities have mean niche overlaps greater than the observed, results are significant at the P &lt; .05 or P &lt; .01 level, respectively.*\n\nThe significance indicates that:\n\nObserved community exhibits a non-random pattern of resource utilization.\nSpecies in observed community are utilizing resources in a way that minimized competition.\nEvidence of niche differentiation or resource partitioning among the species in community.\nEvidence for competitive interactions shaping community structure or for past evolutionary adaptations.\n\n4 different algorithm:\n\n\n\n\n\n\n\n\n\nRelaxed niche breadth(Sum value is redistributed)\nRetained niche breadth(Values are shuffled, but not redistributed)\n\n\n\n\nZeros eliminated(categories with 0 are also reassigned with value)\nRA1\nRA3\n\n\nZeros retained(categories with 0 are reassigned)\nRA2\nRA4",
+    "crumbs": [
+      "Ecology",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Ecological Niche</span>"
+    ]
+  },
+  {
+    "objectID": "note/ecology/Ecological Niche.html#something-else-to-read",
+    "href": "note/ecology/Ecological Niche.html#something-else-to-read",
+    "title": "14  Ecological Niche",
+    "section": "14.2 Something else to read",
+    "text": "14.2 Something else to read\nIn Memory of Eric Pianka, “The Lizard Man”: He Thought, He Cared, And He Tried\n\n\n\n\nJacobs, Jrgen. 1974. “Quantitative Measurement of Food Selection: A Modification of the Forage Ratio and Ivlev’s Electivity Index.” Oecologia 14 (4): 413–17. https://doi.org/10.1007/BF00384581.\n\n\nLEVINS, RICHARD. 1966. “The Strategy of Model Building in Population Biology.” American Scientist 54 (4): 421–31. http://www.jstor.org/stable/27836590.\n\n\nPianka, Eric R. 1973. “The Structure of Lizard Communities.” Annual Review of Ecology and Systematics 4 (1): 53–74. https://doi.org/10.1146/annurev.es.04.110173.000413.\n\n\nWinemiller, Kirk O., and Eric R. Pianka. 1990. “Organization in Natural Assemblages of Desert Lizards and Tropical Fishes.” Ecological Monographs 60 (1): 27–55. https://doi.org/10.2307/1943025.",
+    "crumbs": [
+      "Ecology",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Ecological Niche</span>"
+    ]
+  },
+  {
+    "objectID": "note/ecology/Diversity in Ecological Community.html",
+    "href": "note/ecology/Diversity in Ecological Community.html",
+    "title": "15  Diversity in Ecological Community",
+    "section": "",
+    "text": "15.0.1 Diversity Indices\nA diversity index is a mathematical measure of speceis diversity in a given community, it is based on the species richness (the number of species present) and the species abundance (the number of individuals per species).\n\nRepresents biodiversity in different aspects (richness, evenness, and dominance).\nType of interest also include genera, families, functional types, haplotypes, etc.\nEntity of interest is usually individuals.\nMeasure of abundance can be number of individuals, biomass or coverage.\n\n\n15.0.1.1 Shannon index (H)\n\\[\nH = -\\sum \\limits_{i=1}^S p_i \\ln p_i\n\\]\nThe Shannon index (aka Shannon’s diversity index, Shannon-Wiener index) by Claude Shannon (1948) quantifies the entropy (hence Shannon entropy), the main idea is to make prediction of the next encounter inside given community (originally the next letter inside strings of text). The more species there are, and the closer their proportional abundances, the more difficult it is to correctly predict which species will be the next to encounter, this index thus accounts for uncertainty.\n\n\\(p\\): the proportion (\\(\\frac{n}{N}\\)) of individuals of one particular species found (\\(n\\)) divided by the total number of individuals found (\\(N\\)).\n\\(S\\): species richness.\n\\(H\\) ranges from 0 to \\(H_\\text{max}\\), where \\(H_\\text{max}\\) is different for each community and calculated as the species have complete evenness.\n\n\n\n15.0.1.2 Simpson index (\\(\\lambda\\))\nBE AWARE: ambiguous usage of the term Simpson index in ecological literature, which is usually referred to [[Diversity in Ecological Community#1.2.1 Gini-Simpson index (\\(1- lambda\\))|Gini-Simpson index]].\nThe Simpson index by Edward H. Simpson (1949) measures the degree of concentration when individuals are classified into types.\n\nRepresents the probability that two entities taken at random from the dataset of interest belong to the same type.\n\n\\[\n\\lambda = \\sum \\limits^S_{i=1}(\\frac{n_i}{N})^2 = \\sum \\limits^S_{i=1} p_i^2\n\\]\n\n\\(p\\): the proportion abundance (\\(\\frac{n}{N}\\)) of individuals of one particular species found (\\(n\\)) divided by the total number of individuals found (\\(N\\)).\n\\(S\\): species richness.\nThe proportional abundance itself is also used as weight here (see weighted arithmetic mean).\nRanges from \\(\\frac{1}{S}\\) to 1.\nDetour: the same formula was rediscovered by Orris C. Herfindahl in 1950, thus the same things is usually referred to as Herfindahl index or Herfindahl-Hirschman index (HHI) in economics.\n\n\n\n15.0.1.3 Gini-Simpson index (\\(1-\\lambda\\))\nThe Gini-Simpson index (aka Gini impurity, Gini’s diversity index) is a transformation of the original Simpson index. Usually referred to as Simpson index in ecology (again, very ambiguous!)\n\nAccounts for the probability that the two randomly drawn entities belong to different types.\nMore intuitive in term of diversity.\nAKA the Probability of interspecific encounter (PIE) in ecology; Gibbs-Martin index in sociology and psychology; expected heterozygosity in population genetics.\n\n\n\n15.0.1.4 Inverse Simpson index (\\(\\frac{1}{\\lambda} = \\, ^2D\\))\nAnother transformation of the original Simpson index.\n\nAKA Simpson’s Dominance index, ranges from 1 to \\(S\\).\n\n\n\n\n15.0.2 Evenness index\nRepresents how close in numbers each species are in a community.\n\\[\nJ = \\frac{H}{H_\\text{max}}\n\\]\n\\(J\\) ranges from 0 to 1, where 1 indicates the absolute evenness.\n\nUsed as measurement of species dominance.",
+    "crumbs": [
+      "Ecology",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Diversity in Ecological Community</span>"
+    ]
+  },
+  {
+    "objectID": "note/ecology/Isolation By Distance (IBD).html",
+    "href": "note/ecology/Isolation By Distance (IBD).html",
+    "title": "16  Signpost",
+    "section": "",
+    "text": "The restricted gene flow caused by the distance between populations can result in isolation by distance (IBD), a population structure model described in Sewall Wright’s seminal works (Wright, 1940, 1943). (perez2018, p.1884)\nIsolation by distance is predicted to be a ubiquitous process, as limited dispersal is believed to affect most species (Meirmans, 2012; Rousset, 1997) (perez2018, p.1885)\nWe believe this proportion can be underestimated, as IBD tests can be nonsignificant even when IBD is present. Indeed, studies sampling from pre-defined populations showed a lower (Wilcoxon signed-rank test p = 0.0001) proportion of IBD detection (53.61% of the articles that tested for IBD detected its presence) than collecting individuals in a continuous landscape (85.71% of IBD detection). This difference can be related to the lack of statistical power in spatial correlation analyses with a small number of pairwise comparisons (Jenkins et al., 2010; Pelletier & Carstens, 2018), which is often the case in studies sampling defined populations. (perez2018, p.1885)",
+    "crumbs": [
+      "Ecology",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Signpost</span>"
+    ]
+  },
+  {
+    "objectID": "note/ecology/Ecological Spatial Analysis in R.html",
+    "href": "note/ecology/Ecological Spatial Analysis in R.html",
+    "title": "17  Introduction",
+    "section": "",
+    "text": "17.0.1 Spatial Structure: What is it? 1\nLiving communities are spatially structured at many scales resulted from several classes of processes. Also, beta diversity is the spatial variation in community composition, hence, a study of the factors that can explain the spatial variation of community composition is in every respect an analysis of beta diversity (borcard2018, p.300)\nIn general, ecological data reflect a combination of many tructures, spatial or not: ^4944fd\nSpatial analysis is to discriminate between these sources of variation anf model the relevant ones separately.",
+    "crumbs": [
+      "Ecology",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "note/ecology/Ecological Spatial Analysis in R.html#spatial-scale-2",
+    "href": "note/ecology/Ecological Spatial Analysis in R.html#spatial-scale-2",
+    "title": "17  Introduction",
+    "section": "17.1 Spatial Scale 2",
+    "text": "17.1 Spatial Scale 2\nSpatial analysis is to differentiate and identify spatial structures occurring on many scales, hence clarification on terms of scale. A sampling design has three characteristics pertaining to spatial observation scale:\n\ngrain size: size of the sampling units\nsampling interval, somtimes also lag: average distance between neighbouring sampling units\nextent, sometimes also range: total length of the transect, surface area or volumn included in the study.\n\nThese three decide what type of spatial structure could be identified and measured:\n\nsampling units sets the mosaic size, integrate the structures occuring in them, structure of sizes equal to or smaller than grain is unidentifiable\nsampling interval sets the resolution, determines the size of the fines spatial structures that can be identified (by differentiation among sampling units)\nextent of the study sets the overall scale, an upper limit to the size of measurable pattern\n\nFun fact but might be useful: “large scale” and “small scale” mean opposite in ecology and cartography. A map with more details is in large scale, while a spatial structure in broader area is also in large scale for ecologist, vice versa.",
+    "crumbs": [
+      "Ecology",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "note/ecology/Ecological Spatial Analysis in R.html#spatial-correlation-or-autocorrelation",
+    "href": "note/ecology/Ecological Spatial Analysis in R.html#spatial-correlation-or-autocorrelation",
+    "title": "17  Introduction",
+    "section": "17.2 Spatial Correlation or Autocorrelation",
+    "text": "17.2 Spatial Correlation or Autocorrelation\nSpatial correlation measures the fact that close points have either more similar (positive) or more dissimilar values (negative) than randomly selected pairs.\n\n17.2.1 Induced Spatial Dependence and Spatial Autocorrelation\nAbove mentioned, given a response (species) matrix \\(\\bf Y\\), it can include patterns originate from two main sources:\n\nforcing of external (environmental) factors that are themselves spatial structured, which results Induced Spatial Dependence\nprocesses internal to the community itself, which results a Spatial Autocorrelation.\n\nFormula 7:1 shows the model for induced spatial dependence, where the error is stochastic and independent, leaving y influenced by external processes represented by explanatory (environmental) variabels \\(\\bf X\\). On the other hand, formula 7:2 shows that the spatial autocorrelation does not involve explanatory variables, but the y is dependent on the y from their neighbours. If the overall structure displays a graident, Legendre (1993) differentiate the two origins by true (those caused by external forces) or false gradients (those caused by autocorrelation). There is however no statistical way to differentiate them, hence the caution of interpreting the gradient should be made and it should always be coupled with biological hypotheses.\np.301 elaborated more on a phenomenon causing statistical problem that can occur when both response and the explanatory variabels are spatially correlated.\n\n\n17.2.2 Functions and Spatial Correlograms\nTwo main statistics are used to measure correlation of univariate quantitative variables:\n\n\n\nStatistics\nMoran’s I\nGeary’s c\n\n\n\n\nOriginal method\nMoran, 1950\nGeary, 1954\n\n\nFormula\n7:3\n7:5\n\n\nExpected value for no spatial correlation\n\\(E(I) = \\frac{-1}{n-1}\\), where \\(n\\) is the total number of observation. \\(E(I)\\) is negative but close to 0 when \\(n\\) is large.\n\\(E(c) = 1\\)\n\n\nDirection of correlation\nValue below \\(E(I)\\): negativeValue above \\(E(I)\\): positive\nValue below \\(E(c)\\): positiveValue above \\(E(c)\\): negative\n\n\nRemarks\nConstructed in much the same way as the Pearson correlation coefficient\n\n\n\n\nA correlogram is a plot of spatial correlation values against the distance classes. Different distance class sets the distance beyond which a pair of values can be considered spatially independent.\n\n\n\nFig. 7.1\n\n\nFig. 7.1 as shown above, is a typical case that the correlation is positive for short distance, then descreases to negative values and levels out to a point that the correlation is non-significant.\nspdep::sp.correlogram() takes one environmental variable and the geo distance matrix to test for univariate spatial correlation. See p.304 for details.\nHowever for having both geographic distance and genetic distance in matrix, we need to pivot to the multivariate version of spatial correlogram, which is Mantel Correlogram Based on testing Mantel statistics \\(r_M\\), one is testing the correlation between two matrix subset based on geographical distance classes. A Multivariate Patial Mantel Correlogram is described and employed by Matesanz et al. (2011), which can filter out the effect of an environmental factor by providing a thrid matrix. This method requires however more careful evaluation.\nTechnically, mantel correlogram is computing a standardized \\(r_M\\) between a dissimilarity matrix among sites (samples) and a matrix where pairs of sites belonging to the same distance class receive value 0 and the other pairs, value 1. Which means if the genetic distances of sample pairs in one geo. distance class are lower than the others in other classes, then they will yield a higher \\(r_M\\) for that particular geo. distance class, stating that the sample within that geo. distance class is genetically similar than expected (using the rest of the sample as baseline or using the whole?), vice versa.\n\n\n\n\nMatesanz, Silvia, Teresa E. Gimeno, Marcelino De La Cruz, Adrián Escudero, and Fernando Valladares. 2011. “Competition May Explain the Fine-Scale Spatial Patterns and Genetic Structure of Two Co-Occurring Plant Congeners.” Journal of Ecology 99 (3): 838–48. https://doi.org/10.1111/j.1365-2745.2011.01812.x.",
+    "crumbs": [
+      "Ecology",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "note/ecology/Ecological Spatial Analysis in R.html#footnotes",
+    "href": "note/ecology/Ecological Spatial Analysis in R.html#footnotes",
+    "title": "17  Introduction",
+    "section": "",
+    "text": "Spatial Structures and Spatial Analysis: A Short Overview (borcard2018, p.300)↩︎\np.302↩︎",
+    "crumbs": [
+      "Ecology",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "note/ecology/Biogeography Statistics (ACTCP version).html",
+    "href": "note/ecology/Biogeography Statistics (ACTCP version).html",
+    "title": "18  Haplotype calculation and Network Visualization",
+    "section": "",
+    "text": "18.1 AMOVA\ngeneHapR provides a good wrapper function of calling pegas::haploNet() which calculates a parsinomy network. Although this only calculates haplotype assignment and network structure, it does not give any statistical evidence on biogeographic pattern.\n= Analysis of Molecular Variance",
+    "crumbs": [
+      "Ecology",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Haplotype calculation and Network Visualization</span>"
+    ]
+  },
+  {
+    "objectID": "note/ecology/Biogeography Statistics (ACTCP version).html#amova",
+    "href": "note/ecology/Biogeography Statistics (ACTCP version).html#amova",
+    "title": "18  Haplotype calculation and Network Visualization",
+    "section": "",
+    "text": "18.1.1 Methodology 1\n\nData: molecular data, DNA sequence, microsatellite genotypes, SNPs. Arranged according to levels of hierarchical population structure.\nDIstance Calculations: Genetic distance as a middle step in AMOVA, pairwise between individuals or haplotypes.\nVariance Partitioning: Total genetic variance is partitioned into components.\n\n\n\n18.1.2 AMOVA in R\n{poppr} gives nice wrapper function of AMOVA in {ade4} and in {pegas}. Defualt using {ade4}\nlibrary(adegenet)\nlibrary(poppr)\n\ngenind &lt;- df2genind(\n  X = as.data.frame(gal$haps, row.names = row.names(gal$voucher)),\n  ploidy = 1,\n  ind.names = row.names(gal$voucher),\n  pop = gal$loc_name\n)\n\nstrata(genind) &lt;- data.frame(loc_name = gal$loc_name, depth = gal$depth, lon = gal$lon, lat = gal$lat, station = gal$station) \n\npoppr.amova(genind, hier = ~ population/location, method = \"ade4\")\ngal is a simple data frame including haplotype assignment $haps, sample name $voucher and environmental data. Names can be aribtrary. strata() is a framework inherited from {adegenet}.\npoppr.amova() takes genind class from {adegenet} and defines the population hierarchy with hier = ~ POPULATION/SUBPOPULATION. Here in example we define geo location $loc_name as the highest group and the station under each location category as the second population level. This will yield all \\(\\Phi\\) statistics, if only one level is provided, only the \\(\\Phi_{ST}\\) will be calculated.\nThe function yields following result:\n&gt; amova.res &lt;- poppr.amova(genind, hier = ~ population/location, method = \"ade4\")\n\n No missing values detected.\n\n&gt; amova.res\n$call\nade4::amova(samples = xtab, distances = xdist, structures = xstruct)\n\n$results\n                                  Df    Sum Sq   Mean Sq\nBetween population                 1  1.345002 1.3450017\nBetween samples Within population  6  6.142929 1.0238215\nWithin samples                    50 42.650000 0.8530000\nTotal                             57 50.137931 0.8796128\n\n$componentsofcovariance\n                                                    Sigma           %\nVariations  Between population                0.005252287   0.5904814\nVariations  Between samples Within population 0.031240148   3.5121319\nVariations  Within samples                    0.853000000  95.8973867\nTotal variations                              0.889492435 100.0000000\n\n$statphi\n                               Phi\nPhi-samples-total      0.041026133\nPhi-samples-population 0.035329936\nPhi-population-total   0.005904814\nIt was a pain to understand all the three statistics, let’s say we define the hierarchy as: level1 is the highest category and level2 is enclosed by level1, which will be hier = ~ level1/level2. E.g. level1 is ocean (Pacific, Atlantic, SO, etc), level2 is the abyssal plains within each ocean.\n\n\n\n\n\n\n\n\n\nStatistics\nDefinition by Excoffier, Smouse, and Quattro (1992)\nExplanation\n** {ade4} results**\n\n\n\n\n\\(\\Phi_{ST}\\) / FST\nCorrelation of random haplotypes within populations, relative to the total variance.\nHow much more similar are individuals within the same level2, compared to any two individuals drawn from the whole dataset (regardless of which level2 or level1) ~ shows the porportion of total variance of the whole dataset (= species) attributed to difference among level2\nPhi-samples-total\n\n\n\\(\\Phi_{CT}\\) / FCT\nCorrelation of random haplotypes within a group of populations, relative to the total variance.\nHow much more similar are individuals within the same level1 (regardless of level2) compare to any two individuals drawn from the whole dataset (regardless of level2 or level1) ~ shows the proportion of total variance of the whole dataset attributed to difference among level1\nPhi-level1-total\n\n\n\\(\\Phi_{SC}\\) / FSC\nCorrelation of the molecular diversity of random haplotypes within populations, relative to the variance within the group.\nHow much more similar are individuals within the same level2, compared to any two individuals drawn from the same level1 ~ shows the proportion of total variance within the level1 attributed to difference among level2\nPhi-samples-level1\n\n\n\nA higher value of these statistics indicates that more proportion of genetic variance is due to the difference among groups at tested level (FST: ignore level1, due to level2; FCT: ignore level2, due to level1; FSC: ignore global, due to level2 in level1). The concept is somewhat similar to \\(\\alpha\\)-, \\(\\beta\\)-, \\(\\gamma\\)-diversity.\nA notation to the result in example of why \\(\\Phi_{SC}\\) is negative here:\nnegative values implies that genetic variance at the tested level, i.e. among level2 within each level1 is less than expected by chance, which means the individuals within those level2 are not more similar to each other than individuals from other level2 within the same level1. Reason for this is clear in ACTCP, as the level2 is set to stations and level1 is set to location. There were only two locations that have more than one station, and they are outmost close to each other, where no gene flow barrier is to expected, especially for galatheae.\nOf course, we can make up a p-value by repeating it (permutation test), default to 99 iterations but I will say make it 999 bc why not:\n&gt; amova.test &lt;- randtest(amova.res, nrepet = 999)\n&gt; amova.test\nclass: krandtest lightkrandtest \nMonte-Carlo tests\nCall: randtest.amova(xtest = amova.res, nrepet = 999)\n\nNumber of tests:   3 \n\nAdjustment method for multiple comparisons:   none \nPermutation number:   999 \n                           Test         Obs    Std.Obs   Alter Pvalue\n1     Variations within samples 0.853000000 -1.4197886    less  0.094\n2    Variations between samples 0.031240148  0.9455456 greater  0.159\n3 Variations between population 0.005252287  0.6289330 greater  0.191\nplot() the result will also show the statistics distribution in histogram. What we are testing here is to see if our observed statistics are different from those generated with null model (by randomly allocating individuals among, hence permutation). Alter also shows in case of siginificance, is the observed value smaller or greater than those from permutation tests. In ACTCP, none of them is significant, means none of the tested level shapes the genetic variability in our population.\nWhen applying this to NE area:\n&gt; amovaNE.res &lt;- poppr.amova(genindNE, hier = ~location, method = \"ade4\")\n\n No missing values detected.\n\n&gt; amovaNE.res\n$call\nade4::amova(samples = xtab, distances = xdist, structures = xstruct)\n\n$results\n                Df    Sum Sq   Mean Sq\nBetween samples  3  2.877778 0.9592593\nWithin samples  32 27.733333 0.8666667\nTotal           35 30.611111 0.8746032\n\n$componentsofcovariance\n                                 Sigma          %\nVariations  Between samples 0.01592357   1.804186\nVariations  Within samples  0.86666667  98.195814\nTotal variations            0.88259023 100.000000\n\n$statphi\n                         Phi\nPhi-samples-total 0.01804186\n&gt; amovaNE.test &lt;- randtest(amovaNE.res, nrepet = 999)\n&gt; amovaNE.test\nMonte-Carlo test\nCall: as.randtest(sim = res, obs = sigma[1])\n\nObservation: 0.01592357 \n\nBased on 999 replicates\nSimulated p-value: 0.281 \nAlternative hypothesis: greater \n\n     Std.Obs  Expectation     Variance \n 0.483237489 -0.002556856  0.001462523",
+    "crumbs": [
+      "Ecology",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Haplotype calculation and Network Visualization</span>"
+    ]
+  },
+  {
+    "objectID": "note/ecology/Biogeography Statistics (ACTCP version).html#redundancy-analysis",
+    "href": "note/ecology/Biogeography Statistics (ACTCP version).html#redundancy-analysis",
+    "title": "18  Haplotype calculation and Network Visualization",
+    "section": "18.2 Redundancy Analysis",
+    "text": "18.2 Redundancy Analysis\n\nThis is a much bigger topic than I previously thought, WIP notes can be found at\n\n2025-06-09 DZMB RDA related\n2025-06-10 DZMB RDA related",
+    "crumbs": [
+      "Ecology",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Haplotype calculation and Network Visualization</span>"
+    ]
+  },
+  {
+    "objectID": "note/ecology/Biogeography Statistics (ACTCP version).html#mantel-correlogram",
+    "href": "note/ecology/Biogeography Statistics (ACTCP version).html#mantel-correlogram",
+    "title": "18  Haplotype calculation and Network Visualization",
+    "section": "18.3 Mantel Correlogram",
+    "text": "18.3 Mantel Correlogram\nWe take two matrices, geographical distance and genetic distance, to see if there’s any spatial correlation in terms of genetic diversity. For the finest control of choosing the most appropriate methods, we will construct distance matrix explicitly. Genetic distance is to be calculated from the sequence alignment using suitable substitution method, not just raw hamming distance (p-distance). The default for COI is the K2P (also as K80) distance which takes mutation rate difference of transition and transversion into account:\n# seqs.clade is generated by geneHapR::import_seqs() to cooperate with geneHapR::seq2hap() function later. Every multiple alignment object accepted by as.DNAbin() would do here. \n\nk2p_dist_sp &lt;- dist.dna(as.DNAbin(seqs.clade), model = \"K80\", pairwise.deletion = T) %&gt;% as.matrix()\nGeographic distance matrix can be tricky, depending on what type of data we have. borcard2018, p.305 used XY cartesian coordinates because the study area is small enough (few meters) and vegan::mantel.correlog() accepts cartesian coordinates as geographic information, and more importantly, it is used for surface trend analysis. While our samples were distributed in much larger scale, we will have to use a more precise Great-circle Distance using Haversine formula:\ngal.latlon &lt;- gal[match(rownames(as.matrix(d.K2PDist)), gal$voucher), c(\"lat\", \"lon\")]\nd.geo &lt;- distm(gal.latlon, fun = distHaversine)/1000 # calculate distance and set unit to km\nrownames(d.geo) &lt;- gal$voucher\ncolnames(d.geo) &lt;- gal$voucher\ndist.geo = as.dist(d.geo)\nWhether any further transformation is needed, based on the biological assumption. Acanthocope spp. are believed to be mobile and there shouldn’t be any serious geographical barrier within N Atlantic, which makes it simple to leave the distance as is. However if geographical isolation is to be expected due to barrier, or a strong isolation-by-distance (IBD) shall present, a transformation might be needed. (Log transformation?? {r} as.dist(log(d.geo + 1)))\nBefore we can throw both matrix into correlogram, another thing needs to be considered is detrending.\n7.3 Multivariate Trend-Surface Analysis stated, that, when our data was sampled on (along) geographic surfaces, there would, very probably, be a large scale structure present as a form of gradient - linear trend. Such trend can be detected using trend-surface analysis, and also should be removed for more complex spatial analysis.\nTo test for linear surface trend, we need to first map our data onto a plane. Which we choose the Azimuthal Equal Distance Projection, which then return our station in a cartesian system based on the centroid we calculate as the middle point of the bounding box.\ngal.xy &lt;- gal[match(rownames(as.matrix(d.K2PDist)), gal$voucher), c(\"lat\", \"lon\")]\n\n# Convert to sf object\ngal.sf &lt;- st_as_sf(gal.xy, coords = c(\"lon\", \"lat\"), crs = 4326)\n\n# Find a suitable center point (mean of your coordinates)\ncenter_lon &lt;- mean(gal.xy$lon)\ncenter_lat &lt;- mean(gal.xy$lat)\n\n# Create azimuthal equidistant projection string\naeqd_proj &lt;- sprintf(\"+proj=aeqd +lat_0=%f +lon_0=%f +units=km\", center_lat, center_lon)\n\n# Transform to projected coordinates\ngal.xy.aeqd &lt;- st_transform(gal.sf, crs = aeqd_proj)\nxy_cartesian &lt;- as.data.frame(st_coordinates(gal.xy.aeqd))  # x/y in kilometers\nWe then start calculating the polynomial terms and test for linear, quadratic, and cubic trends:\nlibrary(ape) \nlibrary(spdep) \nlibrary(ade4) \nlibrary(adegraphics) \nlibrary(adespatial) \nlibrary(vegan)\n\nxy.c &lt;- scale(xy_cartesian, center = TRUE, scale = FALSE)\ngal.poly &lt;- poly(as.matrix(xy.c), degree = 3, raw = TRUE) \ncolnames(gal.poly) &lt;- c(\"X\", \"X2\", \"X3\", \"Y\", \"XY\", \"X2Y\", \"Y2\", \"XY2\", \"Y3\")\n\nd.h &lt;- decostand(d.K2PDist, method = \"hellinger\")\ngal.trend.rda &lt;- rda(d.h ~ ., data = as.data.frame(gal.poly))\nR2adj.poly &lt;- RsquareAdj(gal.trend.rda)$adj.r.squared\n\ngal.poly.ortho &lt;- poly(as.matrix(xy_cartesian), degree = 3) \ncolnames(gal.poly.ortho) &lt;- c(\"X\", \"X2\", \"X3\", \"Y\", \"XY\", \"X2Y\", \"Y2\", \"XY2\", \"Y3\") \n(gal.trend.rda.ortho &lt;- rda(d.h ~ ., data =as.data.frame(gal.poly.ortho))) \n(R2adj.poly2 &lt;- RsquareAdj(gal.trend.rda.ortho)$adj.r.squared)\n\n(gal.trend.fwd &lt;- forward.sel(d.h, gal.poly.ortho, adjR2thresh = R2adj.poly2))\n(gal.trend.rda2 &lt;- rda(d.h ~ ., data = as.data.frame(gal.poly)[ ,gal.trend.fwd[ ,2]]))\n\nanova(gal.trend.rda2) \nanova(gal.trend.rda2, by = \"axis\")\n\ngal.trend.fit &lt;- scores(gal.trend.rda2, choices = 1:4, display = \"lc\", scaling = 1) \ns.value(xy_cartesian, gal.trend.fit, symbol = \"circle\")\n\nanova(rda(d.h, xy_cartesian))\nThe last anova() will yield the result, if any linear trend is present in the data or not. If true, then the subsequent analysis (e.g. Correlogram, eigenvector based analysis, etc) should be performed with detrended data. If not, it should then be proceeded with raw data. galatheae data showed a significant trend, so I decided to show the result of all three (raw, linear detrended, gam detrended) analysis and draw more conclusion by comparing them together.\n\n18.3.1 Raw Matrix\nUsing raw distance is the simplest by just throwing two matrices into the function. nperm sets the number of permutation, default to 999, but we use 5000 for more reliable result, it won’t take long.\nbreakpoints &lt;- c(0, 368, 1841, 2209, 4420)\n\ngal.correlog.dist &lt;- mantel.correlog(d.K2PDist, dist.geo, nperm = 5000, cutoff = F, break.pts = breakpoints)\nThe result can be print() out or plot() out to see the mantel statistics of each distance class. cutoff retains the result of the last few distance classes. break.pts allows user to set break points of the station specifically, if NULL then it will be done automatically (details see help document). I set the break points in the way that the involving pairwise comparison of each distance class has more intuitive biological meaning (see Result)\n\n\n18.3.2 Linear Detrending\n# Flatten distance matrices to vectors\ngenetic_vec &lt;- as.matrix(as.dist(d.K2PDist))\ngeo_vec &lt;- as.matrix(dist.geo)\n\n# Linear model: genetic distance ~ geographic distance\nlm_fit &lt;- lm(genetic_vec ~ geo_vec)\ngenetic_resid_linear &lt;- dist(resid(lm_fit))\n\ngal.correlog.dist.linear &lt;- mantel.correlog(genetic_resid_linear, dist.geo, nperm = 5000, cutoff = F, break.pts = breakpoints)\nWe won’t using anything generated from trend analysis for detrend work, as we will stick to our great-circle distance and avoid distortion by mapping our geographical station onto a 2D-plane.\n\n\n18.3.3 GAM Detrending\nGeneralized Additive Model (GAM) focuses on detecting smooth functions, that is not necessarily linear. Using GAM function to detrend will capture bigger variation of spatial structure, including lineara, and some other smooth trend.\nlibrary(mgcv)\ngam_fit &lt;- gam(as.vector(genetic_vec) ~ s(as.vector(geo_vec)))\n\n#\n# Assuming you have xy_cartesian with columns x and y (projected coordinates)\nxy_cartesian &lt;- as.data.frame(st_coordinates(gal.xy.aeqd))\nnames(xy_cartesian) &lt;- c(\"x\", \"y\")\n\n# Make sure the order matches your genetic distance matrix\n# Flatten distance matrices to vectors\ngenetic_vec &lt;- as.vector(as.dist(d.K2PDist))\n\n# Create all pairwise combinations of coordinates\ncoords &lt;- xy_cartesian\nn &lt;- nrow(coords)\npair_idx &lt;- which(upper.tri(matrix(NA, n, n)), arr.ind = TRUE)\nx1 &lt;- coords$x[pair_idx[,1]]\ny1 &lt;- coords$y[pair_idx[,1]]\nx2 &lt;- coords$x[pair_idx[,2]]\ny2 &lt;- coords$y[pair_idx[,2]]\n\n# Calculate pairwise midpoints (or differences)\nmid_x &lt;- (x1 + x2)/2\nmid_y &lt;- (y1 + y2)/2\n\n# Fit GAM with spatial smooth\ngam_fit_spatial &lt;- gam(genetic_vec ~ s(mid_x, mid_y))\n\n# Plot residuals\nresid_gam_spatial &lt;- resid(gam_fit_spatial)\nplot(mid_x, resid_gam_spatial, pch=16, col=rgb(0,0,0,0.2), xlab=\"Midpoint X\", ylab=\"GAM Residuals\")\nabline(h=0, col=\"red\", lty=2)\n\n# After fitting your GAM (1D or 2D), get residuals\ngenetic_resid_gam &lt;- numeric(n * (n - 1) / 2)\ngenetic_resid_gam &lt;- resid(gam_fit) # or resid_gam_spatial\n\n# Build a symmetric matrix from the residuals\nresid_mat &lt;- matrix(0, n, n)\nresid_mat[upper.tri(resid_mat)] &lt;- genetic_resid_gam\nresid_mat &lt;- resid_mat + t(resid_mat) # make symmetric\n\n# Convert to dist object for vegan::mantel.correlog\nresid_dist &lt;- as.dist(resid_mat)\n\nlibrary(vegan)\nmantel_correlog_result &lt;- mantel.correlog(D.eco = resid_dist, D.geo = dist.geo, nperm = 999, cutoff = FALSE, break.pts = breakpoints)\n\n\n18.3.4 Show involved pairwise comparison for each distance class\n\n#### Show involved stations\n\nstation_names &lt;- gal[match(rownames(as.matrix(d.K2PDist)), gal$voucher), c(\"lon\", \"lat\", \"station\")]$station\n# convert to number on the map\nebs.label &lt;- readRDS(\"analysis/temp/GIS_ebs.label.RDS\")\nebs.label.LUT &lt;- ebs.label$loc_label\nnames(ebs.label.LUT) &lt;- ebs.label$Station\n# synonymized stations:\nebs.label.LUT.syn &lt;- c(ebs.label.LUT[\"81\"], ebs.label.LUT[\"6-7\"], ebs.label.LUT[\"4-8\"])\nnames(ebs.label.LUT.syn) &lt;- c(\"85\", \"6-8\", \"4-9\")\nebs.label.LUT &lt;- c(ebs.label.LUT, ebs.label.LUT.syn)\n\nstation_names &lt;- ebs.label.LUT[station_names]\n\ndmat &lt;- as.matrix(dist.geo)\nbreaks &lt;- gal.correlog.dist.linear$break.pts\n\noutput &lt;- c()\n\nfor (i in 1:(length(breaks)-1)) {\n    output &lt;- c(output, paste(\"Distance class\", i, \":\", round(breaks[i], 4), \"to\", round(breaks[i+1], 4), \"\\n\"))\n    # Find indices for upper triangle only to avoid duplicates and self-pairs\n    idx &lt;- which(dmat &gt; breaks[i] & dmat &lt;= breaks[i+1] & upper.tri(dmat), arr.ind = TRUE)\n    # Ensure idx is always a matrix\n    if (length(idx) == 0) {\n      output &lt;- c(output, paste(\"  No pairs in this class.\\n\\n\"))\n      next\n    }\n    if (is.null(dim(idx))) idx &lt;- t(as.matrix(idx)) # convert vector to 1-row matrix if needed\n    # Print station pairs\n    pairs &lt;- data.frame()\n    for (j in 1:nrow(idx)) {\n        pairs &lt;- rbind(pairs, data.frame(st1 = station_names[idx[j,1]], st2 = station_names[idx[j,2]]))\n    }\n    pairs &lt;- pairs %&gt;% \n        mutate(pair = paste(pmin(st1, st2), pmax(st1, st2), sep = \";\")) %&gt;% \n        distinct(pair, .keep_all = T)\n    # output &lt;- c(output, paste(\"  \", station_names[idx[j,1]], \"&lt;-&gt;\", station_names[idx[j,2]], \"\\n\"))\n    output &lt;- c(output, paste(\"  \", pairs$st1, \"&lt;-&gt;\", pairs$st2, \"\\n\"))\n    output &lt;- c(output, paste(\"\\n\"))\n  }\n\ncat(output)\n\n\n18.3.5 Result\n&gt; cat(output)\nDistance class 1 : 0 to 368 \n    3 &lt;-&gt; 3 \n    4 &lt;-&gt; 4 \n    5 &lt;-&gt; 5 \n    6 &lt;-&gt; 6 \n    11 &lt;-&gt; 11 \n    10 &lt;-&gt; 10 \n    9 &lt;-&gt; 9 \n    12 &lt;-&gt; 12 \n \n Distance class 2 : 368 to 1841 \n    3 &lt;-&gt; 4 \n    3 &lt;-&gt; 6 \n    4 &lt;-&gt; 6 \n    3 &lt;-&gt; 5 \n    4 &lt;-&gt; 5 \n    6 &lt;-&gt; 5 \n    11 &lt;-&gt; 10 \n    11 &lt;-&gt; 9 \n    10 &lt;-&gt; 9 \n    11 &lt;-&gt; 12 \n    10 &lt;-&gt; 12 \n \n Distance class 3 : 1841 to 2209 \n    9 &lt;-&gt; 12 \n \n Distance class 4 : 2209 to 4420 \n    3 &lt;-&gt; 11 \n    4 &lt;-&gt; 11 \n    6 &lt;-&gt; 11 \n    5 &lt;-&gt; 11 \n    3 &lt;-&gt; 10 \n    4 &lt;-&gt; 10 \n    6 &lt;-&gt; 10 \n    5 &lt;-&gt; 10 \n    3 &lt;-&gt; 9 \n    4 &lt;-&gt; 9 \n    6 &lt;-&gt; 9 \n    5 &lt;-&gt; 9 \n    3 &lt;-&gt; 12 \n    4 &lt;-&gt; 12 \n    6 &lt;-&gt; 12 \n    5 &lt;-&gt; 12 \n \n&gt; gal.correlog.dist\n\nMantel Correlogram Analysis\n\nCall:\n \nmantel.correlog(D.eco = d.K2PDist, D.geo = dist.geo, break.pts = breakpoints,      cutoff = F, nperm = 5000) \n\n       class.index      n.dist  Mantel.cor Pr(Mantel) Pr(corrected)    \nD.cl.1  184.000000  756.000000    0.274177     0.0004     0.0003999 ***\nD.cl.2 1104.500000  918.000000   -0.105322     0.0204     0.0203959 *  \nD.cl.3 2025.000000   48.000000    0.010558     0.3591     0.3591282    \nD.cl.4 3314.500000 1584.000000   -0.138607     0.0056     0.0167966 *  \n---\nSignif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1\n&gt; gal.correlog.dist.linear\n\nMantel Correlogram Analysis\n\nCall:\n \nmantel.correlog(D.eco = genetic_resid_linear, D.geo = dist.geo,      break.pts = breakpoints, cutoff = F, nperm = 5000) \n\n       class.index      n.dist  Mantel.cor Pr(Mantel) Pr(corrected)  \nD.cl.1  184.000000  756.000000    0.123227     0.0406       0.04059 *\nD.cl.2 1104.500000  918.000000   -0.012545     0.3855       0.38552  \nD.cl.3 2025.000000   48.000000   -0.054510     0.1450       0.28994  \nD.cl.4 3314.500000 1584.000000   -0.079297     0.0394       0.15757  \n---\nSignif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1\n&gt; print(mantel_correlog_result)\n\nMantel Correlogram Analysis\n\nCall:\n \nmantel.correlog(D.eco = resid_dist, D.geo = dist.geo, break.pts = breakpoints,      cutoff = FALSE, nperm = 5000) \n\n       class.index      n.dist  Mantel.cor Pr(Mantel) Pr(corrected)\nD.cl.1  1.8400e+02  7.5600e+02 -3.2355e-02     0.1830        0.1830\nD.cl.2  1.1045e+03  9.1800e+02 -2.0709e-03     0.4555        0.4555\nD.cl.3  2.0250e+03  4.8000e+01 -3.8618e-02     0.0944        0.2831\nD.cl.4  3.3145e+03  1.5840e+03  3.8304e-02     0.0774        0.3095\n\nSAMOVA: original annealing approach only available on software on Windows: SAMOVA 2.0\nGenetic Landscape Shape Interpolation: Powerful and complex tool cooperating with extensive environmental and geographical data, worth if genetic structure is known to vary due to spatial parameters. Original method\nMantel Test with Network Distance\nMoran’s I or Mantel Correlogram\nRedundancy Analysis (RDA)\n\n\n\n\n\nExcoffier, L, P E Smouse, and J M Quattro. 1992. “Analysis of Molecular Variance Inferred from Metric Distances Among DNA Haplotypes: Application to Human Mitochondrial DNA Restriction Data.” Genetics 131 (2): 479–91. https://doi.org/10.1093/genetics/131.2.479.",
+    "crumbs": [
+      "Ecology",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Haplotype calculation and Network Visualization</span>"
+    ]
+  },
+  {
+    "objectID": "note/ecology/Biogeography Statistics (ACTCP version).html#footnotes",
+    "href": "note/ecology/Biogeography Statistics (ACTCP version).html#footnotes",
+    "title": "18  Haplotype calculation and Network Visualization",
+    "section": "",
+    "text": "https://openpress.wheatoncollege.edu/molecularecologyv1/chapter/a-brief-overview-of-analysis-of-molecular-variance/↩︎",
+    "crumbs": [
+      "Ecology",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Haplotype calculation and Network Visualization</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Excoffier, L, P E Smouse, and J M Quattro. 1992. “Analysis of\nMolecular Variance Inferred from Metric Distances Among DNA\nHaplotypes: Application to Human Mitochondrial DNA\nRestriction Data.” Genetics 131 (2): 479–91. https://doi.org/10.1093/genetics/131.2.479.\n\n\nJacobs, Jrgen. 1974. “Quantitative Measurement of Food Selection:\nA Modification of the Forage Ratio and Ivlev’s\nElectivity Index.” Oecologia 14 (4): 413–17. https://doi.org/10.1007/BF00384581.\n\n\nLEVINS, RICHARD. 1966. “The Strategy of Model Building in\nPopulation Biology.” American Scientist 54 (4): 421–31.\nhttp://www.jstor.org/stable/27836590.\n\n\nMatesanz, Silvia, Teresa E. Gimeno, Marcelino De La Cruz, Adrián\nEscudero, and Fernando Valladares. 2011. “Competition May Explain\nthe Fine-Scale Spatial Patterns and Genetic Structure of Two\nCo-Occurring Plant Congeners.” Journal of Ecology 99\n(3): 838–48. https://doi.org/10.1111/j.1365-2745.2011.01812.x.\n\n\nOsborn, Karen J. 2009. “Relationships Within the\nMunnopsidae (Crustacea, Isopoda,\nAsellota) Based on Three Genes.” Zoologica\nScripta 38 (6): 617–35. https://doi.org/10.1111/j.1463-6409.2009.00394.x.\n\n\nPianka, Eric R. 1973. “The Structure of Lizard\nCommunities.” Annual Review of Ecology and\nSystematics 4 (1): 53–74. https://doi.org/10.1146/annurev.es.04.110173.000413.\n\n\nWinemiller, Kirk O., and Eric R. Pianka. 1990. “Organization in\nNatural Assemblages of Desert Lizards and\nTropical Fishes.” Ecological Monographs 60\n(1): 27–55. https://doi.org/10.2307/1943025.",
+    "crumbs": [
+      "References"
+    ]
+  }
+]

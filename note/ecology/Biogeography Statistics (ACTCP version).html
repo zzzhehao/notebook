@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>18&nbsp; Haplotype calculation and Network Visualization – Zhehao's Note</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../references.html" rel="next">
+<link href="../../note/ecology/Ecological Spatial Analysis in R.html" rel="prev">
+<link href="../../logo/logo_300.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-57a92833092fd6dc0d7710b6bdfff9c5.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-57a92833092fd6dc0d7710b6bdfff9c5.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ff3ba31fecbfa9093537ef3d3a3dbdf8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-7e5819051d5cd9600cb7a9039774bf43.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../note/ecology/Ecological Niche.html">Ecology</a></li><li class="breadcrumb-item"><a href="../../note/ecology/Biogeography Statistics (ACTCP version).html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Haplotype calculation and Network Visualization</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Zhehao’s Note</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/zzzhehao/notebook" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Evolution, Phylogeny</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../note/evolution/MSc EvoSys Course/01 Prior Concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">MSc EvoSys Prior Concepts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../note/evolution/MSc EvoSys Course/02 Phylogeny Fundamentals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Phylogeny Fundamentals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Phylogenetic Analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../note/evolution/MSc EvoSys Course/04 Bayesian Inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Bayesian Inference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../note/evolution/MSc EvoSys Course/05 Mutation, Substitution, Sequence Evolution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Molecular Evolution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../note/evolution/MSc EvoSys Course/06 Phylogenetic Marker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Phylogenetic Marker</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../note/evolution/MSc EvoSys Course/07 Coalescent Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Coalescent Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../note/evolution/MSc EvoSys Course/08 Phylogenomics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Phylogenomics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../note/evolution/MSc EvoSys Course/09 Phylogenetic Comparative Methods (PCM).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Phylogenetic Comparative Methods (PCM)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../note/evolution/MSc EvoSys Course/10 Molecular Clocks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Molecular Clocks</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../note/evolution/MSc EvoSys Course/99 Concept Checklist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Concept Checklist</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../note/evolution/Evolution Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Evolution Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../note/evolution/czech2017 - corret rerooting method.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">czech2017 - corret rerooting method.html</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Ecology</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../note/ecology/Ecological Niche.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Ecological Niche</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../note/ecology/Diversity in Ecological Community.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Diversity in Ecological Community</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../note/ecology/Isolation By Distance (IBD).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Signpost</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../note/ecology/Ecological Spatial Analysis in R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../note/ecology/Biogeography Statistics (ACTCP version).html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Haplotype calculation and Network Visualization</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#amova" id="toc-amova" class="nav-link active" data-scroll-target="#amova"><span class="header-section-number">18.1</span> AMOVA</a>
+  <ul class="collapse">
+  <li><a href="#methodology-1" id="toc-methodology-1" class="nav-link" data-scroll-target="#methodology-1"><span class="header-section-number">18.1.1</span> Methodology </a></li>
+  <li><a href="#amova-in-r" id="toc-amova-in-r" class="nav-link" data-scroll-target="#amova-in-r"><span class="header-section-number">18.1.2</span> AMOVA in R</a></li>
+  </ul></li>
+  <li><a href="#redundancy-analysis" id="toc-redundancy-analysis" class="nav-link" data-scroll-target="#redundancy-analysis"><span class="header-section-number">18.2</span> Redundancy Analysis</a></li>
+  <li><a href="#mantel-correlogram" id="toc-mantel-correlogram" class="nav-link" data-scroll-target="#mantel-correlogram"><span class="header-section-number">18.3</span> Mantel Correlogram</a>
+  <ul class="collapse">
+  <li><a href="#raw-matrix" id="toc-raw-matrix" class="nav-link" data-scroll-target="#raw-matrix"><span class="header-section-number">18.3.1</span> Raw Matrix</a></li>
+  <li><a href="#linear-detrending" id="toc-linear-detrending" class="nav-link" data-scroll-target="#linear-detrending"><span class="header-section-number">18.3.2</span> Linear Detrending</a></li>
+  <li><a href="#gam-detrending" id="toc-gam-detrending" class="nav-link" data-scroll-target="#gam-detrending"><span class="header-section-number">18.3.3</span> GAM Detrending</a></li>
+  <li><a href="#show-involved-pairwise-comparison-for-each-distance-class" id="toc-show-involved-pairwise-comparison-for-each-distance-class" class="nav-link" data-scroll-target="#show-involved-pairwise-comparison-for-each-distance-class"><span class="header-section-number">18.3.4</span> Show involved pairwise comparison for each distance class</a></li>
+  <li><a href="#result" id="toc-result" class="nav-link" data-scroll-target="#result"><span class="header-section-number">18.3.5</span> Result</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/zzzhehao/notebook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../note/ecology/Ecological Niche.html">Ecology</a></li><li class="breadcrumb-item"><a href="../../note/ecology/Biogeography Statistics (ACTCP version).html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Haplotype calculation and Network Visualization</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Haplotype calculation and Network Visualization</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- Synced from `/Users/hu_zhehao/Desktop/zzzhehao/note/ecology/Biogeography Statistics (ACTCP version).md` -->
+<p><code>geneHapR</code> provides a good wrapper function of calling <code>pegas::haploNet()</code> which calculates a parsinomy network. Although this only calculates haplotype assignment and network structure, it does not give any statistical evidence on biogeographic pattern.</p>
+<section id="amova" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="amova"><span class="header-section-number">18.1</span> AMOVA</h2>
+<p>= <strong>A</strong>nalysis of <strong>Mo</strong>lecular <strong>Va</strong>riance</p>
+<section id="methodology-1" class="level3" data-number="18.1.1">
+<h3 data-number="18.1.1" class="anchored" data-anchor-id="methodology-1"><span class="header-section-number">18.1.1</span> Methodology <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h3>
+<ul>
+<li><strong>Data</strong>: molecular data, DNA sequence, microsatellite genotypes, SNPs. Arranged according to levels of hierarchical population structure.</li>
+<li><strong>DIstance Calculations</strong>: Genetic distance as a middle step in AMOVA, pairwise between individuals or haplotypes.</li>
+<li><strong>Variance Partitioning</strong>: Total genetic variance is partitioned into components.</li>
+</ul>
+</section>
+<section id="amova-in-r" class="level3" data-number="18.1.2">
+<h3 data-number="18.1.2" class="anchored" data-anchor-id="amova-in-r"><span class="header-section-number">18.1.2</span> AMOVA in R</h3>
+<p><a href="https://grunwaldlab.github.io/poppr/reference/poppr.amova.html"><code>{poppr}</code></a> gives nice wrapper function of AMOVA in <code>{ade4}</code> and in <code>{pegas}</code>. Defualt using <code>{ade4}</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adegenet)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(poppr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>genind <span class="ot">&lt;-</span> <span class="fu">df2genind</span>(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">X =</span> <span class="fu">as.data.frame</span>(gal<span class="sc">$</span>haps, <span class="at">row.names =</span> <span class="fu">row.names</span>(gal<span class="sc">$</span>voucher)),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ploidy =</span> <span class="dv">1</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ind.names =</span> <span class="fu">row.names</span>(gal<span class="sc">$</span>voucher),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">pop =</span> gal<span class="sc">$</span>loc_name</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">strata</span>(genind) <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">loc_name =</span> gal<span class="sc">$</span>loc_name, <span class="at">depth =</span> gal<span class="sc">$</span>depth, <span class="at">lon =</span> gal<span class="sc">$</span>lon, <span class="at">lat =</span> gal<span class="sc">$</span>lat, <span class="at">station =</span> gal<span class="sc">$</span>station) </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">poppr.amova</span>(genind, <span class="at">hier =</span> <span class="sc">~</span> population<span class="sc">/</span>location, <span class="at">method =</span> <span class="st">"ade4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>gal</code> is a simple data frame including haplotype assignment <code>$haps</code>, sample name <code>$voucher</code> and environmental data. Names can be aribtrary. <code>strata()</code> is a framework inherited from <code>{adegenet}</code>.</p>
+<p><code>poppr.amova()</code> takes <code>genind</code> class from <code>{adegenet}</code> and defines the population hierarchy with <code>hier = ~ POPULATION/SUBPOPULATION</code>. Here in example we define geo location <code>$loc_name</code> as the highest group and the station under each location category as the second population level. This will yield all <span class="math inline">\(\Phi\)</span> statistics, if only one level is provided, only the <span class="math inline">\(\Phi_{ST}\)</span> will be calculated.</p>
+<p>The function yields following result:</p>
+<pre class="console"><code>&gt; amova.res &lt;- poppr.amova(genind, hier = ~ population/location, method = "ade4")
+
+ No missing values detected.
+
+&gt; amova.res
+$call
+ade4::amova(samples = xtab, distances = xdist, structures = xstruct)
+
+$results
+                                  Df    Sum Sq   Mean Sq
+Between population                 1  1.345002 1.3450017
+Between samples Within population  6  6.142929 1.0238215
+Within samples                    50 42.650000 0.8530000
+Total                             57 50.137931 0.8796128
+
+$componentsofcovariance
+                                                    Sigma           %
+Variations  Between population                0.005252287   0.5904814
+Variations  Between samples Within population 0.031240148   3.5121319
+Variations  Within samples                    0.853000000  95.8973867
+Total variations                              0.889492435 100.0000000
+
+$statphi
+                               Phi
+Phi-samples-total      0.041026133
+Phi-samples-population 0.035329936
+Phi-population-total   0.005904814</code></pre>
+<p>It was a pain to understand all the three statistics, let’s say we define the hierarchy as: level1 is the highest category and level2 is enclosed by level1, which will be <code>hier = ~ level1/level2</code>. E.g. level1 is ocean (Pacific, Atlantic, SO, etc), level2 is the abyssal plains within each ocean.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 27%">
+<col style="width: 64%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Statistics</strong></th>
+<th><strong>Definition by <span class="citation" data-cites="excoffier1992">Excoffier, Smouse, and Quattro (<a href="../../references.html#ref-excoffier1992" role="doc-biblioref">1992</a>)</span></strong></th>
+<th><strong>Explanation</strong></th>
+<th>** <code>{ade4}</code> results**</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\Phi_{ST}\)</span> / FST</td>
+<td>Correlation of random haplotypes within populations, relative to the total variance.</td>
+<td>How much more similar are individuals within the same <em>level2</em>, compared to any two individuals drawn from the whole dataset (regardless of which <em>level2</em> or <em>level1</em>) ~ shows the porportion of total variance of the whole dataset (= species) attributed to difference among <em>level2</em></td>
+<td>Phi-samples-total</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\Phi_{CT}\)</span> / FCT</td>
+<td>Correlation of random haplotypes within a group of populations, relative to the total variance.</td>
+<td>How much more similar are individuals within the same <em>level1</em> (regardless of <em>level2</em>) compare to any two individuals drawn from the whole dataset (regardless of <em>level</em>2 or <em>level1</em>) ~ shows the proportion of total variance of the whole dataset attributed to difference among <em>level1</em></td>
+<td>Phi-<em>level1</em>-total</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\Phi_{SC}\)</span> / FSC</td>
+<td>Correlation of the molecular diversity of random haplotypes within populations, relative to the variance within the group.</td>
+<td>How much more similar are individuals within the same <em>level2</em>, compared to any two individuals drawn from the same <em>level1</em> ~ shows the proportion of total variance <strong>within the <em>level1</em></strong> attributed to difference among <em>level2</em></td>
+<td>Phi-samples-<em>level1</em></td>
+</tr>
+</tbody>
+</table>
+<p>A higher value of these statistics indicates that more proportion of genetic variance is due to the difference among groups at tested level (FST: ignore <em>level1</em>, due to <em>level2</em>; FCT: ignore <em>level2</em>, due to <em>level1</em>; FSC: ignore global, due to <em>level2</em> in <em>level1</em>). The concept is somewhat similar to <span class="math inline">\(\alpha\)</span>-, <span class="math inline">\(\beta\)</span>-, <span class="math inline">\(\gamma\)</span>-diversity.</p>
+<p>A notation to the result in example of why <span class="math inline">\(\Phi_{SC}\)</span> is negative here:</p>
+<p>negative values implies that genetic variance at the tested level, i.e.&nbsp;among <em>level2</em> within each <em>level1</em> is less than expected by chance, which means the individuals within those <em>level2</em> are not more similar to each other than individuals from other <em>level2</em> within the same <em>level1</em>. Reason for this is clear in ACTCP, as the <em>level2</em> is set to stations and <em>level1</em> is set to location. There were only two locations that have more than one station, and they are outmost close to each other, where no gene flow barrier is to expected, especially for <em>galatheae</em>.</p>
+<p>Of course, we can <em>make up</em> a p-value by repeating it (permutation test), default to 99 iterations but I will say make it 999 bc why not:</p>
+<pre class="console"><code>&gt; amova.test &lt;- randtest(amova.res, nrepet = 999)
+&gt; amova.test
+class: krandtest lightkrandtest 
+Monte-Carlo tests
+Call: randtest.amova(xtest = amova.res, nrepet = 999)
+
+Number of tests:   3 
+
+Adjustment method for multiple comparisons:   none 
+Permutation number:   999 
+                           Test         Obs    Std.Obs   Alter Pvalue
+1     Variations within samples 0.853000000 -1.4197886    less  0.094
+2    Variations between samples 0.031240148  0.9455456 greater  0.159
+3 Variations between population 0.005252287  0.6289330 greater  0.191</code></pre>
+<p><code>plot()</code> the result will also show the statistics distribution in histogram. What we are testing here is to see if our observed statistics are different from those generated with <em>null model</em> (by randomly allocating individuals among, hence permutation). <code>Alter</code> also shows in case of siginificance, is the observed value smaller or greater than those from permutation tests. In ACTCP, none of them is significant, means none of the tested level shapes the genetic variability in our population.</p>
+<p>When applying this to NE area:</p>
+<pre class="console"><code>&gt; amovaNE.res &lt;- poppr.amova(genindNE, hier = ~location, method = "ade4")
+
+ No missing values detected.
+
+&gt; amovaNE.res
+$call
+ade4::amova(samples = xtab, distances = xdist, structures = xstruct)
+
+$results
+                Df    Sum Sq   Mean Sq
+Between samples  3  2.877778 0.9592593
+Within samples  32 27.733333 0.8666667
+Total           35 30.611111 0.8746032
+
+$componentsofcovariance
+                                 Sigma          %
+Variations  Between samples 0.01592357   1.804186
+Variations  Within samples  0.86666667  98.195814
+Total variations            0.88259023 100.000000
+
+$statphi
+                         Phi
+Phi-samples-total 0.01804186
+&gt; amovaNE.test &lt;- randtest(amovaNE.res, nrepet = 999)
+&gt; amovaNE.test
+Monte-Carlo test
+Call: as.randtest(sim = res, obs = sigma[1])
+
+Observation: 0.01592357 
+
+Based on 999 replicates
+Simulated p-value: 0.281 
+Alternative hypothesis: greater 
+
+     Std.Obs  Expectation     Variance 
+ 0.483237489 -0.002556856  0.001462523 </code></pre>
+</section>
+</section>
+<section id="redundancy-analysis" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="redundancy-analysis"><span class="header-section-number">18.2</span> Redundancy Analysis</h2>
+<ul>
+<li>This is a much bigger topic than I previously thought, WIP notes can be found at
+<ul>
+<li><a href="../../../30 On-Going Project Management/32.2024 Acanthocope Project/01 docs/01.01 notes/Daily Notes/2025-06-09 DZMB.md">2025-06-09 DZMB RDA related</a></li>
+<li><a href="../../../30 On-Going Project Management/32.2024 Acanthocope Project/01 docs/01.01 notes/Daily Notes/2025-06-10 DZMB RDA related.md">2025-06-10 DZMB RDA related</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="mantel-correlogram" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="mantel-correlogram"><span class="header-section-number">18.3</span> Mantel Correlogram</h2>
+<p>We take two matrices, geographical distance and genetic distance, to see if there’s any spatial correlation in terms of genetic diversity. For the finest control of choosing the most appropriate methods, we will construct distance matrix explicitly. Genetic distance is to be calculated from the sequence alignment using suitable substitution method, not just raw hamming distance (p-distance). The default for COI is the K2P (also as K80) distance which takes mutation rate difference of transition and transversion into account:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># seqs.clade is generated by geneHapR::import_seqs() to cooperate with geneHapR::seq2hap() function later. Every multiple alignment object accepted by as.DNAbin() would do here. </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>k2p_dist_sp <span class="ot">&lt;-</span> <span class="fu">dist.dna</span>(<span class="fu">as.DNAbin</span>(seqs.clade), <span class="at">model =</span> <span class="st">"K80"</span>, <span class="at">pairwise.deletion =</span> T) <span class="sc">%&gt;%</span> <span class="fu">as.matrix</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Geographic distance matrix can be tricky, depending on what type of data we have. <a href="../../../90-99 Resources/90 References/80.02 Zotero File Storage/borcard2018.pdf#page=316&amp;selection=121,1,122,3&amp;color=note / signpost">borcard2018, p.305</a> used XY cartesian coordinates because the study area is small enough (few meters) and <code>vegan::mantel.correlog()</code> accepts cartesian coordinates as geographic information, and more importantly, it is used for surface trend analysis. While our samples were distributed in much larger scale, we will have to use a more precise <strong>Great-circle Distance</strong> using Haversine formula:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>gal.latlon <span class="ot">&lt;-</span> gal[<span class="fu">match</span>(<span class="fu">rownames</span>(<span class="fu">as.matrix</span>(d.K2PDist)), gal<span class="sc">$</span>voucher), <span class="fu">c</span>(<span class="st">"lat"</span>, <span class="st">"lon"</span>)]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>d.geo <span class="ot">&lt;-</span> <span class="fu">distm</span>(gal.latlon, <span class="at">fun =</span> distHaversine)<span class="sc">/</span><span class="dv">1000</span> <span class="co"># calculate distance and set unit to km</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(d.geo) <span class="ot">&lt;-</span> gal<span class="sc">$</span>voucher</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(d.geo) <span class="ot">&lt;-</span> gal<span class="sc">$</span>voucher</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>dist.geo <span class="ot">=</span> <span class="fu">as.dist</span>(d.geo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Whether any further transformation is needed, based on the biological assumption. <em>Acanthocope spp.</em> are believed to be mobile and there shouldn’t be any serious geographical barrier within N Atlantic, which makes it simple to leave the distance as is. However if geographical isolation is to be expected due to barrier, or a strong isolation-by-distance (IBD) shall present, a transformation might be needed. (Log transformation?? <code>{r} as.dist(log(d.geo + 1))</code>)</p>
+<p>Before we can throw both matrix into correlogram, another thing needs to be considered is <strong>detrending</strong>.</p>
+<p><a href="../../../90-99 Resources/90 References/80.02 Zotero File Storage/borcard2018.pdf#page=320&amp;selection=74,0,76,35&amp;color=note / signpost">7.3 Multivariate Trend-Surface Analysis</a> stated, that, when our data was sampled on (along) geographic surfaces, there would, very probably, be a large scale structure present as a form of gradient - linear trend. Such trend can be detected using trend-surface analysis, and also should be removed for more complex spatial analysis.</p>
+<p>To test for linear surface trend, we need to first map our data onto a plane. Which we choose the Azimuthal Equal Distance Projection, which then return our station in a cartesian system based on the centroid we calculate as the middle point of the bounding box.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>gal.xy <span class="ot">&lt;-</span> gal[<span class="fu">match</span>(<span class="fu">rownames</span>(<span class="fu">as.matrix</span>(d.K2PDist)), gal<span class="sc">$</span>voucher), <span class="fu">c</span>(<span class="st">"lat"</span>, <span class="st">"lon"</span>)]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to sf object</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>gal.sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(gal.xy, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"lon"</span>, <span class="st">"lat"</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Find a suitable center point (mean of your coordinates)</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>center_lon <span class="ot">&lt;-</span> <span class="fu">mean</span>(gal.xy<span class="sc">$</span>lon)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>center_lat <span class="ot">&lt;-</span> <span class="fu">mean</span>(gal.xy<span class="sc">$</span>lat)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create azimuthal equidistant projection string</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>aeqd_proj <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"+proj=aeqd +lat_0=%f +lon_0=%f +units=km"</span>, center_lat, center_lon)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform to projected coordinates</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>gal.xy.aeqd <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(gal.sf, <span class="at">crs =</span> aeqd_proj)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>xy_cartesian <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">st_coordinates</span>(gal.xy.aeqd))  <span class="co"># x/y in kilometers</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We then start calculating the polynomial terms and test for linear, quadratic, and cubic trends:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ape) </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spdep) </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ade4) </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adegraphics) </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adespatial) </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>xy.c <span class="ot">&lt;-</span> <span class="fu">scale</span>(xy_cartesian, <span class="at">center =</span> <span class="cn">TRUE</span>, <span class="at">scale =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>gal.poly <span class="ot">&lt;-</span> <span class="fu">poly</span>(<span class="fu">as.matrix</span>(xy.c), <span class="at">degree =</span> <span class="dv">3</span>, <span class="at">raw =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(gal.poly) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"X"</span>, <span class="st">"X2"</span>, <span class="st">"X3"</span>, <span class="st">"Y"</span>, <span class="st">"XY"</span>, <span class="st">"X2Y"</span>, <span class="st">"Y2"</span>, <span class="st">"XY2"</span>, <span class="st">"Y3"</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>d.h <span class="ot">&lt;-</span> <span class="fu">decostand</span>(d.K2PDist, <span class="at">method =</span> <span class="st">"hellinger"</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>gal.trend.rda <span class="ot">&lt;-</span> <span class="fu">rda</span>(d.h <span class="sc">~</span> ., <span class="at">data =</span> <span class="fu">as.data.frame</span>(gal.poly))</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>R2adj.poly <span class="ot">&lt;-</span> <span class="fu">RsquareAdj</span>(gal.trend.rda)<span class="sc">$</span>adj.r.squared</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>gal.poly.ortho <span class="ot">&lt;-</span> <span class="fu">poly</span>(<span class="fu">as.matrix</span>(xy_cartesian), <span class="at">degree =</span> <span class="dv">3</span>) </span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(gal.poly.ortho) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"X"</span>, <span class="st">"X2"</span>, <span class="st">"X3"</span>, <span class="st">"Y"</span>, <span class="st">"XY"</span>, <span class="st">"X2Y"</span>, <span class="st">"Y2"</span>, <span class="st">"XY2"</span>, <span class="st">"Y3"</span>) </span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>(gal.trend.rda.ortho <span class="ot">&lt;-</span> <span class="fu">rda</span>(d.h <span class="sc">~</span> ., <span class="at">data =</span><span class="fu">as.data.frame</span>(gal.poly.ortho))) </span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>(R2adj.poly2 <span class="ot">&lt;-</span> <span class="fu">RsquareAdj</span>(gal.trend.rda.ortho)<span class="sc">$</span>adj.r.squared)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>(gal.trend.fwd <span class="ot">&lt;-</span> <span class="fu">forward.sel</span>(d.h, gal.poly.ortho, <span class="at">adjR2thresh =</span> R2adj.poly2))</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>(gal.trend.rda2 <span class="ot">&lt;-</span> <span class="fu">rda</span>(d.h <span class="sc">~</span> ., <span class="at">data =</span> <span class="fu">as.data.frame</span>(gal.poly)[ ,gal.trend.fwd[ ,<span class="dv">2</span>]]))</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(gal.trend.rda2) </span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(gal.trend.rda2, <span class="at">by =</span> <span class="st">"axis"</span>)</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>gal.trend.fit <span class="ot">&lt;-</span> <span class="fu">scores</span>(gal.trend.rda2, <span class="at">choices =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">display =</span> <span class="st">"lc"</span>, <span class="at">scaling =</span> <span class="dv">1</span>) </span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="fu">s.value</span>(xy_cartesian, gal.trend.fit, <span class="at">symbol =</span> <span class="st">"circle"</span>)</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(<span class="fu">rda</span>(d.h, xy_cartesian))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The last <code>anova()</code> will yield the result, if any linear trend is present in the data or not. If true, then the subsequent analysis (e.g.&nbsp;Correlogram, eigenvector based analysis, etc) should be performed with detrended data. If not, it should then be proceeded with raw data. <em>galatheae</em> data showed a significant trend, so I decided to show the result of all three (raw, linear detrended, gam detrended) analysis and draw more conclusion by comparing them together.</p>
+<section id="raw-matrix" class="level3" data-number="18.3.1">
+<h3 data-number="18.3.1" class="anchored" data-anchor-id="raw-matrix"><span class="header-section-number">18.3.1</span> Raw Matrix</h3>
+<p>Using raw distance is the simplest by just throwing two matrices into the function. <code>nperm</code> sets the number of permutation, default to 999, but we use 5000 for more reliable result, it won’t take long.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>breakpoints <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">368</span>, <span class="dv">1841</span>, <span class="dv">2209</span>, <span class="dv">4420</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>gal.correlog.dist <span class="ot">&lt;-</span> <span class="fu">mantel.correlog</span>(d.K2PDist, dist.geo, <span class="at">nperm =</span> <span class="dv">5000</span>, <span class="at">cutoff =</span> F, <span class="at">break.pts =</span> breakpoints)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The result can be <code>print()</code> out or <code>plot()</code> out to see the mantel statistics of each distance class. <code>cutoff</code> retains the result of the last few distance classes. <code>break.pts</code> allows user to set break points of the station specifically, if <code>NULL</code> then it will be done automatically (details see help document). I set the break points in the way that the involving pairwise comparison of each distance class has more intuitive biological meaning (see <a href="Biogeography Statistics (ACTCP version).md#Result">Result</a>)</p>
+</section>
+<section id="linear-detrending" class="level3" data-number="18.3.2">
+<h3 data-number="18.3.2" class="anchored" data-anchor-id="linear-detrending"><span class="header-section-number">18.3.2</span> Linear Detrending</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Flatten distance matrices to vectors</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>genetic_vec <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">as.dist</span>(d.K2PDist))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>geo_vec <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(dist.geo)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear model: genetic distance ~ geographic distance</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>lm_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(genetic_vec <span class="sc">~</span> geo_vec)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>genetic_resid_linear <span class="ot">&lt;-</span> <span class="fu">dist</span>(<span class="fu">resid</span>(lm_fit))</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>gal.correlog.dist.linear <span class="ot">&lt;-</span> <span class="fu">mantel.correlog</span>(genetic_resid_linear, dist.geo, <span class="at">nperm =</span> <span class="dv">5000</span>, <span class="at">cutoff =</span> F, <span class="at">break.pts =</span> breakpoints)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We won’t using anything generated from trend analysis for detrend work, as we will stick to our great-circle distance and avoid distortion by mapping our geographical station onto a 2D-plane.</p>
+</section>
+<section id="gam-detrending" class="level3" data-number="18.3.3">
+<h3 data-number="18.3.3" class="anchored" data-anchor-id="gam-detrending"><span class="header-section-number">18.3.3</span> GAM Detrending</h3>
+<p><strong>Generalized Additive Model</strong> (GAM) focuses on detecting smooth functions, that is not necessarily linear. Using GAM function to detrend will capture bigger variation of spatial structure, including lineara, and some other smooth trend.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mgcv)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>gam_fit <span class="ot">&lt;-</span> <span class="fu">gam</span>(<span class="fu">as.vector</span>(genetic_vec) <span class="sc">~</span> <span class="fu">s</span>(<span class="fu">as.vector</span>(geo_vec)))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming you have xy_cartesian with columns x and y (projected coordinates)</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>xy_cartesian <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">st_coordinates</span>(gal.xy.aeqd))</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(xy_cartesian) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure the order matches your genetic distance matrix</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Flatten distance matrices to vectors</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>genetic_vec <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(<span class="fu">as.dist</span>(d.K2PDist))</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create all pairwise combinations of coordinates</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>coords <span class="ot">&lt;-</span> xy_cartesian</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(coords)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>pair_idx <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">upper.tri</span>(<span class="fu">matrix</span>(<span class="cn">NA</span>, n, n)), <span class="at">arr.ind =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> coords<span class="sc">$</span>x[pair_idx[,<span class="dv">1</span>]]</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">&lt;-</span> coords<span class="sc">$</span>y[pair_idx[,<span class="dv">1</span>]]</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> coords<span class="sc">$</span>x[pair_idx[,<span class="dv">2</span>]]</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> coords<span class="sc">$</span>y[pair_idx[,<span class="dv">2</span>]]</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate pairwise midpoints (or differences)</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>mid_x <span class="ot">&lt;-</span> (x1 <span class="sc">+</span> x2)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>mid_y <span class="ot">&lt;-</span> (y1 <span class="sc">+</span> y2)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit GAM with spatial smooth</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>gam_fit_spatial <span class="ot">&lt;-</span> <span class="fu">gam</span>(genetic_vec <span class="sc">~</span> <span class="fu">s</span>(mid_x, mid_y))</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot residuals</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>resid_gam_spatial <span class="ot">&lt;-</span> <span class="fu">resid</span>(gam_fit_spatial)</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mid_x, resid_gam_spatial, <span class="at">pch=</span><span class="dv">16</span>, <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.2</span>), <span class="at">xlab=</span><span class="st">"Midpoint X"</span>, <span class="at">ylab=</span><span class="st">"GAM Residuals"</span>)</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="co"># After fitting your GAM (1D or 2D), get residuals</span></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>genetic_resid_gam <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>genetic_resid_gam <span class="ot">&lt;-</span> <span class="fu">resid</span>(gam_fit) <span class="co"># or resid_gam_spatial</span></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Build a symmetric matrix from the residuals</span></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>resid_mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, n, n)</span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>resid_mat[<span class="fu">upper.tri</span>(resid_mat)] <span class="ot">&lt;-</span> genetic_resid_gam</span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>resid_mat <span class="ot">&lt;-</span> resid_mat <span class="sc">+</span> <span class="fu">t</span>(resid_mat) <span class="co"># make symmetric</span></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to dist object for vegan::mantel.correlog</span></span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>resid_dist <span class="ot">&lt;-</span> <span class="fu">as.dist</span>(resid_mat)</span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>mantel_correlog_result <span class="ot">&lt;-</span> <span class="fu">mantel.correlog</span>(<span class="at">D.eco =</span> resid_dist, <span class="at">D.geo =</span> dist.geo, <span class="at">nperm =</span> <span class="dv">999</span>, <span class="at">cutoff =</span> <span class="cn">FALSE</span>, <span class="at">break.pts =</span> breakpoints)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="show-involved-pairwise-comparison-for-each-distance-class" class="level3" data-number="18.3.4">
+<h3 data-number="18.3.4" class="anchored" data-anchor-id="show-involved-pairwise-comparison-for-each-distance-class"><span class="header-section-number">18.3.4</span> Show involved pairwise comparison for each distance class</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="do">#### Show involved stations</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>station_names <span class="ot">&lt;-</span> gal[<span class="fu">match</span>(<span class="fu">rownames</span>(<span class="fu">as.matrix</span>(d.K2PDist)), gal<span class="sc">$</span>voucher), <span class="fu">c</span>(<span class="st">"lon"</span>, <span class="st">"lat"</span>, <span class="st">"station"</span>)]<span class="sc">$</span>station</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># convert to number on the map</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>ebs.label <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"analysis/temp/GIS_ebs.label.RDS"</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>ebs.label.LUT <span class="ot">&lt;-</span> ebs.label<span class="sc">$</span>loc_label</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ebs.label.LUT) <span class="ot">&lt;-</span> ebs.label<span class="sc">$</span>Station</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># synonymized stations:</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>ebs.label.LUT.syn <span class="ot">&lt;-</span> <span class="fu">c</span>(ebs.label.LUT[<span class="st">"81"</span>], ebs.label.LUT[<span class="st">"6-7"</span>], ebs.label.LUT[<span class="st">"4-8"</span>])</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ebs.label.LUT.syn) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"85"</span>, <span class="st">"6-8"</span>, <span class="st">"4-9"</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>ebs.label.LUT <span class="ot">&lt;-</span> <span class="fu">c</span>(ebs.label.LUT, ebs.label.LUT.syn)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>station_names <span class="ot">&lt;-</span> ebs.label.LUT[station_names]</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>dmat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(dist.geo)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> gal.correlog.dist.linear<span class="sc">$</span>break.pts</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(<span class="fu">length</span>(breaks)<span class="sc">-</span><span class="dv">1</span>)) {</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    output <span class="ot">&lt;-</span> <span class="fu">c</span>(output, <span class="fu">paste</span>(<span class="st">"Distance class"</span>, i, <span class="st">":"</span>, <span class="fu">round</span>(breaks[i], <span class="dv">4</span>), <span class="st">"to"</span>, <span class="fu">round</span>(breaks[i<span class="sc">+</span><span class="dv">1</span>], <span class="dv">4</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find indices for upper triangle only to avoid duplicates and self-pairs</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    idx <span class="ot">&lt;-</span> <span class="fu">which</span>(dmat <span class="sc">&gt;</span> breaks[i] <span class="sc">&amp;</span> dmat <span class="sc">&lt;=</span> breaks[i<span class="sc">+</span><span class="dv">1</span>] <span class="sc">&amp;</span> <span class="fu">upper.tri</span>(dmat), <span class="at">arr.ind =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Ensure idx is always a matrix</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">length</span>(idx) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>      output <span class="ot">&lt;-</span> <span class="fu">c</span>(output, <span class="fu">paste</span>(<span class="st">"  No pairs in this class.</span><span class="sc">\n\n</span><span class="st">"</span>))</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>      <span class="cf">next</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(<span class="fu">dim</span>(idx))) idx <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">as.matrix</span>(idx)) <span class="co"># convert vector to 1-row matrix if needed</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Print station pairs</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>    pairs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(idx)) {</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>        pairs <span class="ot">&lt;-</span> <span class="fu">rbind</span>(pairs, <span class="fu">data.frame</span>(<span class="at">st1 =</span> station_names[idx[j,<span class="dv">1</span>]], <span class="at">st2 =</span> station_names[idx[j,<span class="dv">2</span>]]))</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>    pairs <span class="ot">&lt;-</span> pairs <span class="sc">%&gt;%</span> </span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">pair =</span> <span class="fu">paste</span>(<span class="fu">pmin</span>(st1, st2), <span class="fu">pmax</span>(st1, st2), <span class="at">sep =</span> <span class="st">";"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>        <span class="fu">distinct</span>(pair, <span class="at">.keep_all =</span> T)</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>    <span class="co"># output &lt;- c(output, paste("  ", station_names[idx[j,1]], "&lt;-&gt;", station_names[idx[j,2]], "\n"))</span></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>    output <span class="ot">&lt;-</span> <span class="fu">c</span>(output, <span class="fu">paste</span>(<span class="st">"  "</span>, pairs<span class="sc">$</span>st1, <span class="st">"&lt;-&gt;"</span>, pairs<span class="sc">$</span>st2, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>    output <span class="ot">&lt;-</span> <span class="fu">c</span>(output, <span class="fu">paste</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(output)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="result" class="level3" data-number="18.3.5">
+<h3 data-number="18.3.5" class="anchored" data-anchor-id="result"><span class="header-section-number">18.3.5</span> Result</h3>
+<pre class="console"><code>&gt; cat(output)
+Distance class 1 : 0 to 368 
+    3 &lt;-&gt; 3 
+    4 &lt;-&gt; 4 
+    5 &lt;-&gt; 5 
+    6 &lt;-&gt; 6 
+    11 &lt;-&gt; 11 
+    10 &lt;-&gt; 10 
+    9 &lt;-&gt; 9 
+    12 &lt;-&gt; 12 
+ 
+ Distance class 2 : 368 to 1841 
+    3 &lt;-&gt; 4 
+    3 &lt;-&gt; 6 
+    4 &lt;-&gt; 6 
+    3 &lt;-&gt; 5 
+    4 &lt;-&gt; 5 
+    6 &lt;-&gt; 5 
+    11 &lt;-&gt; 10 
+    11 &lt;-&gt; 9 
+    10 &lt;-&gt; 9 
+    11 &lt;-&gt; 12 
+    10 &lt;-&gt; 12 
+ 
+ Distance class 3 : 1841 to 2209 
+    9 &lt;-&gt; 12 
+ 
+ Distance class 4 : 2209 to 4420 
+    3 &lt;-&gt; 11 
+    4 &lt;-&gt; 11 
+    6 &lt;-&gt; 11 
+    5 &lt;-&gt; 11 
+    3 &lt;-&gt; 10 
+    4 &lt;-&gt; 10 
+    6 &lt;-&gt; 10 
+    5 &lt;-&gt; 10 
+    3 &lt;-&gt; 9 
+    4 &lt;-&gt; 9 
+    6 &lt;-&gt; 9 
+    5 &lt;-&gt; 9 
+    3 &lt;-&gt; 12 
+    4 &lt;-&gt; 12 
+    6 &lt;-&gt; 12 
+    5 &lt;-&gt; 12 
+ 
+&gt; gal.correlog.dist
+
+Mantel Correlogram Analysis
+
+Call:
+ 
+mantel.correlog(D.eco = d.K2PDist, D.geo = dist.geo, break.pts = breakpoints,      cutoff = F, nperm = 5000) 
+
+       class.index      n.dist  Mantel.cor Pr(Mantel) Pr(corrected)    
+D.cl.1  184.000000  756.000000    0.274177     0.0004     0.0003999 ***
+D.cl.2 1104.500000  918.000000   -0.105322     0.0204     0.0203959 *  
+D.cl.3 2025.000000   48.000000    0.010558     0.3591     0.3591282    
+D.cl.4 3314.500000 1584.000000   -0.138607     0.0056     0.0167966 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+&gt; gal.correlog.dist.linear
+
+Mantel Correlogram Analysis
+
+Call:
+ 
+mantel.correlog(D.eco = genetic_resid_linear, D.geo = dist.geo,      break.pts = breakpoints, cutoff = F, nperm = 5000) 
+
+       class.index      n.dist  Mantel.cor Pr(Mantel) Pr(corrected)  
+D.cl.1  184.000000  756.000000    0.123227     0.0406       0.04059 *
+D.cl.2 1104.500000  918.000000   -0.012545     0.3855       0.38552  
+D.cl.3 2025.000000   48.000000   -0.054510     0.1450       0.28994  
+D.cl.4 3314.500000 1584.000000   -0.079297     0.0394       0.15757  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+&gt; print(mantel_correlog_result)
+
+Mantel Correlogram Analysis
+
+Call:
+ 
+mantel.correlog(D.eco = resid_dist, D.geo = dist.geo, break.pts = breakpoints,      cutoff = FALSE, nperm = 5000) 
+
+       class.index      n.dist  Mantel.cor Pr(Mantel) Pr(corrected)
+D.cl.1  1.8400e+02  7.5600e+02 -3.2355e-02     0.1830        0.1830
+D.cl.2  1.1045e+03  9.1800e+02 -2.0709e-03     0.4555        0.4555
+D.cl.3  2.0250e+03  4.8000e+01 -3.8618e-02     0.0944        0.2831
+D.cl.4  3.3145e+03  1.5840e+03  3.8304e-02     0.0774        0.3095</code></pre>
+<ul>
+<li>SAMOVA: original annealing approach only available on software on Windows: <a href="https://cmpg.unibe.ch/software/samova2/">SAMOVA 2.0</a></li>
+<li>Genetic Landscape Shape Interpolation: Powerful and complex tool cooperating with extensive environmental and geographical data, worth if genetic structure is known to vary due to spatial parameters. <a href="https://doiserbia.nb.rs/img/doi/0534-0012/2008/0534-00120803283I.pdf">Original method</a></li>
+<li>Mantel Test with Network Distance</li>
+<li>Moran’s I or Mantel Correlogram</li>
+<li>Redundancy Analysis (RDA)</li>
+</ul>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-excoffier1992" class="csl-entry" role="listitem">
+Excoffier, L, P E Smouse, and J M Quattro. 1992. <span>“Analysis of Molecular Variance Inferred from Metric Distances Among <span>DNA</span> Haplotypes: Application to Human Mitochondrial <span>DNA</span> Restriction Data.”</span> <em>Genetics</em> 131 (2): 479–91. <a href="https://doi.org/10.1093/genetics/131.2.479">https://doi.org/10.1093/genetics/131.2.479</a>.
+</div>
+</div>
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>https://openpress.wheatoncollege.edu/molecularecologyv1/chapter/a-brief-overview-of-analysis-of-molecular-variance/<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/zzzhehao\.github\.io\/notebook");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../note/ecology/Ecological Spatial Analysis in R.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/zzzhehao/notebook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Zhehao’s note on his way of pursuing magic and mystery of biology. Build with <a href="https://quarto.org/"><u>Quarto</u></a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
