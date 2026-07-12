@@ -2,6 +2,8 @@
 
 # Phylogeny Fundamentals
 
+Fundamentals for understanding phylogeny.
+
 ## Character States
 
 - **Apomorphy** = a derived trait, shared by two or more taxa from a common ancestor is synapomorphy, unique to a given taxa is autapomorphy
