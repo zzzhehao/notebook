@@ -1,0 +1,403 @@
+<!-- Synced from `/Users/hu_zhehao/Desktop/zzzhehao/note/taxonomy/method/Genetics Protocol.md` -->
+
+## Extraction
+
+DNA extraction using Macherey-Nagel Kit "Genomic DNA from tissue"
+
+**Modification**
+
+- Lysis step extended to overnight (~16h) at 56ºC
+- Elution buffer preheated to 70ºC, elution step repeated while only giving 50 ul on the column at both times
+
+## PCR
+
+### Primers
+
+**COI** ~ 650 bp
+
+- jgLCO: 5'- TGTAAAACGACGGCCAGTT5TC5AC5AAYCAYAARGAYATTGG -3' (43)
+- jgHCO: 5'- CAGGAAACAGCTATGACTA5ACYTC5GGRTG5CCRAARAAYCA -3' (43)
+- LCO1490-JJ: 5'- CHA CWA AYC ATA AAG ATA TYG G -3'
+- HCO2198-JJ: 5'- AWA CTT CVG GRT GVC CAA RAA TCA -3'
+- dfLCO1490: 
+
+
+| **Primer** | **5'-3' Sequence**                          | **Length** | **Reference** |
+| ---------- | ------------------------------------------- | ---------- | ------------- |
+| jgLCO      | TGTAAAACGACGGCCAGTT5TC5AC5AAYCAYAARGAYATTGG | 43         |               |
+| jgHCO      | CAGGAAACAGCTATGACTA5ACYTC5GGRTG5CCRAARAAYCA | 43         |               |
+| LCO1490-JJ | CHA CWA AYC ATA AAG ATA TYG G               |            |               |
+| HCO2198-JJ | AWA CTT CVG GRT GVC CAA RAA TCA             |            |               |
+| dgLCO1490  | GGTCAACAAATCATAAAGAYATYGG                   |            |               |
+| dgHCO2198  | TAAACTTCAGGGTGACCAAARAAYCA                  |            |               |
+
+
+### PCR reaction system
+
+- 10 ul Accustart Mix II
+- 0.5 ul Primer A
+- 0.5 ul Primer B
+- 2 - 7 ul DNA
+- ad 20 H2O (nuclease-free water)
+
+### PCR Program
+
+#### Standard 3-step for COI
+
+| **Step** | **Process**          | **Temperature** (ºC) | **Time** | **To step #** | **Cycle** |
+| -------- | -------------------- | -------------------- | -------- | ---------------------------- | --------- |
+| 1        | Initial denaturation | 95                   | 5:00     |                              |           |
+| 2        | Denaturation         | 95                   | 0:45     |                              |           |
+| 3        | Annealing            | 45                   | 0:50     |                              |           |
+| 4        | Elongation           | 72                   | 1:00     | 2                            | 38        |
+| 5        | Final elongation     | 72                   | 5:00     |                              |           |
+| 6        | Pause                | 10                   | $\infty$ |                              |           |
+
+#### 3x15 Touch-up for COI
+
+| **Step** | **Process**           | **Temperature** (ºC) | **Time** | **To step #** | **Cycle** | **$\Delta$T** |
+| -------- | --------------------- | -------------------- | -------- | ---------------------------- | --------- | ------------- |
+| 1        | Initial denaturation  | 95                   | 5:00     |                              |           |               |
+| 2        | Denaturation          | 95                   | 0:45     |                              |           |               |
+| 3        | Annealing             | 48                   | 1:00     |                              |           | \+ 0.5ºC      |
+| 4        | Elongation            | 72                   | 1:00     | 2                            | 15        |               |
+| 5        | Repeat touch-up loops | -                    | -        | 2                            | 3         |               |
+| 6        | Final elongation      | 72                   | 5:00     |                              |           |               |
+| 7        | Pause                 | 10                   | $\infty$ |                              |           |               |
+
+- Touch-up protocol adopted from @rowther2012, has the ability to amplify low-abundant / difficult to amplify fragment while keeping primer specificit.
+- Original loop configuration was proposed as 5 loops of 10 cycles (0.5ºC step), jg primers are able to amplify at higher temperature and 50 cycles yielded amplification in negative control, thus adjust to 3 loops of 15 cycles.
+- If primer shows less tolerance in annealing temperature, consider 4x10 configuration or other temperature difference.
+
+#### Standard 3-step for 18S [@osborn2009]
+
+| 18S 35x              | Temperature | Time           |
+| -------------------- | ----------- | -------------- |
+| Initial Denaturation | 94          | 3 min          |
+| Denaturation         | 94          | 60 s           |
+| Annealing            | 60 (58-64)  | 60 s           |
+| Elongation           | 72          | 100 s (90-120) |
+| Final Elongation     | 72          | 5 min (4-7)    |
+| Store                | 10          | Forever        |
+
+#### Touchdown for 18S (modified)
+
+| **Step** | **Process**          | **Temperature** (ºC) | **Time** | **To step #** | **Cycle** | **$\Delta$T** |
+| -------- | -------------------- | -------------------- | -------- | ---------------------------- | --------- | ------------- |
+| 1        | Initial denaturation | 94                   | 5:00     |                              |           |               |
+| 2        | Denaturation         | 94                   | 0:30     |                              |           |               |
+| 3        | Annealing (1-10)     | 62.5                 | 0:50     |                              | (10)      | \- 1ºC        |
+| 4        | Annealing (11-36)    | 52.5                 | 0:50     |                              | (26)      |               |
+| 5        | Elongation           | 72                   | 2:30     | 2                            | 36        |               |
+| 6        | Final elongation     | 72                   | 10:00    |                              |           |               |
+| 7        | Pause                | 10                   | $\infty$ |                              |           |               |
+
+#### Standard 3-step for 28S [@raupach2009]
+
+| 28S 40x              | Temperature | Time    |
+| -------------------- | ----------- | ------- |
+| Initial Denaturation | 94          | 5 min   |
+| Denaturation         | 94          | 60 s    |
+| Annealing            | 55          | 60 s    |
+| Elongation           | 72          | 90 s    |
+| Final Elongation     | 72          | 6 min   |
+| Store                | 10          | Forever |
+
+#### Touchdown for 28S (modified)
+
+| **Step** | **Process**          | **Temperature** (ºC) | **Time** | **To step #** | **Cycle** | **T**   |
+| -------- | -------------------- | -------------------- | -------- | ---------------------------- | --------- | ------- |
+| 1        | Initial denaturation | 94                   | 5:00     |                              |           |         |
+| 2        | Denaturation         | 94                   | 0:45     |                              |           |         |
+| 3        | Annealing (1-10)     | 60                   | 1:00     |                              | (10)      | - 0.5ºC |
+| 4        | Annealing (11-36)    | 55                   | 1:00     |                              | (30)      |         |
+| 5        | Elongation           | 72                   | 1:30     | 2                            | 40        |         |
+| 6        | Final elongation     | 72                   | 6:00     |                              |           |         |
+| 7        | Pause                | 10                   |          |                              |           |         |
+
+#### 28S Reference Protocol [@raupach2009]
+
+| 28S 40x              | Temperature | Time    |
+| -------------------- | ----------- | ------- |
+| Initial Denaturation | 94          | 5 min   |
+| Denaturation         | 94          | 60 s    |
+| Annealing            | 55          | 60 s    |
+| Elongation           | 72          | 90 s    |
+| Final Elongation     | 72          | 6 min   |
+| Store                | 10          | Forever |
+
+#### 18S Reference Protocol [@osborn2009]
+
+Approx. 1800 bp, whole region, mitch A/B primer.
+
+| 18S 35x              | Temperature | Time           |
+| -------------------- | ----------- | -------------- |
+| Initial Denaturation | 94          | 3 min          |
+| Denaturation         | 94          | 60 s           |
+| Annealing            | 60 (58-64)  | 60 s           |
+| Elongation           | 72          | 100 s (90-120) |
+| Final Elongation     | 72          | 5 min (4-7)    |
+| Store                | 10          | Forever        |
+
+### PCR Combination
+
+- Universal Primer + Standard COI (2 ul) works half-way in general
+- JJ-Primer + Standard COI (2-6 ul) works well for some Valvifera
+- jg Primer + Standard COI (2-6 ul) works well for most _Acanthocope_, Cumacean, Valvifera
+- jg Primer + COI Touchup (2 ul) works well for unknown Munnopsidae (ex-_A. spinicauda_, evtl. _Storthyngura_)
+- 18S Raupach Primer (18a1mod, 1800Rmod) + 18S Touchdown works well for _Acanthocope_
+- 28S Raupach Primer + 28S Touchdown works well for _Acanthocope_
+
+### Gel Electrophoresis
+
+- 1% Agarose - TAE (1x) Gel + 2 μl MidoriGreen (for 40 ml Gel)
+- 90V 20-25 min / 110 V 10 min (only for COI)
+- 2 μl 100 bp DNA ladder
+- 4 μl PCR product
+
+## Sequencing
+
+### Purification
+
+- Mix purification mastermix fresh before sequencing. For 10 μl PCR product:
+    - 1 μl Exo
+    - 2 μl FAST AP
+- After mix, short vortex, add to lid and spin down to products.
+
+Incubate (in cycler):
+
+1. 37ºC 15 min
+2. 80ºC 15 min
+
+### Macrogen EZ-Seq
+
+- 5 μl Product + 5 μl Primer (**5 pmol**, stock primer has 100 pmol > 20-time dilution)
+- Macrogen EZ-seq provides portal for metadata import.
+- [Metadata upload portal](https://order.macrogen-europe.com/mypage/ezseq/retrieveEzEcoSeqSearch.do?menuCd=ORD100800)
+
+From Nicole:
+
+- Sequencing full gene requires 6 internal primers (+2 = 8 primers/reaction = 40 μl PCR product in total)
+- 50 μl PCR allowing buffer for gel and pipetting error.
+
+| Primer | Sequence (Dreyer2001) 5'-3'    | biomers name | biomers lot x barcode ID |
+| ------ | ------------------------------ | ------------ | ------------------------ |
+| 400F   | ACG GGT AAC GGG GAA TCA GGG    | 400F Dreyer  | 00193443-3; 01450362     |
+| 700F   | GTC TGG TGC CAG CCG CG         | A700F mod    | 00121489-1; 849387       |
+| 1000F  | CGA TCA GAT ACC GCC CTA GTT C  | 1000F Dreyer | 00193443-5; 01450364     |
+| 700R   | CGC GGC TGC TGG CAC CAG CAC    |              |                          |
+| 1155R  | CCG TCA ATT CCT TTA AGT TTC AG | 1155R Dreyer | 00193443-4; 01450363     |
+| 1500R  | CAT CTA CGG CAT CAC AGA        | 1500R mod    | 00121489-6; 849392       |
+
+- New 700R stock and working solution diluted by Nicole, 22.01.2025.
+
+## Sequence - Assembly to MSA
+
+- Program: Geneious 9.1.8
+
+### COI
+
+1. Raw `.abi` file > select from both direction > _De Novo Assemble_
+    - Assembler: Geneious
+    - Sensitivity: Highest Sensitivity / Slow
+    - Do not trim
+    - Save contigs
+2. Manually extract regions from contigs where at least one sequence gives high confidence read
+3. Manual correction
+    - Ambiguity, bad read + good read => nucleotide of the good read
+    - Ambiguity, bad read + bad read => nucleotide of those present in both reads
+    - Ambiguity, good read + good read => nucleotide conflict, see how the other similar sequences have at the site (lumping decision)
+    - N, bad read (3' end of sequencing, smear signal, has whatever nucleotide) + good read (clear signal, will be assigned as gap by assembler) => deleting N in consensus (= deleting smear signal in bad read, delete gap in good read)
+4. Generate consesnsus from corrected contigs
+5. Select all consensus, reference sequence (if applicable), outgroup sequence (sister taxa) > Multiple Sequence Alignment > MAFFT (require plugin)
+    - Algorithm: Auto; Scoring matrix: 200P AM / k = 2;
+    - Gap open penalty: 1.53;
+    - Offset value: 0.123;
+    - Automatically determine sequences' direction;
+    - Adjust direction more accurately;
+    - MAFFT version v7.308, for citation please refer [MAFFT home](https://mafft.cbrc.jp/alignment/server/index.html)
+6. In MSA: check gaps, indel site should be a multiple of 3 (as translation reading frame), if indel with only one site, check the raw sequence causing the indel, mostly bad read / wide signal of neighbour nucleotide (larger amount in sequencing jamming signal)
+7. In MSA: display translation of the consensus and select a reading frame that does not contain any stop codon, trim the alignment to let the first starting sequence align with the frame (crucial for later codon partition in Bayesian analysis)
+8. Export MSA as FASTA file (for IQ-TREE)
+9. Export MSA as NEXUS file (for Bayesian)
+    - DO NOT export as interleaved
+    - DO NOT export metacomments
+    - Genieous export NEXUS file as `.nex` but essentially it's the same as `.nexus`, although taxa block can cause confusion and is annoying as hell.
+
+### 18S
+
+18S full gene is approx. 2200 bp, require 6 internal primers, i.e. 8 forward/reverse reads in total for assembly. Also the hypervariable site is causing problem, so look around and see if any reference sequence is available from related taxa.
+
+1. Select all reads > Map to reference > select reference, adjust sensitivity (high) and iteration (>1000 also works fast for 18S)
+2. Extract according to reference sequence and read quality of 5'- and 3'- end sequence => **contig**
+3. Delete all gaps, mostly caused by one bad read due to its sequencing end, principals same as for COI
+4. Check ambiguities: shouldn't have any, as most of the region has more than two sequences overlapping. If there are many, probably one sequence is something else (JN_Mu 157 - 1000F is something other than 18S)
+5. Select all cleaned contigs > MSA (same setting as for COI)
+
+## Side notes: Recap on Phylogeny
+
+- Phylogenetic reconstruction ~ building a phylogenetic tree with our sequences.
+- COI is a protein-coding mitochondrial gene, this identity affects how people do the analysis and interpret the result. In contrast, 16S is mitochonrial rDNA, which does not code protein and thus the partition and evolutionary model regarding nucleotide codon does not apply. Same for 18S and 28S but they are nuclear rDNA, which might show a different history in the same group because mitochondria follow maternal line. Comparing mitochondrial and nuclear marker can then reveal certain phylogenetic history / nuclear-cytoplasmic conflict, e.g. introgression, hybridization, incomplete lineage sorting. (*Wolbachia* has entered the chat)
+- Different phylogenetic analysis:
+    - Maximum Parsimony: evolution costs, this reconstructs the phylogeny with the principal that changes occur in minimum. Different kind of traits are evtl. treated (penalized) differently.
+    - Diastance-based methods: UPGMA, Neighbour-joining, etc. Rely on distances between sequences / data to construct the relationship. Distances between sequences are basically calculated by comparing nucleotide at the same site after alignment, calculation method might vary depending on how people believe on mutation probability of each combination (e.g. difference in transition and transversion rate)
+    - Maximum likelihood: Use likelihood function to assess probability of all possible trees and find the best tree topology, therefore the basic idea represents an exhaustive search, although the algorithm nowadays adopt heuristic search for large dataset. Have to specify the substitution model before analysis (IQ-TREE can test for best fitting model and has the option to apply it directly). The standard statistical version of Bayesian analysis.
+    - Bayesian inference: Bayesian statistical version of ML. Use MCMC (or MCMCMC) to do heuristic search and is more flexible. Also has to specify the subsitution model.
+- People tend to end up with Bayesian analysis when doing Phylogeny. THE starting/refresh materials for Bayesian Phylogenetics:
+    - [Phyloseminar #78: Paul Lewis (UConn) Primer part 3a](https://www.youtube.com/watch?v=4PWlnNsfz90)
+    - [Phyloseminar #78: Paul Lewis (UConn) Primer part 3b](https://www.youtube.com/watch?v=TLtOS--YwkU)
+- Using [CLI](https://aws.amazon.com/what-is/cli/) is essential for proper phylogenetic analysis. 
+
+## Maximum Likelihood
+
+- [!] \[2025-02-12\] Previous IQ-TREE web server is down, there's another one hosted at [hiv.lanl.gov/](https://www.hiv.lanl.gov/content/sequence/IQTREE/iqtree.html), software and documentation are still available at official website [iqtree.org](https://www.iqtree.org). Here using local CLI version to ensure reproducibility.
+- IQ-TREE works with FASTA file.
+
+1. Export MSA from Geneious in FASTA format.
+2. Write a shell script (ending with `.sh`) for later reproducibility (Unix shell here, Windows CLI might differ, see [documentation](https://www.iqtree.org/doc/Quickstart#for-windows-users)):
+
+```sh
+cd folder_where_fasta_file_locates
+
+"<iqtree2_folder/bin/iqtree2" -s "MSA_file.fasta" -st DNA -m MFP -bb 1000 -alrt 1000 -o Outgroup_sequence_name -pre "Custom_prefix"
+```
+
+- `-st` specifies sequence type, can be optional if DNA is clean of ambiguities.
+- `-m MFP` searches for the best fitting substitution models and directly apply for tree construction.
+- `-bb` specifies the number of bootstrap replicates for branch support.
+- `-alrt` specifies the number of replicates for SH-aLRT single branch tests.
+- `-o` specifies the outgroup taxon name, also accepts comma separated names, first taxon by default if not specified.
+- `-pre` specifies prefix for all output files.
+- Other parameters and details at [IQ-TREE Command Reference](https://www.iqtree.org/doc/Command-Reference)
+
+**Example**
+
+```sh
+cd '/Users/hu_zhehao/Desktop/zzzhehao/30 On-Going Project Management/32.2024 Acanthocope Project/03 analysis/03.02 genetics/18S/Maximum likelihood'
+
+"/Users/hu_zhehao/Desktop/iqtree-2.3.6-macOS-arm/bin/iqtree2" -s "18S MSA.fasta" -st DNA -m MFP -bb 1000 -alrt 1000 -o EU414465.1,EU414459.1 -pre "18S_ML"
+```
+
+**Running script**
+
+- Open Terminal (Cmd on Windows) and cd to the folder where the shell script locates, run the script:
+
+```bash
+sh script.sh
+```
+
+- Detailed output in console or log file, `.contree` (=consensus tree) can be opened by Tree annotation program such as [FigTree](http://tree.bio.ed.ac.uk/software/figtree/).
+- Best-fitting model tests: BIC / AIC are indicators showing how bad the model fits the data (models all suck, smallest number means that one sucks the least) 
+
+## Bayesian Inference
+
+- MrBayes for Bayesian analysis in phylogeny: [Download](https://nbisweden.github.io/MrBayes/download.html), [Manual](https://nbisweden.github.io/MrBayes/manual.html) 
+- MrBayes works with NEXUS file, MrBayes accepts command inputs in console but it's rather for exploration with the MCMC result.
+
+3. Add following lines at the end of the exported `.nexus` file. 
+	- Note how `BEGIN` and `END` wrap a nexus block, in the MSA file there should be another Data block starting with `BEGIN DATA;`
+	- Geneious loves giving a Character block instead of Data block, I prefer to change this. 
+	- In the Data block, the first few lines should be something like `dimensions ntax=96 nchar=711;`, NTAX should match with the number of sequences and NCHAR should match with the length of a single sequencem (including gaps, MSAligned sequence should all have the same length). Some software generate NEXUS file with all this in capital, then the whole NEXUS file should be written in capital.
+	- `ape::read.nexus.data()` and `ape::write.nexus.data()` do a good job on importing NEXUS file to R, do wrangling stuff and write a capitalized and more intuitive NEXUS file. See end of the file for an example annotation script.
+	- `format datatype=DNA missing=? gap=- interleave=no;` specifies the sequence being DNA, `?` as missing nucleotide (there shouldn't be any) and file format is not interleaved. 
+
+```nexus
+BEGIN MrBayes;
+
+set autoclose=yes nowarn=yes;
+
+charset pos1 = 1-.\3;
+charset pos2 = 2-.\3;
+charset pos3 = 3-.\3;
+partition codon = 3: pos1, pos2, pos3;
+
+set partition=codon;
+
+lset nst=2 rates=invgamma code=Invermt;
+
+mcmc ngen=5000000 nruns=4 nchains=4 samplefreq=100 printfreq=10000 diagnfreq=10000 relburnin=yes checkfreq=10000 savebrlens=yes starttree=random stoprule=yes stopval=0.01;
+
+sump burnin=500000;
+sumt burnin=500000 contype=halfcompat;
+report possel=yes siteomega=yes siterate=yes;
+
+END;
+```
+
+- `charset` and `partition` defines a codon partition evolutionary model since we are running COI gene. Theory is that nucleotide on different position of a reading frame receive different selection pressure (many sole change on third codon position does not lead to any change in AA sequence, thus receiving the least selection pressure).
+- `set autoclose=yes nowarn=yes` keeps MrBayes quiet but you have to know what you are doing. 
+- `lset` defines structure of the model, see Manual section 2.2.2 for details. Here for instance:
+	- `nst=2` specifies an HKY model which was tested by IQ-TREE to be the best fitting model for *Acanthocope* COI dataset. To find out which model to use, see IQ-TREE output.
+	- `rates=invgamma` combines gamma model to allow proportion of sites to be invariable (sites with negative selection, highly conserved sites)
+	- `code=Invermt` uses invertebrate mitochondrial genetic code
+- `mcmc` defines mcmc simulation settings
+	- `ngen` sets for simulation times (generation)
+	- `nruns` sets for number of independent runs (parallel processing if MrBayes is parallel version and multi-processor available)
+	- `nchains` sets for MCMC chain for each run. Here for instance has 4 runs x 4 chains = 16 chains in total.
+	- **Burnin** = discard the first proportion of results (as they are at exploration stage)
+	- `samplefreq` sets for frequency of MCMC sampling
+	- `printfreq` for console printing frequency
+	- `diagnfreq` for comparison freqeuncy of sampled trees from different runs
+	- `relburnin` sets if burnin is set by percentage (if not then fixed number)
+		- `burninfrac` sets for the proportion for burnin, 0.25 by default
+	- `checkfreq` saves checkpoints for the simulation in `.ckp` file, if analysis was interrupted, restart from last checkpoint is possible.
+	- `starttree=random` uses random tree as starting value, use `set` command for specifying seeds.
+	- `stoprule=yes stopval=0.01` allows for early termination if the standard deviation of split frequencies (below 0.01 means runs are converging well)
+- `sump` for summarizing paramters, result only in terminal.
+- `sumt` for summarizing trees, also generates `.con.tre` file with all relevant information for FigTree.
+	- `contype`: convergence type: half compatible (flexible) or all compatible (strict)
+- `report possel=yes siteomega=yes` shows positive selection probabilities and codon site omega values to see which sites are likely experiencing positive selection.
+- See the manual for more tutorials and informations on how to adjust the parameters. Also see @nascimento2017 
+
+ In Terminal, open MrBayes with:
+
+```sh
+mb
+```
+
+Execute the task:
+
+```sh
+Execute MSA.nexus
+```
+
+- This will load the MSA nexus file into MrBayes and execute the commands we put inside. 
+- Status and results will be printed out in terminal, but MrBayes does not produce log files like IQ-TREE does, make sure to save the terminal output after it finishes. (On Mac: Cmd+S)
+
+After the analysis is done, a consensus tree with file name ending with `.con.tre` will generate, which can be opened by Tree annotation program such as [FigTree](http://tree.bio.ed.ac.uk/software/figtree/).
+
+- For further phylogenetic analysis (e.g. w/ molecular clock, see [BEAST2](https://www.beast2.org))
+
+## Tree Annotation (FigTree)
+
+**Outgroup**
+- Choose the branch where outgroup sequences are and "reroot" (upper menu bar)
+
+**Clade credibility**
+- Node labels > display "label"
+	- ML: Bootstrap value, percentage of pseudo-replicates that has the same topology at that node
+	- Bayesian: posterior probability 
+- Branch labels > display "label": SH-aLRT for ML.
+
+## Haplotype Network (WIP)
+
+- popart crashes right after opening - not supporting Mac
+- geneHapR + igraph as R-based approach? @zhang2023 
+
+### Hapsolutely
+
+- Github: [Hapsolutely](https://github.com/iTaxoTools/Hapsolutely)
+- Manual: [PDF](https://itaxotools.org/Hapsolutely_manual_15Feb2024.pdf)
+- Citation: @vences2024
+
+**Limitation**
+
+- Not able to save as engineering file, only as svg, png or pdf. Reserve enough time to start this process.
+- Unable to select multiple nodes, have to move all of them individually (pain if large distances between large clusters)
+
+**Workflow**
+
+- If working with diploid dataset, phase the sequence first for detecting haplotype.
+- Alignment in FASTA file, traits in .tsv file (generated by R: `write.table(row.names = FALSE, sep = "\t", quote = FALSE)`)
+
+## Reference

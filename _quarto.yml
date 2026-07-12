@@ -1,0 +1,66 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "Zhehao's Note"
+
+  reader-mode: true
+  page-footer: 
+    right: |
+      Zhehao's note on his way of pursuing magic and mystery of biology. Build with <a href="https://quarto.org/"><u>Quarto</u></a>.
+  cover-image: logo/logo_1000.png
+  favicon: logo/logo_300.png
+  site-url: https://zzzhehao.github.io/notebook
+  repo-url: https://github.com/zzzhehao/notebook
+  repo-branch: main
+  repo-actions: [issue]
+  chapters:
+    - index.qmd
+    - part: "Evolution, Phylogeny"
+      chapters: 
+        - note/evolution/MSc EvoSys Course/01 Prior Concepts.qmd
+        - note/evolution/MSc EvoSys Course/02 Phylogeny Fundamentals.qmd
+        - note/evolution/MSc EvoSys Course/03 Phylogenetic Analysis.qmd
+        - note/evolution/MSc EvoSys Course/04 Bayesian Inference.qmd
+        - note/evolution/MSc EvoSys Course/05 Mutation, Substitution, Sequence Evolution.qmd
+        - note/evolution/MSc EvoSys Course/06 Phylogenetic Marker.qmd
+        - note/evolution/MSc EvoSys Course/07 Coalescent Theory.qmd
+        - note/evolution/MSc EvoSys Course/08 Phylogenomics.qmd
+        - note/evolution/MSc EvoSys Course/09 Phylogenetic Comparative Methods (PCM).qmd
+        - note/evolution/MSc EvoSys Course/10 Molecular Clocks.qmd
+        - note/evolution/MSc EvoSys Course/99 Concept Checklist.qmd
+        - note/evolution/Evolution Models.qmd
+        - note/evolution/czech2017 - corret rerooting method.qmd
+    - part: "Ecology"
+      chapters:
+        - note/ecology/Ecological Niche.qmd
+        - note/ecology/Diversity in Ecological Community.qmd
+        - note/ecology/Isolation By Distance (IBD).qmd
+        - note/ecology/Ecological Spatial Analysis in R.qmd
+        - note/ecology/Biogeography Statistics (ACTCP version).qmd
+    # - part: note/method/method.qmd
+    #   chapters: 
+    #     - 'note/method/Genetics Protocol.qmd'
+    #     - 'note/method/Molecular Species Delimtiation.qmd'
+    #     - 'note/method/Bayesian inference.qmd'
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: 
+      # - cosmo
+      dark: [theme/dark.scss]
+      light: [theme/light.scss]
+    code-copy: true
+    code-overflow: wrap
+    code-tools: 
+      caption: none
+      source: false
+    highlight-style: atom-one-dark
+editor: source
+
+execute: 
+  freeze: auto

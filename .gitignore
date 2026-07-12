@@ -1,0 +1,10 @@
+references.bib
+
+_book
+.quarto
+
+/.quarto/
+
+**/.DS_Store
+*.aseprite
+*.code-workspace

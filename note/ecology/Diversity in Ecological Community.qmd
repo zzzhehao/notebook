@@ -1,0 +1,70 @@
+<!-- Synced from `/Users/hu_zhehao/Desktop/zzzhehao/note/ecology/Diversity in Ecological Community.md` -->
+
+
+## Diversity in Ecological Community
+
+### Diversity Indices
+
+A diversity index is a mathematical measure of speceis diversity in a given community, it is based on the **species richness** (the number of species present) and the **species abundance** (the number of individuals per species).
+
+- Represents biodiversity in different aspects (richness, evenness, and dominance).
+- Type of interest also include genera, families, functional types, haplotypes, etc.
+- Entity of interest is usually individuals.
+- Measure of abundance can be number of individuals, biomass or coverage.
+
+#### Shannon index (H)
+
+$$
+H = -\sum \limits_{i=1}^S p_i \ln p_i
+$$
+
+The **Shannon index** (aka Shannon's diversity index, Shannon-Wiener index) by _Claude Shannon (1948)_ quantifies the entropy (hence _Shannon entropy_), the main idea is to make prediction of the next encounter inside given community (originally the next letter inside strings of text). The more species there are, and the closer their proportional abundances, the more difficult it is to correctly predict which species will be the next to encounter, this index thus accounts for uncertainty.
+
+- $p$: the proportion ($\frac{n}{N}$) of individuals of one particular species found ($n$) divided by the total number of individuals found ($N$).
+- $S$: species richness.
+- $H$ ranges from 0 to $H_\text{max}$, where $H_\text{max}$ is different for each community and calculated as the species have complete evenness.
+
+#### Simpson index ($\lambda$)
+
+BE AWARE: ambiguous usage of the term _Simpson index_ in ecological literature, which is usually referred to [[Diversity in Ecological Community#1.2.1 Gini-Simpson index ($1- lambda$)|Gini-Simpson index]].
+
+The **Simpson index** by _Edward H. Simpson (1949)_ measures the degree of concentration when individuals are classified into types.
+
+- Represents the probability that two entities taken at random from the dataset of interest belong to the same type.
+
+$$
+\lambda = \sum \limits^S_{i=1}(\frac{n_i}{N})^2 = \sum \limits^S_{i=1} p_i^2
+$$
+
+- $p$: the proportion abundance ($\frac{n}{N}$) of individuals of one particular species found ($n$) divided by the total number of individuals found ($N$).
+- $S$: species richness.
+- The proportional abundance itself is also used as weight here (see weighted arithmetic mean).
+- Ranges from $\frac{1}{S}$ to 1.
+- _Detour_: the same formula was rediscovered by _Orris C. Herfindahl_ in 1950, thus the same things is usually referred to as Herfindahl index or Herfindahl-Hirschman index (HHI) in economics.
+
+#### Gini-Simpson index ($1-\lambda$)
+
+The **Gini-Simpson index** (aka Gini impurity, Gini's diversity index) is a transformation of the original Simpson index. Usually referred to as _Simpson index_ in ecology (again, very ambiguous!)
+
+- Accounts for the probability that the two randomly drawn entities belong to different types.
+- More intuitive in term of diversity.
+- AKA the **Probability of interspecific encounter (_PIE_)** in ecology; Gibbs-Martin index in sociology and psychology; expected heterozygosity in population genetics.
+
+#### Inverse Simpson index ($\frac{1}{\lambda} = \, ^2D$)
+
+Another transformation of the original Simpson index.
+
+- AKA **Simpson's Dominance index**, ranges from 1 to $S$.
+
+### Evenness index
+
+Represents how close in numbers each species are in a community.
+
+$$
+J = \frac{H}{H_\text{max}}
+$$
+
+$J$ ranges from 0 to 1, where 1 indicates the absolute evenness.
+
+- Used as measurement of **species dominance**.
+

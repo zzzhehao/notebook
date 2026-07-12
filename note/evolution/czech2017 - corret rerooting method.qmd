@@ -1,0 +1,23 @@
+<!-- Synced from `/Users/hu_zhehao/Desktop/zzzhehao/note/evolution/czech2017 - corret rerooting method.md` -->
+
+Newick format has become the standard format of phylogenetics communication between tools, however the branch support can be misintepretated. What people usually display as "node support" is actually called and is indeed a **branch support**, including aLRT, bootstrap, bayesian posterior probablility. Without being aware of this, an incorrect, shifted branch support could be displayed. 
+
+This review paper pointed out this problem and examined different tools that is can  reroot and plot phylogenetic trees, and suggest that the tools should give options to the user to explicitly specifying how to display the branch support stored in the Newick data.
+
+In `ape` it would be `ape::root(edgelable=T)`. In Figtree it seems to display the correct branch support as inner-node node label, but it creates an imaginary "root" node with probability of 1 and does not reflect real topology - in case the the top-level trifucation ends up as a polytomy. Which can actually be a problem of the analysis itself.
+
+This is an example in the middle of my phylogenetic analysis of ACTCP project. *Ilyarachna* is used as outgroup and the unrooted tree originally calculated by MrBayes is as follows:
+
+![Concatenated analysis, MrBayes, unrooted](assets/Screenshot%202025-05-13%20at%2015.04.22.png)
+
+Which is re-rooted with `tree.rt <- ape::root(tree, "Ilyarachna_antarctica", resolve.root = T, edgelabel = F)`, it retains the trifucation node from which *Ilyarachna* comes out and the polytomy status of *Acanthocope sp. nov. and Acanthocope. sp. MB H2* (from @osborn2009). MrBayes seems to use the attribute in the "correct" way that the support can be mapped correctly. 
+
+![](assets/Screenshot%202025-05-13%20at%2015.06.51.png)
+
+On the other hand, if we set `edgelabel` to TRUE, it will then "transfer" the polytomy topology of the top-level node to the new root and shift the support label. Note that here the support label of the ancestor node of *Acanthocope sp. nov.* and *Acanthocope sp.* was actually a level away in the original tree. Note that the *Acanthocope sp. nov.* and *Acanthocope sp.* now also have a bifucation ancestor node which does not exist in original tree.
+
+![](assets/Screenshot%202025-05-13%20at%2015.15.48.png)
+This is also the case using FigTree, thus caution must be made using FigTree. 
+
+![](assets/Screenshot%202025-05-13%20at%2015.17.44.png)
+

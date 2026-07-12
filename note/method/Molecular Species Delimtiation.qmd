@@ -1,0 +1,33 @@
+<!-- Synced from `/Users/hu_zhehao/Desktop/zzzhehao/note/taxonomy/method/Molecular Species Delimtiation.md` -->
+
+## Tools 
+
+Research tools, especially open source tools usually get little fundings to maitain constant support. Many developers are very kind to even make them online available on their servers, but after years they are often down for [various reasons](https://github.com/legalLab/delimtools/issues/22#issuecomment-3514534285). Therefore I have maintained my [collection](https://github.com/zzzhehao/biotools_sc) of the source codes so that they can at least run locally. And more importantly, they can be integrated into my workflow so I don't have to be dependent on internet connection and click around every time. 
+
+Some tools are also deposited in a maintained repository or have a well-supported server:
+
+- IQ-TREE: [https://iqtree.github.io/#download](https://iqtree.github.io/#download)
+- MrBayes: via [Homebrew](https://formulae.brew.sh/formula/mrbayes) `brew install mrbayes` 
+
+### ASAP
+
+#### Installation
+
+Source code available in my [collection](https://github.com/zzzhehao/biotools_sc), or as [web service](https://spartexplorer.mnhn.fr/delimitation). 
+
+ASAP uses standard Makefile install, so you need to `$ cd` to the folder where `asap.tgz` resides, then:
+- unzip by `$ tar -xvzf asap.tgz`
+- go further into folder by `$ cd asap`
+- makefile by `$ make`
+
+If your system uses newer version of the compiler (like me), you might get error:
+	`asap.c:865:3: error: call to undeclared function 'fprint_distmat'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]`. 
+
+The problem is exactly as it says, so we have to use older standard to ignore this. To do that, use `$ make CFLAGS="-Wno-implicit-function-declaration -O3"`. 
+
+Once installed successfully, an executable will appear. 
+
+#### Citations
+
+Puillandre, N., Brouillet, S., & Achaz, G. (2021). ASAP: Assemble species by automatic partitioning. Molecular Ecology Resources, 21(2), 609–620. https://doi.org/10.1111/1755-0998.13281
+

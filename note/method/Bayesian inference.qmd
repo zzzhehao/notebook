@@ -1,0 +1,66 @@
+<!-- Synced from `/Users/hu_zhehao/Desktop/zzzhehao/note/taxonomy/method/Bayesian inference.md` -->
+
+## Setup
+
+- Software/Version: MrBayes 3.2.7a arm
+
+## Alignment 
+
+1. Alignment exported from GENEIOUS (interleave: no; without metacomments: no; replace special character: yes)
+2. Alignment renamed by annotate_aln.R to contain trait information in sample name to be visible on trees. Labeled files saved as `<root name>_labeled.nexus` 
+	- labeled FASTA version is saved for IQ Tree usage.
+
+## MrBayes block setting
+
+- MrBayes block was added after alignment block in nexus file. Multiple runs with improvement in setting were made. 
+- Last few runs all used 12th alignment which ...
+	- Does not have low quality alignment (193, 178 which seem acceptable but displayes long branch in both ML and Bayesian trees)
+	- with 7 reference from NCBI gene bank:
+		- MG721983
+		- MG721975
+		- MG721972
+		- MG721971
+		- MG721962.1
+		- MG721966
+		- MG721968
+	- with one outgroup: MW072749.1 - *Rectisura slavai*: selected according to @brix2020 Fig.3, Group 49.
+- 3 different runs can be considered as result as presented following.
+
+### Without substitution rate specified
+
+- Run on 20241204_1356
+
+### With codon partition
+
+- Talked with [Jenna](../../../../10-19%20Life%20Administration/12%20CRM/12.01%20CRM%20List/Jenna%20Moore.md) on [2024-12-03 DZMB](../../01%20docs/01.01%20notes/Daily%20Notes/2024-12-03%20DZMB.md)
+
+### With substitution rate model set to `lset nucmodel=codon` 
+
+```NEXUS
+BEGIN MrBayes;
+
+set autoclose=yes nowarn=yes;
+
+            lset nst=2 rates=invgamma;
+            lset nucmodel=codon omegavar=ny98 code=Invermt;
+
+            mcmc ngen=1000000 nruns=4 nchains=4 relburnin=yes samplefreq=1000 printfreq=1000 diagnfreq=10000 checkfreq=10000 savebrlens=yes starttree=random stoprule=yes stopval=0.01;
+
+            sump burnin=12500;
+            sumt burnin=12500 contype=halfcompat;
+            report possel=yes siteomega=yes siterate=yes;
+END;
+```
+
+`lset nst=2 rates=invgamma;` See [MrBayes Manual p.155](../../../../40-59%20Biology/41%20Evolution/Evolutionary%20Systematics/Phylogenetic%20Tools/Manuals/Manual_MrBayes_v3.2-2.pdf#page=155&selection=24,0,24,30&color=yellow)
+- `nst=2` Choose HKY model, determined by IQ Tree model selection (both by BIC and AIC).
+- `rates=invgamma` As long as `rates` is not set to equal, it allows different variation rate at different sites. Invalid site + gamma distribution assumes that proportion of the site is invalid
+- (prior set by `prset pinvarpr`, default uniform distribution)
+
+`lset nucmodel=codon omegavar=ny98`
+- `nucmodel=codon` Use codon model as substitution model (See @goldman1994)
+- `omegavar=ny98` Use Ny98 omega ratio categorization (See @yang2002)
+- `code=Invermt` Use invertebrate mitrochondria codon
+
+`mcmc ngen=5000000 nruns=4 nchains=6 relburnin=yes samplefreq=100 printfreq=1000 diagnfreq=10000 checkfreq=10000 savebrlens=yes starttree=random stoprule=yes stopval=0.01;`
+- `ngen=5000000` Use 5,000,000 iteration

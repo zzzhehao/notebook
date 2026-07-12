@@ -1,0 +1,13 @@
+# Welcome {.unnumbered}
+
+Welcome to my public notebook, where I write down things I view important alongside my journey of pursuing the mystery of biology. Most of the notes are synced with the notes in my personal notebook vault (Obsidian), so you can view this site as the public part of my tool und knowledge kit. 
+
+I hold a MSc Biology degree and my research focus is deep-sea crustacean, especially isopods. I did mainly taxonomy and biogeography during my master thesis, and now I am trying to get into ecology. I code a lot, and I like using the computer skills to keep my research bench tidy. I don't view myself as programming-guru or a hacker. It's just a nice and important skill to have in the 21st century.
+
+Currently there's just a few notes, because the rest are only written in the way that I can understand (bad example), and I am gradually retouching them. It just takes a bit more time. 
+
+Hopefully you could find something helpful here. If you want to correct, or add anything, please feel free to reach out. 
+
+# See also
+
+I also got a personal website, where I post [stand-alone posts](https://zzzhehao.github.io/post/research/).

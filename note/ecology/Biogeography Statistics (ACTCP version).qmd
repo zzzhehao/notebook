@@ -1,0 +1,472 @@
+<!-- Synced from `/Users/hu_zhehao/Desktop/zzzhehao/note/ecology/Biogeography Statistics (ACTCP version).md` -->
+
+## Haplotype calculation and Network Visualization
+
+`geneHapR` provides a good wrapper function of calling `pegas::haploNet()` which calculates a parsinomy network. Although this only calculates haplotype assignment and network structure, it does not give any statistical evidence on biogeographic pattern. 
+
+## AMOVA
+
+= **A**nalysis of **Mo**lecular **Va**riance
+
+### Methodology [^1] 
+
+- **Data**: molecular data, DNA sequence, microsatellite genotypes, SNPs. Arranged according to levels of hierarchical population structure.
+- **DIstance Calculations**: Genetic distance as a middle step in AMOVA, pairwise between individuals or haplotypes. 
+- **Variance Partitioning**: Total genetic variance is partitioned into components. 
+
+### AMOVA in R
+
+[`{poppr}`](https://grunwaldlab.github.io/poppr/reference/poppr.amova.html) gives nice wrapper function of AMOVA in `{ade4}` and in `{pegas}`. Defualt using `{ade4}`
+
+```r
+library(adegenet)
+library(poppr)
+
+genind <- df2genind(
+  X = as.data.frame(gal$haps, row.names = row.names(gal$voucher)),
+  ploidy = 1,
+  ind.names = row.names(gal$voucher),
+  pop = gal$loc_name
+)
+
+strata(genind) <- data.frame(loc_name = gal$loc_name, depth = gal$depth, lon = gal$lon, lat = gal$lat, station = gal$station) 
+
+poppr.amova(genind, hier = ~ population/location, method = "ade4")
+```
+
+`gal` is a simple data frame including haplotype assignment `$haps`, sample name `$voucher` and environmental data. Names can be aribtrary. `strata()` is a framework inherited from `{adegenet}`. 
+
+`poppr.amova()` takes `genind` class from `{adegenet}` and defines the population hierarchy with `hier = ~ POPULATION/SUBPOPULATION`. Here in example we define geo location `$loc_name` as the highest group and the station under each location category as the second population level. This will yield all $\Phi$ statistics, if only one level is provided, only the $\Phi_{ST}$ will be calculated. 
+
+The function yields following result:
+
+```console
+> amova.res <- poppr.amova(genind, hier = ~ population/location, method = "ade4")
+
+ No missing values detected.
+
+> amova.res
+$call
+ade4::amova(samples = xtab, distances = xdist, structures = xstruct)
+
+$results
+                                  Df    Sum Sq   Mean Sq
+Between population                 1  1.345002 1.3450017
+Between samples Within population  6  6.142929 1.0238215
+Within samples                    50 42.650000 0.8530000
+Total                             57 50.137931 0.8796128
+
+$componentsofcovariance
+                                                    Sigma           %
+Variations  Between population                0.005252287   0.5904814
+Variations  Between samples Within population 0.031240148   3.5121319
+Variations  Within samples                    0.853000000  95.8973867
+Total variations                              0.889492435 100.0000000
+
+$statphi
+                               Phi
+Phi-samples-total      0.041026133
+Phi-samples-population 0.035329936
+Phi-population-total   0.005904814
+```
+
+It was a pain to understand all the three statistics, let's say we define the hierarchy as: level1 is the highest category and level2 is enclosed by level1, which will be `hier = ~ level1/level2`. E.g. level1 is ocean (Pacific, Atlantic, SO, etc), level2 is the abyssal plains within each ocean.
+
+| **Statistics**    | **Definition by @excoffier1992**                                                                                           | **Explanation**                                                                                                                                                                                                                                                                                | ** `{ade4}` results** |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| $\Phi_{ST}$ / FST | Correlation of random haplotypes within populations, relative to the total variance.                                       | How much more similar are individuals within the same *level2*, compared to any two individuals drawn from the whole dataset (regardless of which *level2* or *level1*) ~ shows the porportion of total variance of the whole dataset (= species) attributed to difference among *level2*      | Phi-samples-total     |
+| $\Phi_{CT}$ / FCT | Correlation of random haplotypes within a group of populations, relative to the total variance.                            | How much more similar are individuals within the same *level1* (regardless of *level2*) compare to any two individuals drawn from the whole dataset (regardless of *level*2 or *level1*) ~ shows the proportion of total variance of the whole dataset attributed to difference among *level1* | Phi-*level1*-total    |
+| $\Phi_{SC}$ / FSC | Correlation of the molecular diversity of random haplotypes within populations, relative to the variance within the group. | How much more similar are individuals within the same *level2*, compared to any two individuals drawn from the same *level1* ~ shows the proportion of total variance **within the *level1*** attributed to difference among *level2*                                                          | Phi-samples-*level1*  |
+
+A higher value of these statistics indicates that more proportion of genetic variance is due to the difference among groups at tested level (FST: ignore *level1*, due to *level2*; FCT: ignore *level2*, due to *level1*; FSC: ignore global, due to *level2* in *level1*). The concept is somewhat similar to $\alpha$-, $\beta$-, $\gamma$-diversity. 
+
+A notation to the result in example of why $\Phi_{SC}$ is negative here:
+
+negative values implies that genetic variance at the tested level, i.e. among *level2* within each *level1* is less than expected by chance, which means the individuals within those *level2* are not more similar to each other than individuals from other *level2* within the same *level1*. Reason for this is clear in ACTCP, as the *level2* is set to stations and *level1* is set to location. There were only two locations that have more than one station, and they are outmost close to each other, where no gene flow barrier is to expected, especially for *galatheae*. 
+
+Of course, we can *make up* a p-value by repeating it (permutation test), default to 99 iterations but I will say make it 999 bc why not:
+
+```console
+> amova.test <- randtest(amova.res, nrepet = 999)
+> amova.test
+class: krandtest lightkrandtest 
+Monte-Carlo tests
+Call: randtest.amova(xtest = amova.res, nrepet = 999)
+
+Number of tests:   3 
+
+Adjustment method for multiple comparisons:   none 
+Permutation number:   999 
+                           Test         Obs    Std.Obs   Alter Pvalue
+1     Variations within samples 0.853000000 -1.4197886    less  0.094
+2    Variations between samples 0.031240148  0.9455456 greater  0.159
+3 Variations between population 0.005252287  0.6289330 greater  0.191
+```
+
+`plot()` the result will also show the statistics distribution in histogram. What we are testing here is to see if our observed statistics are different from those generated with *null model* (by randomly allocating individuals among, hence permutation). `Alter` also shows in case of siginificance, is the observed value smaller or greater than those from permutation tests. In ACTCP, none of them is significant, means none of the tested level shapes the genetic variability in our population. 
+
+When applying this to NE area:
+
+```console
+> amovaNE.res <- poppr.amova(genindNE, hier = ~location, method = "ade4")
+
+ No missing values detected.
+
+> amovaNE.res
+$call
+ade4::amova(samples = xtab, distances = xdist, structures = xstruct)
+
+$results
+                Df    Sum Sq   Mean Sq
+Between samples  3  2.877778 0.9592593
+Within samples  32 27.733333 0.8666667
+Total           35 30.611111 0.8746032
+
+$componentsofcovariance
+                                 Sigma          %
+Variations  Between samples 0.01592357   1.804186
+Variations  Within samples  0.86666667  98.195814
+Total variations            0.88259023 100.000000
+
+$statphi
+                         Phi
+Phi-samples-total 0.01804186
+> amovaNE.test <- randtest(amovaNE.res, nrepet = 999)
+> amovaNE.test
+Monte-Carlo test
+Call: as.randtest(sim = res, obs = sigma[1])
+
+Observation: 0.01592357 
+
+Based on 999 replicates
+Simulated p-value: 0.281 
+Alternative hypothesis: greater 
+
+     Std.Obs  Expectation     Variance 
+ 0.483237489 -0.002556856  0.001462523 
+```
+
+## Redundancy Analysis
+
+- This is a much bigger topic than I previously thought, WIP notes can be found at 
+	- [2025-06-09 DZMB RDA related](../../../30%20On-Going%20Project%20Management/32.2024%20Acanthocope%20Project/01%20docs/01.01%20notes/Daily%20Notes/2025-06-09%20DZMB.md) 
+	- [2025-06-10 DZMB RDA related](../../../30%20On-Going%20Project%20Management/32.2024%20Acanthocope%20Project/01%20docs/01.01%20notes/Daily%20Notes/2025-06-10%20DZMB%20RDA%20related.md)
+
+## Mantel Correlogram
+
+We take two matrices, geographical distance and genetic distance, to see if there's any spatial correlation in terms of genetic diversity. For the finest control of choosing the most appropriate methods, we will construct distance matrix explicitly. Genetic distance is to be calculated from the sequence alignment using suitable substitution method, not just raw hamming distance (p-distance). The default for COI is the K2P (also as K80) distance which takes mutation rate difference of transition and transversion into account: 
+
+```r
+# seqs.clade is generated by geneHapR::import_seqs() to cooperate with geneHapR::seq2hap() function later. Every multiple alignment object accepted by as.DNAbin() would do here. 
+
+k2p_dist_sp <- dist.dna(as.DNAbin(seqs.clade), model = "K80", pairwise.deletion = T) %>% as.matrix()
+```
+
+Geographic distance matrix can be tricky, depending on what type of data we have. [borcard2018, p.305](../../../90-99%20Resources/90%20References/80.02%20Zotero%20File%20Storage/borcard2018.pdf#page=316&selection=121,1,122,3&color=note%20/%20signpost) used XY cartesian coordinates because the study area is small enough (few meters) and `vegan::mantel.correlog()` accepts cartesian coordinates as geographic information, and more importantly, it is used for surface trend analysis. While our samples were distributed in much larger scale, we will have to use a more precise **Great-circle Distance** using Haversine formula: 
+
+```r
+gal.latlon <- gal[match(rownames(as.matrix(d.K2PDist)), gal$voucher), c("lat", "lon")]
+d.geo <- distm(gal.latlon, fun = distHaversine)/1000 # calculate distance and set unit to km
+rownames(d.geo) <- gal$voucher
+colnames(d.geo) <- gal$voucher
+dist.geo = as.dist(d.geo)
+```
+
+Whether any further transformation is needed, based on the biological assumption. *Acanthocope spp.* are believed to be mobile and there shouldn't be any serious geographical barrier within N Atlantic, which makes it simple to leave the distance as is. However if geographical isolation is to be expected due to barrier, or a strong isolation-by-distance (IBD) shall present, a transformation might be needed. (Log transformation?? `{r} as.dist(log(d.geo + 1))`)
+
+Before we can throw both matrix into correlogram, another thing needs to be considered is **detrending**.
+
+[7.3 Multivariate Trend-Surface Analysis](../../../90-99%20Resources/90%20References/80.02%20Zotero%20File%20Storage/borcard2018.pdf#page=320&selection=74,0,76,35&color=note%20/%20signpost) stated, that, when our data was sampled on (along) geographic surfaces, there would, very probably, be a large scale structure present as a form of gradient - linear trend. Such trend can be detected using trend-surface analysis, and also should be removed for more complex spatial analysis. 
+
+To test for linear surface trend, we need to first map our data onto a plane. Which we choose the Azimuthal Equal Distance Projection, which then return our station in a cartesian system based on the centroid we calculate as the middle point of the bounding box. 
+
+```r
+gal.xy <- gal[match(rownames(as.matrix(d.K2PDist)), gal$voucher), c("lat", "lon")]
+
+# Convert to sf object
+gal.sf <- st_as_sf(gal.xy, coords = c("lon", "lat"), crs = 4326)
+
+# Find a suitable center point (mean of your coordinates)
+center_lon <- mean(gal.xy$lon)
+center_lat <- mean(gal.xy$lat)
+
+# Create azimuthal equidistant projection string
+aeqd_proj <- sprintf("+proj=aeqd +lat_0=%f +lon_0=%f +units=km", center_lat, center_lon)
+
+# Transform to projected coordinates
+gal.xy.aeqd <- st_transform(gal.sf, crs = aeqd_proj)
+xy_cartesian <- as.data.frame(st_coordinates(gal.xy.aeqd))  # x/y in kilometers
+```
+
+We then start calculating the polynomial terms and test for linear, quadratic, and cubic trends:
+
+```r
+library(ape) 
+library(spdep) 
+library(ade4) 
+library(adegraphics) 
+library(adespatial) 
+library(vegan)
+
+xy.c <- scale(xy_cartesian, center = TRUE, scale = FALSE)
+gal.poly <- poly(as.matrix(xy.c), degree = 3, raw = TRUE) 
+colnames(gal.poly) <- c("X", "X2", "X3", "Y", "XY", "X2Y", "Y2", "XY2", "Y3")
+
+d.h <- decostand(d.K2PDist, method = "hellinger")
+gal.trend.rda <- rda(d.h ~ ., data = as.data.frame(gal.poly))
+R2adj.poly <- RsquareAdj(gal.trend.rda)$adj.r.squared
+
+gal.poly.ortho <- poly(as.matrix(xy_cartesian), degree = 3) 
+colnames(gal.poly.ortho) <- c("X", "X2", "X3", "Y", "XY", "X2Y", "Y2", "XY2", "Y3") 
+(gal.trend.rda.ortho <- rda(d.h ~ ., data =as.data.frame(gal.poly.ortho))) 
+(R2adj.poly2 <- RsquareAdj(gal.trend.rda.ortho)$adj.r.squared)
+
+(gal.trend.fwd <- forward.sel(d.h, gal.poly.ortho, adjR2thresh = R2adj.poly2))
+(gal.trend.rda2 <- rda(d.h ~ ., data = as.data.frame(gal.poly)[ ,gal.trend.fwd[ ,2]]))
+
+anova(gal.trend.rda2) 
+anova(gal.trend.rda2, by = "axis")
+
+gal.trend.fit <- scores(gal.trend.rda2, choices = 1:4, display = "lc", scaling = 1) 
+s.value(xy_cartesian, gal.trend.fit, symbol = "circle")
+
+anova(rda(d.h, xy_cartesian))
+```
+
+The last `anova()` will yield the result, if any linear trend is present in the data or not. If true, then the subsequent analysis (e.g. Correlogram, eigenvector based analysis, etc) should be performed with detrended data. If not, it should then be proceeded with raw data. *galatheae* data showed a significant trend, so I decided to show the result of all three (raw, linear detrended, gam detrended) analysis and draw more conclusion by comparing them together. 
+
+### Raw Matrix
+
+Using raw distance is the simplest by just throwing two matrices into the function. `nperm` sets the number of permutation, default to 999, but we use 5000 for more reliable result, it won't take long. 
+
+```r
+breakpoints <- c(0, 368, 1841, 2209, 4420)
+
+gal.correlog.dist <- mantel.correlog(d.K2PDist, dist.geo, nperm = 5000, cutoff = F, break.pts = breakpoints)
+```
+
+The result can be `print()` out or `plot()` out to see the mantel statistics of each distance class. `cutoff` retains the result of the last few distance classes. `break.pts` allows user to set break points of the station specifically, if `NULL` then it will be done automatically (details see help document). I set the break points in the way that the involving pairwise comparison of each distance class has more intuitive biological meaning (see [Result](Biogeography%20Statistics%20(ACTCP%20version).md#Result)) 
+
+### Linear Detrending
+
+```r
+# Flatten distance matrices to vectors
+genetic_vec <- as.matrix(as.dist(d.K2PDist))
+geo_vec <- as.matrix(dist.geo)
+
+# Linear model: genetic distance ~ geographic distance
+lm_fit <- lm(genetic_vec ~ geo_vec)
+genetic_resid_linear <- dist(resid(lm_fit))
+
+gal.correlog.dist.linear <- mantel.correlog(genetic_resid_linear, dist.geo, nperm = 5000, cutoff = F, break.pts = breakpoints)
+```
+
+We won't using anything generated from trend analysis for detrend work, as we will stick to our great-circle distance and avoid distortion by mapping our geographical station onto a 2D-plane. 
+
+### GAM Detrending
+
+**Generalized Additive Model** (GAM) focuses on detecting smooth functions, that is not necessarily linear. Using GAM function to detrend will capture bigger variation of spatial structure, including lineara, and some other smooth trend. 
+
+```r
+library(mgcv)
+gam_fit <- gam(as.vector(genetic_vec) ~ s(as.vector(geo_vec)))
+
+#
+# Assuming you have xy_cartesian with columns x and y (projected coordinates)
+xy_cartesian <- as.data.frame(st_coordinates(gal.xy.aeqd))
+names(xy_cartesian) <- c("x", "y")
+
+# Make sure the order matches your genetic distance matrix
+# Flatten distance matrices to vectors
+genetic_vec <- as.vector(as.dist(d.K2PDist))
+
+# Create all pairwise combinations of coordinates
+coords <- xy_cartesian
+n <- nrow(coords)
+pair_idx <- which(upper.tri(matrix(NA, n, n)), arr.ind = TRUE)
+x1 <- coords$x[pair_idx[,1]]
+y1 <- coords$y[pair_idx[,1]]
+x2 <- coords$x[pair_idx[,2]]
+y2 <- coords$y[pair_idx[,2]]
+
+# Calculate pairwise midpoints (or differences)
+mid_x <- (x1 + x2)/2
+mid_y <- (y1 + y2)/2
+
+# Fit GAM with spatial smooth
+gam_fit_spatial <- gam(genetic_vec ~ s(mid_x, mid_y))
+
+# Plot residuals
+resid_gam_spatial <- resid(gam_fit_spatial)
+plot(mid_x, resid_gam_spatial, pch=16, col=rgb(0,0,0,0.2), xlab="Midpoint X", ylab="GAM Residuals")
+abline(h=0, col="red", lty=2)
+
+# After fitting your GAM (1D or 2D), get residuals
+genetic_resid_gam <- numeric(n * (n - 1) / 2)
+genetic_resid_gam <- resid(gam_fit) # or resid_gam_spatial
+
+# Build a symmetric matrix from the residuals
+resid_mat <- matrix(0, n, n)
+resid_mat[upper.tri(resid_mat)] <- genetic_resid_gam
+resid_mat <- resid_mat + t(resid_mat) # make symmetric
+
+# Convert to dist object for vegan::mantel.correlog
+resid_dist <- as.dist(resid_mat)
+
+library(vegan)
+mantel_correlog_result <- mantel.correlog(D.eco = resid_dist, D.geo = dist.geo, nperm = 999, cutoff = FALSE, break.pts = breakpoints)
+```
+
+### Show involved pairwise comparison for each distance class
+
+```r
+
+#### Show involved stations
+
+station_names <- gal[match(rownames(as.matrix(d.K2PDist)), gal$voucher), c("lon", "lat", "station")]$station
+# convert to number on the map
+ebs.label <- readRDS("analysis/temp/GIS_ebs.label.RDS")
+ebs.label.LUT <- ebs.label$loc_label
+names(ebs.label.LUT) <- ebs.label$Station
+# synonymized stations:
+ebs.label.LUT.syn <- c(ebs.label.LUT["81"], ebs.label.LUT["6-7"], ebs.label.LUT["4-8"])
+names(ebs.label.LUT.syn) <- c("85", "6-8", "4-9")
+ebs.label.LUT <- c(ebs.label.LUT, ebs.label.LUT.syn)
+
+station_names <- ebs.label.LUT[station_names]
+
+dmat <- as.matrix(dist.geo)
+breaks <- gal.correlog.dist.linear$break.pts
+
+output <- c()
+
+for (i in 1:(length(breaks)-1)) {
+    output <- c(output, paste("Distance class", i, ":", round(breaks[i], 4), "to", round(breaks[i+1], 4), "\n"))
+    # Find indices for upper triangle only to avoid duplicates and self-pairs
+    idx <- which(dmat > breaks[i] & dmat <= breaks[i+1] & upper.tri(dmat), arr.ind = TRUE)
+    # Ensure idx is always a matrix
+    if (length(idx) == 0) {
+      output <- c(output, paste("  No pairs in this class.\n\n"))
+      next
+    }
+    if (is.null(dim(idx))) idx <- t(as.matrix(idx)) # convert vector to 1-row matrix if needed
+    # Print station pairs
+    pairs <- data.frame()
+    for (j in 1:nrow(idx)) {
+        pairs <- rbind(pairs, data.frame(st1 = station_names[idx[j,1]], st2 = station_names[idx[j,2]]))
+    }
+    pairs <- pairs %>% 
+        mutate(pair = paste(pmin(st1, st2), pmax(st1, st2), sep = ";")) %>% 
+        distinct(pair, .keep_all = T)
+    # output <- c(output, paste("  ", station_names[idx[j,1]], "<->", station_names[idx[j,2]], "\n"))
+    output <- c(output, paste("  ", pairs$st1, "<->", pairs$st2, "\n"))
+    output <- c(output, paste("\n"))
+  }
+
+cat(output)
+```
+
+### Result 
+
+
+
+```console
+> cat(output)
+Distance class 1 : 0 to 368 
+    3 <-> 3 
+    4 <-> 4 
+    5 <-> 5 
+    6 <-> 6 
+    11 <-> 11 
+    10 <-> 10 
+    9 <-> 9 
+    12 <-> 12 
+ 
+ Distance class 2 : 368 to 1841 
+    3 <-> 4 
+    3 <-> 6 
+    4 <-> 6 
+    3 <-> 5 
+    4 <-> 5 
+    6 <-> 5 
+    11 <-> 10 
+    11 <-> 9 
+    10 <-> 9 
+    11 <-> 12 
+    10 <-> 12 
+ 
+ Distance class 3 : 1841 to 2209 
+    9 <-> 12 
+ 
+ Distance class 4 : 2209 to 4420 
+    3 <-> 11 
+    4 <-> 11 
+    6 <-> 11 
+    5 <-> 11 
+    3 <-> 10 
+    4 <-> 10 
+    6 <-> 10 
+    5 <-> 10 
+    3 <-> 9 
+    4 <-> 9 
+    6 <-> 9 
+    5 <-> 9 
+    3 <-> 12 
+    4 <-> 12 
+    6 <-> 12 
+    5 <-> 12 
+ 
+> gal.correlog.dist
+
+Mantel Correlogram Analysis
+
+Call:
+ 
+mantel.correlog(D.eco = d.K2PDist, D.geo = dist.geo, break.pts = breakpoints,      cutoff = F, nperm = 5000) 
+
+       class.index      n.dist  Mantel.cor Pr(Mantel) Pr(corrected)    
+D.cl.1  184.000000  756.000000    0.274177     0.0004     0.0003999 ***
+D.cl.2 1104.500000  918.000000   -0.105322     0.0204     0.0203959 *  
+D.cl.3 2025.000000   48.000000    0.010558     0.3591     0.3591282    
+D.cl.4 3314.500000 1584.000000   -0.138607     0.0056     0.0167966 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> gal.correlog.dist.linear
+
+Mantel Correlogram Analysis
+
+Call:
+ 
+mantel.correlog(D.eco = genetic_resid_linear, D.geo = dist.geo,      break.pts = breakpoints, cutoff = F, nperm = 5000) 
+
+       class.index      n.dist  Mantel.cor Pr(Mantel) Pr(corrected)  
+D.cl.1  184.000000  756.000000    0.123227     0.0406       0.04059 *
+D.cl.2 1104.500000  918.000000   -0.012545     0.3855       0.38552  
+D.cl.3 2025.000000   48.000000   -0.054510     0.1450       0.28994  
+D.cl.4 3314.500000 1584.000000   -0.079297     0.0394       0.15757  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> print(mantel_correlog_result)
+
+Mantel Correlogram Analysis
+
+Call:
+ 
+mantel.correlog(D.eco = resid_dist, D.geo = dist.geo, break.pts = breakpoints,      cutoff = FALSE, nperm = 5000) 
+
+       class.index      n.dist  Mantel.cor Pr(Mantel) Pr(corrected)
+D.cl.1  1.8400e+02  7.5600e+02 -3.2355e-02     0.1830        0.1830
+D.cl.2  1.1045e+03  9.1800e+02 -2.0709e-03     0.4555        0.4555
+D.cl.3  2.0250e+03  4.8000e+01 -3.8618e-02     0.0944        0.2831
+D.cl.4  3.3145e+03  1.5840e+03  3.8304e-02     0.0774        0.3095
+```
+
+
+
+- SAMOVA: original annealing approach only available on software on Windows: [SAMOVA 2.0](https://cmpg.unibe.ch/software/samova2/)
+- Genetic Landscape Shape Interpolation: Powerful and complex tool cooperating with extensive environmental and geographical data, worth if genetic structure is known to vary due to spatial parameters. [Original method](https://doiserbia.nb.rs/img/doi/0534-0012/2008/0534-00120803283I.pdf)
+- Mantel Test with Network Distance 
+- Moran’s I or Mantel Correlogram 
+- Redundancy Analysis (RDA)
+
+[^1]: https://openpress.wheatoncollege.edu/molecularecologyv1/chapter/a-brief-overview-of-analysis-of-molecular-variance/

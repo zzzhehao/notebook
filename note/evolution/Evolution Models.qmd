@@ -1,0 +1,32 @@
+<!-- Synced from `/Users/hu_zhehao/Desktop/zzzhehao/note/evolution/Evolution Models.md` -->
+
+## Evolution Models
+
+
+## What defines an evolution model, i.e. what does an evolution model define?
+
+Different models (for nucleotides or amino acids) differentiate from a few properties:
+
+- **Frequencies (base) of states**: either fixed *a priori* (equal base frequency, or base frequency set to custom prior e.g. model) or estimated (empirical: counting proportions in the data, or using ML).
+- **Relative rates of** (all possible) **substitution**: there are only 6 in DNA but nearly 189 in AA.
+	- Some models fix several rates to be equal, with the rest estimated by the data (free parameters)
+	- Some models (GTR, SYM and friends) have all 6 parameters free, so one of them will be (arbitrarily) set to 1 and the rest will be estimated. Setting one of them to be 1 serves as an "anchor point" for the ratio while not affecting the scaling, which is the only thing that matters.
+- **Distribution of rates across sites** allows different assumptions of how sites at different locations evolve at different speed.
+	- Most simple but usually not accurate assumption is that **all sites evolve at equal speed** (e.g. plain substitution model).
+	- **Some sites never change** = invariant sites, then we estimate one free parameter for the proportion of the invariant sites (e.g. HKY+I).
+	- **Sites evolving speed distribute according to certain distribution**, commonly modeled by gamma distribution (because it can have many shapes), here also one free parameter for the shape of the distribution (e.g. HKY+G).
+	- **Combination of invariant site and gamma distribution**, e.g. HKY+I+G
+	- **Customized "free rate" models**, where one specifies the rate for certain number of rate categories, e.g. LG4X with four categories and four sets of AA frequencies (yes this is an AA model). Probably many prior information required but the results are reported to be better than other models. See [reference](http://mbe.oxfordjournals.org/content/29/10/2921).  
+
+[Online Manual](https://iqtree.github.io/doc/Substitution-Models) of IQ-TREE has a list of models that can be tested and brief descriptions. [PartitionFinder 2](https://github.com/brettc/partitionfinder/blob/master/partfinder/models.csv) has a csv table for all supported models and their properties. 
+
+## Time-reversible model
+
+I come across this term when researching the paragraph above. 
+
+A time-reversible model is defined as *a Markov model where probability of substitution from state $a$ to $b$ is the same, regardless of direction, when weighted by equilibrium frequencies (base frequencies).* Which essentially means mathematically, stochastically observed, state $a$ becoming $b$ has the same probability as state $b$ becoming $a$, means they are not differentiable, and thus it's unable to infer whether $a$ or $b$ is ancestral, hence **time-reversible** model. 
+
+> [!help]- Markov model
+> Markov model is a probability (stochastic) model that possess Markov property, which is a memoryless property of a stochastic process. That means the pseudo-random changing process with Markov property depends only on the current state. This model allows predictive modeling and probabilistic forecasting within practical computation complexity. Mutation of a character, nucleotide or an amino acid follows Markov model as the mutation does not get affected by the previous state of the site. 
+
+This character is directly link to the inference of an unrooted tree, as without additional *prior* information (e.g. outgroup constrain, molecular clock), the analysis won't be able to test for ancetral state and therefore the root of the tree can not be found. In case of a non-reversible model, the root will then be automatically found. (See [example](https://pmc.ncbi.nlm.nih.gov/articles/PMC9260635/)).
