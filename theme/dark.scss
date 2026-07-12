@@ -1,4 +1,5 @@
 /*-- scss:defaults --*/
+@import "_vars.scss";
 
 // 1. BOOTSTRAP CONFIGURATION
 $body-bg:       $dark-canvas;
@@ -9,6 +10,7 @@ $code-color:    $dark-code-text;
 $code-bg:       $dark-code-bg;
 
 /*-- scss:rules --*/
+@import "_rules.scss";
 
 :root {
   // Base

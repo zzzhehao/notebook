@@ -1,4 +1,5 @@
 /*-- scss:defaults --*/
+@import "_vars.scss";
 
 // 1. BOOTSTRAP CONFIGURATION
 $body-bg:       $paper-bg;
@@ -11,6 +12,7 @@ $code-color:    $light-inline-text; // Sets default text color for code
 $code-bg:       $light-inline-bg;   // Sets default bg for code
 
 /*-- scss:rules --*/
+@import "_rules.scss";
 
 // 2. CSS VARIABLES (MAPPING)
 :root {
