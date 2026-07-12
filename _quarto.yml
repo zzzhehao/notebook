@@ -50,9 +50,9 @@ bibliography: references.bib
 
 format:
   html:
-    theme: cosmo
-      # light: theme/light.scss
-      # dark: theme/dark.scss
+    theme: 
+      light: theme/light.scss
+      dark: theme/dark.scss
     code-copy: true
     code-overflow: wrap
     code-tools: 
