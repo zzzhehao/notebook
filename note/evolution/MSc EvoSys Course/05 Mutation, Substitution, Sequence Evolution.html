@@ -39,11 +39,11 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-57a92833092fd6dc0d7710b6bdfff9c5.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-57a92833092fd6dc0d7710b6bdfff9c5.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-57a92833092fd6dc0d7710b6bdfff9c5.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-598285c1e37c5884fda5962f1881f72e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-be1f17ea49195c21743e3a668c8909ca.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-f7f666f44a31ac91bf24f2301da3a516.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-916784a0e4f1f8fa4cd2220829980040.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -71,6 +71,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R0FB3TL998"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-R0FB3TL998', { 'anonymize_ip': true});
+</script>
 
 
 </head>
@@ -270,7 +279,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#mutation" id="toc-mutation" class="nav-link active" data-scroll-target="#mutation"><span class="header-section-number">6.1</span> Mutation</a></li>
   <li><a href="#nucleotide-substitutions" id="toc-nucleotide-substitutions" class="nav-link" data-scroll-target="#nucleotide-substitutions"><span class="header-section-number">6.2</span> Nucleotide substitutions</a></li>
   <li><a href="#evolutionary-dynamics" id="toc-evolutionary-dynamics" class="nav-link" data-scroll-target="#evolutionary-dynamics"><span class="header-section-number">6.3</span> <strong>Evolutionary dynamics</strong></a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#models-of-nucleotide-substitution" id="toc-models-of-nucleotide-substitution" class="nav-link" data-scroll-target="#models-of-nucleotide-substitution"><span class="header-section-number">6.3.1</span> Models of nucleotide substitution</a></li>
   <li><a href="#models-of-amino-acid-substitution" id="toc-models-of-amino-acid-substitution" class="nav-link" data-scroll-target="#models-of-amino-acid-substitution"><span class="header-section-number">6.3.2</span> Models of amino acid substitution</a></li>
   </ul></li>
@@ -485,7 +494,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
+  const darkModeDefault = true;
   let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {

@@ -93,11 +93,11 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-57a92833092fd6dc0d7710b6bdfff9c5.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-57a92833092fd6dc0d7710b6bdfff9c5.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-57a92833092fd6dc0d7710b6bdfff9c5.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-598285c1e37c5884fda5962f1881f72e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-be1f17ea49195c21743e3a668c8909ca.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-f7f666f44a31ac91bf24f2301da3a516.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-916784a0e4f1f8fa4cd2220829980040.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -125,6 +125,15 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R0FB3TL998"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-R0FB3TL998', { 'anonymize_ip': true});
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -351,13 +360,13 @@ window.Quarto = {
    
   <ul>
   <li><a href="#amova" id="toc-amova" class="nav-link active" data-scroll-target="#amova"><span class="header-section-number">18.1</span> AMOVA</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#methodology-1" id="toc-methodology-1" class="nav-link" data-scroll-target="#methodology-1"><span class="header-section-number">18.1.1</span> Methodology </a></li>
   <li><a href="#amova-in-r" id="toc-amova-in-r" class="nav-link" data-scroll-target="#amova-in-r"><span class="header-section-number">18.1.2</span> AMOVA in R</a></li>
   </ul></li>
   <li><a href="#redundancy-analysis" id="toc-redundancy-analysis" class="nav-link" data-scroll-target="#redundancy-analysis"><span class="header-section-number">18.2</span> Redundancy Analysis</a></li>
   <li><a href="#mantel-correlogram" id="toc-mantel-correlogram" class="nav-link" data-scroll-target="#mantel-correlogram"><span class="header-section-number">18.3</span> Mantel Correlogram</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#raw-matrix" id="toc-raw-matrix" class="nav-link" data-scroll-target="#raw-matrix"><span class="header-section-number">18.3.1</span> Raw Matrix</a></li>
   <li><a href="#linear-detrending" id="toc-linear-detrending" class="nav-link" data-scroll-target="#linear-detrending"><span class="header-section-number">18.3.2</span> Linear Detrending</a></li>
   <li><a href="#gam-detrending" id="toc-gam-detrending" class="nav-link" data-scroll-target="#gam-detrending"><span class="header-section-number">18.3.3</span> GAM Detrending</a></li>
@@ -985,7 +994,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
+  const darkModeDefault = true;
   let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {

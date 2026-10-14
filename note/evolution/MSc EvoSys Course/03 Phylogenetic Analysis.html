@@ -39,11 +39,11 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-57a92833092fd6dc0d7710b6bdfff9c5.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-57a92833092fd6dc0d7710b6bdfff9c5.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-57a92833092fd6dc0d7710b6bdfff9c5.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-598285c1e37c5884fda5962f1881f72e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-be1f17ea49195c21743e3a668c8909ca.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-f7f666f44a31ac91bf24f2301da3a516.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-916784a0e4f1f8fa4cd2220829980040.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -71,6 +71,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R0FB3TL998"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-R0FB3TL998', { 'anonymize_ip': true});
+</script>
 
 
 </head>
@@ -269,34 +278,39 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#character-types-in-data-science" id="toc-character-types-in-data-science" class="nav-link active" data-scroll-target="#character-types-in-data-science"><span class="header-section-number">4.1</span> <strong>Character types (in Data Science)</strong></a></li>
   <li><a href="#sequence-alignment" id="toc-sequence-alignment" class="nav-link" data-scroll-target="#sequence-alignment"><span class="header-section-number">4.2</span> Sequence Alignment</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#partitions" id="toc-partitions" class="nav-link" data-scroll-target="#partitions"><span class="header-section-number">4.2.1</span> <strong>Partitions</strong></a></li>
   <li><a href="#mixture-models" id="toc-mixture-models" class="nav-link" data-scroll-target="#mixture-models"><span class="header-section-number">4.2.2</span> <strong>Mixture models</strong></a></li>
   </ul></li>
   <li><a href="#phylogenetic-tree-reconstruction-algorithms" id="toc-phylogenetic-tree-reconstruction-algorithms" class="nav-link" data-scroll-target="#phylogenetic-tree-reconstruction-algorithms"><span class="header-section-number">4.3</span> Phylogenetic Tree Reconstruction: Algorithms</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#clustering-algorithm" id="toc-clustering-algorithm" class="nav-link" data-scroll-target="#clustering-algorithm"><span class="header-section-number">4.3.1</span> <strong>Clustering Algorithm</strong></a></li>
   <li><a href="#optimizing-algorithm" id="toc-optimizing-algorithm" class="nav-link" data-scroll-target="#optimizing-algorithm"><span class="header-section-number">4.3.2</span> <strong>Optimizing Algorithm</strong></a></li>
   <li><a href="#distance-methods" id="toc-distance-methods" class="nav-link" data-scroll-target="#distance-methods"><span class="header-section-number">4.3.3</span> <strong>Distance methods</strong></a></li>
   <li><a href="#character-based-methods" id="toc-character-based-methods" class="nav-link" data-scroll-target="#character-based-methods"><span class="header-section-number">4.3.4</span> <strong>Character-based methods</strong></a></li>
   </ul></li>
   <li><a href="#maximum-parsimony" id="toc-maximum-parsimony" class="nav-link" data-scroll-target="#maximum-parsimony"><span class="header-section-number">4.4</span> Maximum Parsimony</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#search-methods" id="toc-search-methods" class="nav-link" data-scroll-target="#search-methods"><span class="header-section-number">4.4.1</span> Search Methods</a></li>
   </ul></li>
   <li><a href="#maximum-likelihood" id="toc-maximum-likelihood" class="nav-link" data-scroll-target="#maximum-likelihood"><span class="header-section-number">4.5</span> Maximum Likelihood</a>
+  <ul>
+  <li><a href="#branch-support" id="toc-branch-support" class="nav-link" data-scroll-target="#branch-support"><span class="header-section-number">4.5.1</span> Branch support</a>
   <ul class="collapse">
-  <li><a href="#branch-support" id="toc-branch-support" class="nav-link" data-scroll-target="#branch-support"><span class="header-section-number">4.5.1</span> Branch support</a></li>
+  <li><a href="#bremer-decay-index" id="toc-bremer-decay-index" class="nav-link" data-scroll-target="#bremer-decay-index"><span class="header-section-number">4.5.1.1</span> Bremer (Decay) Index</a></li>
+  <li><a href="#non-parametric-bootstrapping" id="toc-non-parametric-bootstrapping" class="nav-link" data-scroll-target="#non-parametric-bootstrapping"><span class="header-section-number">4.5.1.2</span> Non-parametric bootstrapping</a></li>
+  <li><a href="#jackknifing" id="toc-jackknifing" class="nav-link" data-scroll-target="#jackknifing"><span class="header-section-number">4.5.1.3</span> <strong>Jackknifing</strong></a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#bayesian-inference" id="toc-bayesian-inference" class="nav-link" data-scroll-target="#bayesian-inference"><span class="header-section-number">4.6</span> Bayesian Inference</a></li>
   <li><a href="#consensus-tree" id="toc-consensus-tree" class="nav-link" data-scroll-target="#consensus-tree"><span class="header-section-number">4.7</span> Consensus Tree</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#strict-rule" id="toc-strict-rule" class="nav-link" data-scroll-target="#strict-rule"><span class="header-section-number">4.7.1</span> <strong>Strict rule</strong></a></li>
   <li><a href="#majority-rule" id="toc-majority-rule" class="nav-link" data-scroll-target="#majority-rule"><span class="header-section-number">4.7.2</span> <strong>Majority rule</strong></a></li>
   <li><a href="#semi-strict" id="toc-semi-strict" class="nav-link" data-scroll-target="#semi-strict"><span class="header-section-number">4.7.3</span> <strong>Semi-strict</strong></a></li>
   </ul></li>
   <li><a href="#phylogenetic-errors" id="toc-phylogenetic-errors" class="nav-link" data-scroll-target="#phylogenetic-errors"><span class="header-section-number">4.8</span> Phylogenetic Errors</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#genetic-saturation-kind-of-homoplasy" id="toc-genetic-saturation-kind-of-homoplasy" class="nav-link" data-scroll-target="#genetic-saturation-kind-of-homoplasy"><span class="header-section-number">4.8.1</span> Genetic saturation (kind of “homoplasy”)</a></li>
   <li><a href="#long-branch-attraction-lba" id="toc-long-branch-attraction-lba" class="nav-link" data-scroll-target="#long-branch-attraction-lba"><span class="header-section-number">4.8.2</span> <strong>Long branch attraction (LBA)</strong></a></li>
   </ul></li>
@@ -684,7 +698,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
+  const darkModeDefault = true;
   let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
